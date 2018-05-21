@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "Contacto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-header" class="contact">
+    <div class="container">
+        <div class="page-header-content text-center">
+            <div class="page-header wsub">
+                <h1 class="page-title fadeInDown animated first">Contact</h1>
+            </div><!-- / page-header -->
+            <p class="slide-text fadeInUp animated second">Your page's description goes here...</p>
+        </div><!-- / page-header-content -->
+    </div><!-- / container -->
+</div><!-- / page-header -->
+<!-- contact -->
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 contact-details">
+                <h4>Teléfono</h4>
+                <p><a href="#">+52 449 918 6217</a></p>
+
+                <h4 class="space-top">Dirección</h4>
+                <p><a href="mailto:press@yoursite.com">Victoria 705, Centro, 20000 Aguascalientes.</a></p>
+                <h4 class="space-top">Correo</h4>
+                <p><a href="mailto:orders@yoursite.com">lared@gmail.com</a></p>
+                <h4 class="space-top">Shop Info</h4>
+                <p class="space-top large-p">Phasellus pretium lacinia efficitur. Cras arcu diam, commodo quis est id, lobortis semper felis. Sed vel arcu ligula. Maecenas pulvinar a ex non mollis. Integer hendrerit ante tortor, sit amet tristique leo blandit.</p>
+                <p class="large-p">Sed dictum laoreet augue, non mollis nisl tempus sed. Sed vitae felis eu sapien vulputate viverra. Sed pretium rutrum fermentum.</p>
+                <p class="large-p">Curabitur faucibus aliquam lacus eget gravida.</p>
+            </div>
+
+            <div class="col-sm-6 form-container">
+                <!-- contact form -->
+                <div id="contact-form-1">
+                    <form id="contactForm" data-toggle="validator">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="Nombre completo" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" placeholder="Correo electrónico" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" class="form-control" rows="5" placeholder="Comentarios" required></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <button type="submit" id="form-submit" class="btn btn-md btn-primary-filled btn-form-submit btn-rounded">Send Message</button>
+                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div><!-- / contact form -->
+            </div><!-- / form-container -->
+
+        </div><!-- / row -->
+
+        <div class="page-header space-top-2x text-center">
+            <h3>Shop Locations</h3>
+        </div>
+        <div class="row">
+
+            <!-- shop-location -->
+            <div class="col-sm-4 location">
+                <div class="shop-location location-one text-center dark">
+                    <div class="page-header text-center">
+                        <h4>Miami</h4>
+                    </div>
+                    <p>S Miami Ave, SW 20th, Suite 153</p>
+                    <p>Miami, Florida 33222</p>
+                    <p><i class="lnr lnr-phone"></i><a href="tel:+0123456789">+0123 456 789</a></p>
+                    <p><i class="lnr lnr-envelope"></i><a href="mailto:shop@yoursite.com">shop@yoursite.com</a></p>
+                </div>
+            </div>
+            <!-- / shop-location -->
+            <!-- shop-location -->
+            <div class="col-sm-4 location">
+                <div class="shop-location location-two text-center dark">
+                    <div class="page-header text-center">
+                        <h4>Melbourne</h4>
+                    </div>
+                    <p>Spring Street, Nr. 14, Suite 82</p>
+                    <p>Melbourne, VIC 3000</p>
+                    <p><i class="lnr lnr-phone"></i><a href="tel:+0123456789">+0123 456 789</a></p>
+                    <p><i class="lnr lnr-envelope"></i><a href="mailto:shop@yoursite.com">shop@yoursite.com</a></p>
+                </div>
+            </div>
+            <!-- / shop-location -->
+            <!-- shop-location -->
+            <div class="col-sm-4 location">
+                <div class="shop-location location-three text-center dark">
+                    <div class="page-header text-center">
+                        <h4>London</h4>
+                    </div>
+                    <p>Great Russel Street, Nr. 26, Suite 3</p>
+                    <p>London, UK WC1B 3DG</p>
+                    <p><i class="lnr lnr-phone"></i><a href="tel:+0123456789">+0123 456 789</a></p>
+                    <p><i class="lnr lnr-envelope"></i><a href="mailto:shop@yoursite.com">shop@yoursite.com</a></p>
+                </div>
+            </div>
+            <!-- / shop-location -->
+
+        </div><!-- / row -->
+    </div><!-- / container -->
+</section>
+
+<!-- map -->
+<div id="map"></div>
+<!-- / map -->
+<!-- / contact -->

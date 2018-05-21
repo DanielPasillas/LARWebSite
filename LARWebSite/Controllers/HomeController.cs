@@ -13,18 +13,25 @@ namespace LARWebSite.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
+        [ActionName("contacto")]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            return View("Contacto");
+        }
+        //-------------------------
 
+        [ActionName("about")]
+        public ActionResult About()
+        {
             return View();
         }
+        //-------------------------
+
+        [ActionName("offers")]
+        public ActionResult Offers()
+        {
+            return View();
+        }
+        //-------------------------
     }
 }

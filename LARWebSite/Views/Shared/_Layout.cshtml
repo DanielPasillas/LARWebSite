@@ -36,10 +36,11 @@
         <div class="spinner spinner-round"></div>
     </div>
     <!-- / preloader -->
-
     <!-- header -->
     <header>
-        <div class="top-menu top-menu-inverse">
+
+        <!-- This menu will be hidden till we start developing the ecommerce environment -->
+        <!--div class="top-menu top-menu-inverse">
             <div class="container">
                 <p>
                     <span class="left">Free Worldwide shipping on orders over <span class="text-primary"><strong>$100</strong></span>!</span>
@@ -49,8 +50,8 @@
                         <a href="shopping-cart.html"><i class="lnr lnr-cart"></i> <span>Shopping Cart (2)</span></a>
                     </span>
                 </p>
-            </div><!-- / container -->
-        </div><!-- / top-menu-inverse -->
+            </div>
+        </div-->
 
         <nav class="navbar navbar-default">
             <div class="container">
@@ -65,22 +66,11 @@
                 </div><!-- / navbar-header -->
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop <span class="caret"></span></a>
-                            <ul class="dropdown-menu pulse animated">
-                                <li><a href="shop-right.html">Shop: Right Sidebar</a></li>
-                                <li><a href="shop-left.html">Shop: Left Sidebar</a></li>
-                                <li><a href="shop-full.html">Shop: Full Width</a></li>
-                                <li><a href="shop-filter.html">Shop: Filterable</a></li>
-                                <li><a href="single-product.html">Single Product</a></li>
-                                <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li>@Html.ActionLink("Inicio", "index", "home")</li>
+                        <li>@Html.ActionLink("Sobre nosotros", "about", "home")</li>
+
+                        <li>@Html.ActionLink("Contacto", "contacto", "home")</li>
+                        <li>@Html.ActionLink("Ofertas", "offers", "home")</li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
                             <ul class="dropdown-menu pulse animated">
@@ -93,82 +83,18 @@
                                 <li><a href="components.html">Components</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown w-image">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="images/eng.png" alt=""> <span class="caret"></span></a>
-                            <ul class="dropdown-menu pulse animated">
-                                <li><a href="#"><img src="images/fr.png" alt=""> FR</a></li>
-                                <li><a href="#"><img src="images/de.png" alt=""> DE</a></li>
-                                <li><a href="#"><img src="images/es.png" alt=""> ES</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </div><!--/ nav-collapse -->
             </div><!-- / container -->
         </nav><!-- / navbar -->
-
-        <div id="header-sliders">
-            <!-- slider -->
-            <div id="slider" class="carousel slide">
-                <div class="carousel-inner">
-                    <!-- slide 1 -->
-                    <div class="item active slide1 fashion">
-                        <div class="container">
-                            <div class="carousel-caption">
-                                <div class="row">
-                                    <div class="col-md-12 slider-content">
-                                        <h3 class="slide-title fadeInDown animated first"><span class="text-primary">in</span>Cart - Fashion</h3>
-                                        <p class="slide-text flipInX animated second">Quisque vitae tempor libero. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-                                        <a href="#categories" class="page-scroll btn btn-lg btn-primary-filled btn-pill fadeInUp animated third"><i class="lnr lnr-cart"></i> <span>Shop Now</span></a>
-                                    </div><!-- slider-content -->
-                                </div><!-- / row -->
-                            </div><!-- / carousel-caption -->
-                        </div><!-- / container -->
-                    </div><!-- / slide 1 -->
-                    <!-- slide 2 -->
-                    <div class="item slide2 furniture">
-                        <div class="container">
-                            <div class="carousel-caption">
-                                <div class="row">
-                                    <div class="col-md-12 slider-content">
-                                        <h3 class="slide-title fadeInDown animated first"><span class="text-primary">in</span>Cart - Furniture</h3>
-                                        <p class="slide-text flipInX animated second">Vivamus facilisis sapien enim, eget lobortis ante faucibus vel. In hendrerit arcu eget arcu fringilla.</p>
-                                        <a href="index2.html" class="btn btn-lg btn-primary-filled btn-pill fadeInUp animated third"><i class="lnr lnr-store"></i> <span>Visit Shop</span></a>
-                                    </div><!-- slider-content -->
-                                </div><!-- / row -->
-                            </div><!-- / carousel-caption -->
-                        </div><!-- / container -->
-                    </div><!-- / slide 2 -->
-                    <!-- slide 3 -->
-                    <div class="item slide3 art">
-                        <div class="container">
-                            <div class="carousel-caption">
-                                <div class="row">
-                                    <div class="col-md-12 slider-content">
-                                        <h3 class="slide-title fadeInDown animated first"><span class="text-primary">in</span>Cart - Art</h3>
-                                        <p class="slide-text flipInX animated second">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus sapien libero.</p>
-                                        <a href="index3.html" class="btn btn-lg btn-primary-filled btn-pill fadeInUp animated third"><i class="lnr lnr-store"></i> <span>Visit Shop</span></a>
-                                    </div><!-- slider-content -->
-                                </div><!-- / row -->
-                            </div><!-- / carousel-caption -->
-                        </div><!-- / container -->
-                    </div><!-- / slide 3 -->
-                </div><!-- /carousel-inner -->
-                <!-- controls -->
-                <a class="left carousel-control" href="#slider" data-slide="prev"><span class="lnr lnr-chevron-left"></span></a>
-                <a class="right carousel-control" href="#slider" data-slide="next"><span class="lnr lnr-chevron-right"></span></a>
-                <!-- / controls -->
-            </div>
-            <!-- / slider-->
-        </div><!-- / sliders -->
     </header>
     <!-- / header -->
     <!-- content -->
     <!-- categories -->
-    
+   
     <!-- rendered body section -->
     @RenderBody()
     <!-- ends the rendered body section  -->
-
     <!-- footer -->
     <footer class="light-footer">
         <div class="widget-area">
@@ -235,7 +161,7 @@
                         </div>
                         <div class="contact-widget">
                             <div class="info">
-                                <p><i class="lnr lnr-map-marker"></i><span>Victoria 705, Centro, 20000 Aguascalientes, Ags.</span></p>
+                                <p><i class="lnr lnr-map-marker"></i><span>Victoria 705, Centro, 20000 Aguascalientes.</span></p>
                             </div>
                             <div class="info">
                                 <a href="tel:+0123456789"><i class="lnr lnr-phone-handset"></i><span> 01 449 918 6217</span></a>
@@ -279,34 +205,31 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <!-- javascript -->
-
     <!-- featured-products carousel -->
     <script>
-    $(document).ready(function() {
-      $("#products-carousel").owlCarousel({
-        autoPlay: 3000, //set autoPlay to 3 seconds.
-        items : 4,
-        itemsDesktop : [1199,3],
-        itemsDesktopSmall : [979,3],
-      });
-
-    });
+        $(document).ready(function () {
+            $("#products-carousel").owlCarousel({
+                autoPlay: 3000, //set autoPlay to 3 seconds.
+                items: 4,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 3],
+            });
+        });
     </script>
     <!-- / featured-products carousel -->
-
     <!-- brands carousel -->
     <script>
-    $(document).ready(function() {
-      $("#brands-carousel").owlCarousel({
-        autoPlay: 5000, //set autoPlay to 5 seconds.
-        items : 5,
-        itemsDesktop : [1199,3],
-        itemsDesktopSmall : [979,3]
-      });
+        $(document).ready(function () {
+            $("#brands-carousel").owlCarousel({
+                autoPlay: 5000, //set autoPlay to 5 seconds.
+                items: 5,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 3]
+            });
 
-    });
+        });
     </script>
-   
+
 </body>
 
 </html>
