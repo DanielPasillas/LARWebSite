@@ -46,13 +46,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.10.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -146,6 +155,48 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\brands.cs">
+      <DependentUpon>dbContextLAR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\categories.cs">
+      <DependentUpon>dbContextLAR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbContextLAR.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbContextLAR.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbContextLAR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbContextLAR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbContextLAR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbContextLAR.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\images.cs">
+      <DependentUpon>dbContextLAR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\labels.cs">
+      <DependentUpon>dbContextLAR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\products.cs">
+      <DependentUpon>dbContextLAR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_label.cs">
+      <DependentUpon>dbContextLAR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sizes_product.cs">
+      <DependentUpon>dbContextLAR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Slider.cs">
+      <DependentUpon>dbContextLAR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\subcategories.cs">
+      <DependentUpon>dbContextLAR.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +242,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\dbContextLAR.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbContextLAR.edmx</DependentUpon>
+      <LastGenOutput>dbContextLAR.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\dbContextLAR.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbContextLAR.edmx</DependentUpon>
+      <LastGenOutput>dbContextLAR.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -208,6 +269,13 @@
     <Content Include="Assets\fonts\Linearicons-Free54e9.woff" />
     <Content Include="Assets\fonts\Linearicons-Free54e9.woff2" />
     <Content Include="Assets\fonts\Linearicons-Freed41d.eot" />
+    <EntityDeploy Include="Models\dbContextLAR.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbContextLAR.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\dbContextLAR.edmx.diagram">
+      <DependentUpon>dbContextLAR.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -243,7 +311,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\img\brands\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -257,6 +324,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

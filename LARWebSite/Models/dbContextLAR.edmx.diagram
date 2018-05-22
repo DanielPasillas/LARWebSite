@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b3504a1c59574903a0aba85bf4d657ec" Name="Diagram1">
+        <EntityTypeShape EntityType="dbContextLARModel.brands" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbContextLARModel.categories" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbContextLARModel.images" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbContextLARModel.labels" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbContextLARModel.product_label" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbContextLARModel.products" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbContextLARModel.sizes_product" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbContextLARModel.slider" Width="1.5" PointX="7.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbContextLARModel.subcategories" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="dbContextLARModel.products_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbContextLARModel.products_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="dbContextLARModel.images_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbContextLARModel.product_label_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="dbContextLARModel.product_label_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbContextLARModel.products_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="dbContextLARModel.sizes_product_ibfk_1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
