@@ -228,6 +228,7 @@
     <Content Include="Assets\images\brands\rebel.png" />
     <Content Include="Assets\images\brands\strike-pro.png" />
     <Content Include="Assets\images\brands\zoom.png" />
+    <Content Include="Assets\images\contact-landing-page.jpg" />
     <Content Include="Assets\images\red-logo.png" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\custom.js" />
