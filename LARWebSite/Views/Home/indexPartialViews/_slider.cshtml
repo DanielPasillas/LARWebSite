@@ -1,23 +1,42 @@
-﻿<div id="header-sliders">
+﻿@model  LARWebSite.ViewModels.IndexViewModel
+
+@{ 
+    int iActive = 0;
+}
+
+<div id="header-sliders">
     <!-- slider -->
     <div id="slider" class="carousel slide">
         <div class="carousel-inner">
-            
-            <!-- slide 1 -->
-            <div class="item active slide1 fashion">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <div class="row">
-                            <div class="col-md-12 slider-content">
-                                <h3 class="slide-title fadeInDown animated first"><span class="text-primary">in</span>Cart - Fashion</h3>
-                                <p class="slide-text flipInX animated second">Quisque vitae tempor libero. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-                                <a href="#categories" class="page-scroll btn btn-lg btn-primary-filled btn-pill fadeInUp animated third"><i class="lnr lnr-cart"></i> <span>Shop Now</span></a>
-                            </div><!-- slider-content -->
-                        </div><!-- / row -->
-                    </div><!-- / carousel-caption -->
-                </div><!-- / container -->
-            </div><!-- / slide 1 -->
-            
+
+            @foreach (var slide in Model.Carousel)
+            {
+                <!-- slides -->
+                string _classActive = iActive == 0 ? "active" : "";
+                <div class="item @_classActive " style="background:url(../../../Assets/images/slider/@slide.Imagen)">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <div class="row">
+                                <div class="col-md-12 slider-content">
+                                    <h2 class="slide-title fadeInDown animated first"><span class="text-primary"></span>@slide.Title</h2>
+                                    <p class="slide-text flipInX animated second">@slide.Descripcion</p>
+
+                                    @if (slide.itHasLink == 1)
+                                    {
+                                        <a href="@slide.UrlResource" class="page-scroll btn btn-lg btn-primary-filled btn-pill fadeInUp animated third"><i class="lnr lnr-cart"></i> <span>Ver más</span></a>
+                                    }
+
+                                </div><!-- slider-content -->
+                            </div><!-- / row -->
+                        </div><!-- / carousel-caption -->
+                    </div><!-- / container -->
+                </div><!-- / slide 1 -->
+                iActive++;
+            }
+
+
+
+
         </div><!-- /carousel-inner -->
         <!-- controls -->
         <a class="left carousel-control" href="#slider" data-slide="prev"><span class="lnr lnr-chevron-left"></span></a>

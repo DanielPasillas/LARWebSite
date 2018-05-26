@@ -191,7 +191,7 @@
     <Compile Include="Models\sizes_product.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Slider.cs">
+    <Compile Include="Models\slider.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SliderModel.cs" />
@@ -230,6 +230,7 @@
     <Content Include="Assets\images\brands\zoom.png" />
     <Content Include="Assets\images\contact-landing-page.jpg" />
     <Content Include="Assets\images\red-logo.png" />
+    <Content Include="Assets\images\slider\slide1.jpg" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\jquery.easing.min.js" />
@@ -313,7 +314,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\img\brands\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
