@@ -12,20 +12,18 @@ namespace LARWebSite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class categories
+    public partial class types_categories
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public categories()
+        public types_categories()
         {
-            this.products = new HashSet<products>();
+            this.categories = new HashSet<categories>();
         }
     
-        public long idCategory { get; set; }
-        public string categoryName { get; set; }
-        public long parentCategory { get; set; }
+        public long idMasterCategory { get; set; }
+        public string parentCategory { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<products> products { get; set; }
-        public virtual types_categories types_categories { get; set; }
+        public virtual ICollection<categories> categories { get; set; }
     }
 }

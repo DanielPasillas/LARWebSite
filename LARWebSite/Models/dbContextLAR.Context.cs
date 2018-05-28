@@ -34,5 +34,6 @@ namespace LARWebSite.Models
         public virtual DbSet<sizes_product> sizes_product { get; set; }
         public virtual DbSet<slider> slider { get; set; }
         public virtual DbSet<subcategories> subcategories { get; set; }
+        public virtual DbSet<types_categories> types_categories { get; set; }
     }
 }

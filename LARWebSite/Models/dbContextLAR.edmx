@@ -19,6 +19,7 @@
             <PropertyRef Name="idCategory" />
           </Key>
           <Property Name="idCategory" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parentCategory" Type="bigint" Nullable="false" />
           <Property Name="categoryName" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="images">
@@ -90,6 +91,27 @@
           <Property Name="idSubCategory" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="subCategoryName" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="types_categories">
+          <Key>
+            <PropertyRef Name="idMasterCategory" />
+          </Key>
+          <Property Name="idMasterCategory" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parentCategory" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="categories_ibfk_1">
+          <End Role="types_categories" Type="Self.types_categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="categories" Type="Self.categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="types_categories">
+              <PropertyRef Name="idMasterCategory" />
+            </Principal>
+            <Dependent Role="categories">
+              <PropertyRef Name="parentCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="images_ibfk_1">
           <End Role="products" Type="Self.products" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -198,6 +220,11 @@
           <EntitySet Name="sizes_product" EntityType="Self.sizes_product" Schema="larwebsite" store:Type="Tables" />
           <EntitySet Name="slider" EntityType="Self.slider" Schema="larwebsite" store:Type="Tables" />
           <EntitySet Name="subcategories" EntityType="Self.subcategories" Schema="larwebsite" store:Type="Tables" />
+          <EntitySet Name="types_categories" EntityType="Self.types_categories" Schema="larwebsite" store:Type="Tables" />
+          <AssociationSet Name="categories_ibfk_1" Association="Self.categories_ibfk_1">
+            <End Role="types_categories" EntitySet="types_categories" />
+            <End Role="categories" EntitySet="categories" />
+          </AssociationSet>
           <AssociationSet Name="images_ibfk_1" Association="Self.images_ibfk_1">
             <End Role="products" EntitySet="products" />
             <End Role="images" EntitySet="images" />
@@ -248,6 +275,8 @@
           <Property Name="idCategory" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="categoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="products" Relationship="Self.products_ibfk_2" FromRole="categories" ToRole="products" />
+          <Property Name="parentCategory" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="types_categories" Relationship="dbContextLARModel.categories_ibfk_1" FromRole="categories" ToRole="types_categories" />
         </EntityType>
         <EntityType Name="images">
           <Key>
@@ -466,7 +495,34 @@
             <End Role="products" EntitySet="products" />
             <End Role="sizes_product" EntitySet="sizes_product" />
           </AssociationSet>
+          <EntitySet Name="types_categories" EntityType="dbContextLARModel.types_categories" />
+          <AssociationSet Name="categories_ibfk_1" Association="dbContextLARModel.categories_ibfk_1">
+            <End Role="types_categories" EntitySet="types_categories" />
+            <End Role="categories" EntitySet="categories" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="types_categories">
+          <Key>
+            <PropertyRef Name="idMasterCategory" />
+          </Key>
+          <Property Name="idMasterCategory" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parentCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="categories" Relationship="dbContextLARModel.categories_ibfk_1" FromRole="types_categories" ToRole="categories" />
+        </EntityType>
+        <Association Name="categories_ibfk_1">
+          <End Type="dbContextLARModel.types_categories" Role="types_categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="dbContextLARModel.categories" Role="categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="types_categories">
+              <PropertyRef Name="idMasterCategory" />
+            </Principal>
+            <Dependent Role="categories">
+              <PropertyRef Name="parentCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -486,6 +542,7 @@
           <EntitySetMapping Name="categories">
             <EntityTypeMapping TypeName="dbContextLARModel.categories">
               <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="parentCategory" ColumnName="parentCategory" />
                 <ScalarProperty Name="idCategory" ColumnName="idCategory" />
                 <ScalarProperty Name="categoryName" ColumnName="categoryName" />
               </MappingFragment>
@@ -564,6 +621,14 @@
               <MappingFragment StoreEntitySet="subcategories">
                 <ScalarProperty Name="idSubCategory" ColumnName="idSubCategory" />
                 <ScalarProperty Name="subCategoryName" ColumnName="subCategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="types_categories">
+            <EntityTypeMapping TypeName="dbContextLARModel.types_categories">
+              <MappingFragment StoreEntitySet="types_categories">
+                <ScalarProperty Name="parentCategory" ColumnName="parentCategory" />
+                <ScalarProperty Name="idMasterCategory" ColumnName="idMasterCategory" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
