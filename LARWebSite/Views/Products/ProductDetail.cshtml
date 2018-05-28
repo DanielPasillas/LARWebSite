@@ -1,8 +1,18 @@
-﻿
+﻿@model LARWebSite.ViewModels.ProductDetailViewModel
+
+
 @{
-    ViewBag.Title = "ProductDetail";
+    ViewBag.Title = "Detalle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ProductDetail</h2>
+
+<!-- Product Detail  -->
+@Html.Partial("detailPartialViews/_detailProductView")
+
+<!-- Other products -->
+@Html.Partial("detailPartialViews/_detailRelatedProducts")
+
+
+
 
