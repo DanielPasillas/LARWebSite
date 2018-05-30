@@ -26,6 +26,10 @@ namespace LARWebSite.Models
         public System.DateTime FechaAlta { get; set; }
         public int Estatus { get; set; }
 
+        public IEnumerable<images> Imagenes { get; set; }
+        public IEnumerable<sizes_product> Sizes { get; set; }
+        public IEnumerable<product_label> Etiquetas { get; set; }
+
         public ProductModel()
         {
                 //Empty constructor.
@@ -50,6 +54,9 @@ namespace LARWebSite.Models
             this.PrecioMayoreo = _products.wholesalePrice;
             this.FechaAlta = _products.fecha_alta;
             this.Estatus = _products.status;
+            this.Imagenes = _products.images.ToList();
+            this.Sizes = _products.sizes_product.ToList();
+            this.Etiquetas = _products.product_label.ToList();
         }
     }
 }

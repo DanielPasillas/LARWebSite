@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Class form img footer LAR.*/
+#lar-img-footer{
+    width:auto;
+    max-height:80px;
+}

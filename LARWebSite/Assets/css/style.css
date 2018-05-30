@@ -2185,7 +2185,8 @@ table.shopping-cart > thead > tr > th, table > thead > tr > td {
   background-color: #f8f8f8;
 }
 
-.top-menu-inverse {
+.top-menu-
+{
   background-color: #333333;
 }
 
@@ -2301,6 +2302,7 @@ table.shopping-cart > thead > tr > th, table > thead > tr > td {
 
 .navbar {
   border: 0;
+  padding:20px;
   border-radius: 0;
   margin-bottom: 0;
 }
@@ -2341,8 +2343,8 @@ table.shopping-cart > thead > tr > th, table > thead > tr > td {
 
 .navbar-brand > img {
   width: auto;
-  margin-top:-15px;
-  max-height: 50px;
+  margin-top:-27px;
+  max-height: 80px;
 }
 
 .navbar-toggle {
@@ -3988,7 +3990,7 @@ footer .social a {
 }
 
 .dark-footer .widget-area {
-  background: black;
+    background: #222222;
 }
 
 .color-footer .widget-area {

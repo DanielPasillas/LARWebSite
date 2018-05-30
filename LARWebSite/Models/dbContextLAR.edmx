@@ -62,6 +62,7 @@
           <Property Name="discount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="salePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="wholesalePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="limitWholeSalePrice" Type="bigint" Nullable="false" />
           <Property Name="fecha_alta" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="status" Type="int" Nullable="false" />
         </EntityType>
@@ -330,6 +331,7 @@
           <NavigationProperty Name="product_label" Relationship="Self.product_label_ibfk_1" FromRole="products" ToRole="product_label" />
           <NavigationProperty Name="subcategories" Relationship="Self.products_ibfk_3" FromRole="products" ToRole="subcategories" />
           <NavigationProperty Name="sizes_product" Relationship="Self.sizes_product_ibfk_1" FromRole="products" ToRole="sizes_product" />
+          <Property Name="limitWholeSalePrice" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="sizes_product">
           <Key>
@@ -578,6 +580,7 @@
           <EntitySetMapping Name="products">
             <EntityTypeMapping TypeName="dbContextLARModel.products">
               <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="limitWholeSalePrice" ColumnName="limitWholeSalePrice" />
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
                 <ScalarProperty Name="nameProduct" ColumnName="nameProduct" />
                 <ScalarProperty Name="description" ColumnName="description" />

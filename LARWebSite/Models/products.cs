@@ -36,6 +36,7 @@ namespace LARWebSite.Models
         public decimal wholesalePrice { get; set; }
         public System.DateTime fecha_alta { get; set; }
         public int status { get; set; }
+        public long limitWholeSalePrice { get; set; }
     
         public virtual brands brands { get; set; }
         public virtual categories categories { get; set; }

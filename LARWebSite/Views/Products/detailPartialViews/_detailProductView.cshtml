@@ -1,2 +1,98 @@
 ﻿@model LARWebSite.ViewModels.ProductDetailViewModel
 
+@{ 
+    int iActiveItem = 0;
+}
+
+<!-- Single-product-Detail -->
+<section id="shop">
+    <div class="container">
+        <div class="row">
+            <!-- product content area -->
+            <div class="col-sm-6 col-md-7 content-area">
+                <div class="product-content-area">
+                    <div id="product-slider" class="carousel slide" data-ride="carousel">
+                        <!-- wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+
+                            @foreach (var _imgProduct in Model.Producto.Imagenes)
+                            {
+                                if (iActiveItem == 0)
+                                {
+                                    <div class="item active">
+                                        <img src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="item">
+                                        <img src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
+                                    </div>
+                                }
+                                iActiveItem++;
+                            }
+                        </div>
+                        <!-- / wrapper for slides -->
+
+                        @if (Model.Producto.Imagenes.Count() > 1)
+                        {
+                            <!-- Show the controls only if there are more than one image for the product.-->
+                            <!-- controls -->
+                            <a class="left carousel-control" href="#product-slider" role="button" data-slide="prev">
+                                <span class="lnr lnr-chevron-left" aria-hidden="true"></span>
+                            </a>
+                            <a class="right carousel-control" href="#product-slider" role="button" data-slide="next">
+                                <span class="lnr lnr-chevron-right" aria-hidden="true"></span>
+                            </a>
+                            <!-- / controls -->
+                        }
+
+                    </div><!-- / product-slider -->
+
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active"><a href="#description" role="tab" data-toggle="tab" aria-expanded="true">Descripción</a></li>
+                    </ul>
+                    <!-- / nav-tabs -->
+                    <div class="tab-content">
+
+                        <!-- / description-tab -->
+                        <div role="tabpanel" class="tab-pane animated fadeIn active" id="description">
+                            <p>@Model.Producto.ExtDescripcion</p>
+                        </div>
+                        <!-- / description-tab -->
+                    </div>
+                    <!-- / tab-content -->
+                </div><!-- / product-content-area -->
+                <!-- product pagination -->
+            </div>
+            <!-- / project-content-area -->
+
+            <!-- project sidebar area -->
+            <div class="col-sm-6 col-md-5 product-sidebar">
+                <div class="product-details">
+                    <h3>@Model.Producto.NombreProducto</h3>
+                    <p>@Model.Producto.Descripcion</p>
+                    <hr />
+
+                    <div class="product-info">
+                        <div class="info">
+                            <p><i class="lnr lnr-tag"></i><span>Precio: $ @Model.Producto.PrecioVenta</span></p>
+                        </div>
+                        <div class="info">
+                            <p><i class="lnr lnr-film-play"></i><span>Categoría: <a href="#link"> @Model.Producto.Categoria</a></span></p>
+                        </div>
+                        <div class="info">
+                            <p><i class="lnr lnr-menu"></i><span>Código artículo: @Model.Producto.CodigoProducto </span></p>
+                        </div>
+                    </div><!-- / project-info -->
+                </div><!-- product-details -->
+
+            </div><!-- / col-sm-4 col-md-3 -->
+            <!-- / project sidebar area -->
+
+        </div><!-- / row -->
+
+       
+    </div><!-- / container -->
+</section>
+<!-- / shop single-product -->
