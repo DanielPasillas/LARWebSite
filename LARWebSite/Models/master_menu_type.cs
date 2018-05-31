@@ -12,20 +12,18 @@ namespace LARWebSite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class types_categories
+    public partial class master_menu_type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public types_categories()
+        public master_menu_type()
         {
-            this.categories = new HashSet<categories>();
+            this.types_categories = new HashSet<types_categories>();
         }
     
-        public long idMasterCategory { get; set; }
-        public string parentCategory { get; set; }
         public long idMenuMaster { get; set; }
+        public string nameMasterMenu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<categories> categories { get; set; }
-        public virtual master_menu_type master_menu_type { get; set; }
+        public virtual ICollection<types_categories> types_categories { get; set; }
     }
 }

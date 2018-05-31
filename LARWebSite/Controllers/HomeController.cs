@@ -61,5 +61,13 @@ namespace LARWebSite.Controllers
             return View();
         }
         //-------------------------
+
+        [ActionName("menu")]
+        public ActionResult LoadMenu()
+        {
+
+            return View();
+        }
+        //-------------------------
     }
 }

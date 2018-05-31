@@ -38,6 +38,13 @@
           <Property Name="idLabel" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="labelName" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="master_menu_type">
+          <Key>
+            <PropertyRef Name="idMenuMaster" />
+          </Key>
+          <Property Name="idMenuMaster" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameMasterMenu" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
         <EntityType Name="product_label">
           <Key>
             <PropertyRef Name="idReg" />
@@ -98,6 +105,7 @@
           </Key>
           <Property Name="idMasterCategory" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="parentCategory" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="idMenuMaster" Type="bigint" Nullable="false" />
         </EntityType>
         <Association Name="categories_ibfk_1">
           <End Role="types_categories" Type="Self.types_categories" Multiplicity="1">
@@ -211,11 +219,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="types_categories_ibfk_1">
+          <End Role="master_menu_type" Type="Self.master_menu_type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="types_categories" Type="Self.types_categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="master_menu_type">
+              <PropertyRef Name="idMenuMaster" />
+            </Principal>
+            <Dependent Role="types_categories">
+              <PropertyRef Name="idMenuMaster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="dbContextLARModelStoreContainer">
           <EntitySet Name="brands" EntityType="Self.brands" Schema="larwebsite" store:Type="Tables" />
           <EntitySet Name="categories" EntityType="Self.categories" Schema="larwebsite" store:Type="Tables" />
           <EntitySet Name="images" EntityType="Self.images" Schema="larwebsite" store:Type="Tables" />
           <EntitySet Name="labels" EntityType="Self.labels" Schema="larwebsite" store:Type="Tables" />
+          <EntitySet Name="master_menu_type" EntityType="Self.master_menu_type" Schema="larwebsite" store:Type="Tables" />
           <EntitySet Name="product_label" EntityType="Self.product_label" Schema="larwebsite" store:Type="Tables" />
           <EntitySet Name="products" EntityType="Self.products" Schema="larwebsite" store:Type="Tables" />
           <EntitySet Name="sizes_product" EntityType="Self.sizes_product" Schema="larwebsite" store:Type="Tables" />
@@ -253,6 +276,10 @@
           <AssociationSet Name="sizes_product_ibfk_1" Association="Self.sizes_product_ibfk_1">
             <End Role="products" EntitySet="products" />
             <End Role="sizes_product" EntitySet="sizes_product" />
+          </AssociationSet>
+          <AssociationSet Name="types_categories_ibfk_1" Association="Self.types_categories_ibfk_1">
+            <End Role="master_menu_type" EntitySet="master_menu_type" />
+            <End Role="types_categories" EntitySet="types_categories" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -502,6 +529,11 @@
             <End Role="types_categories" EntitySet="types_categories" />
             <End Role="categories" EntitySet="categories" />
           </AssociationSet>
+          <EntitySet Name="master_menu_type" EntityType="dbContextLARModel.master_menu_type" />
+          <AssociationSet Name="types_categories_ibfk_1" Association="dbContextLARModel.types_categories_ibfk_1">
+            <End Role="master_menu_type" EntitySet="master_menu_type" />
+            <End Role="types_categories" EntitySet="types_categories" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="types_categories">
           <Key>
@@ -510,6 +542,8 @@
           <Property Name="idMasterCategory" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="parentCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="categories" Relationship="dbContextLARModel.categories_ibfk_1" FromRole="types_categories" ToRole="categories" />
+          <Property Name="idMenuMaster" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="master_menu_type" Relationship="dbContextLARModel.types_categories_ibfk_1" FromRole="types_categories" ToRole="master_menu_type" />
         </EntityType>
         <Association Name="categories_ibfk_1">
           <End Type="dbContextLARModel.types_categories" Role="types_categories" Multiplicity="1">
@@ -522,6 +556,28 @@
             </Principal>
             <Dependent Role="categories">
               <PropertyRef Name="parentCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="master_menu_type">
+          <Key>
+            <PropertyRef Name="idMenuMaster" />
+          </Key>
+          <Property Name="idMenuMaster" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameMasterMenu" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="types_categories" Relationship="dbContextLARModel.types_categories_ibfk_1" FromRole="master_menu_type" ToRole="types_categories" />
+        </EntityType>
+        <Association Name="types_categories_ibfk_1">
+          <End Type="dbContextLARModel.master_menu_type" Role="master_menu_type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="dbContextLARModel.types_categories" Role="types_categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="master_menu_type">
+              <PropertyRef Name="idMenuMaster" />
+            </Principal>
+            <Dependent Role="types_categories">
+              <PropertyRef Name="idMenuMaster" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -630,8 +686,17 @@
           <EntitySetMapping Name="types_categories">
             <EntityTypeMapping TypeName="dbContextLARModel.types_categories">
               <MappingFragment StoreEntitySet="types_categories">
+                <ScalarProperty Name="idMenuMaster" ColumnName="idMenuMaster" />
                 <ScalarProperty Name="parentCategory" ColumnName="parentCategory" />
                 <ScalarProperty Name="idMasterCategory" ColumnName="idMasterCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="master_menu_type">
+            <EntityTypeMapping TypeName="dbContextLARModel.master_menu_type">
+              <MappingFragment StoreEntitySet="master_menu_type">
+                <ScalarProperty Name="nameMasterMenu" ColumnName="nameMasterMenu" />
+                <ScalarProperty Name="idMenuMaster" ColumnName="idMenuMaster" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
