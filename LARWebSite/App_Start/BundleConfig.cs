@@ -15,6 +15,10 @@ namespace LARWebSite
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            //Bundle for product visualizerdetail.
+            bundles.Add(new ScriptBundle("~/bundles/visualizer").Include(
+                       "~/Assets/js/red/products/visualizer.detail.js"));
+
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -37,6 +41,10 @@ namespace LARWebSite
                       "~/Assets/css/style.css",
                       "~/Assets/css/font-awesome.min.css",
                       "~/Assets/css/site.css"));
+
+
+            //Enable web optimizations. 
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

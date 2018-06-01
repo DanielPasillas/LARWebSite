@@ -255,6 +255,7 @@
     <Content Include="Assets\js\jquery.shuffle.min.js" />
     <Content Include="Assets\js\owl.carousel.min.js" />
     <Content Include="Assets\js\preloader.js" />
+    <Content Include="Assets\js\red\products\visualizer.detail.js" />
     <Content Include="Assets\js\scrolling-nav.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
