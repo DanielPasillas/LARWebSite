@@ -37,7 +37,6 @@ namespace LARWebSite
                       "~/Assets/css/animate.css",
                       "~/Assets/css/owl.carousel.css",
                       "~/Assets/css/owl.theme.css",
-                      "~/Assets/css/linear-icons.css",
                       "~/Assets/css/style.css",
                       "~/Assets/css/font-awesome.min.css",
                       "~/Assets/css/site.css"));
