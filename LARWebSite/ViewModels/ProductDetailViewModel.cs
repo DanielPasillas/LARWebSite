@@ -9,6 +9,6 @@ namespace LARWebSite.ViewModels
     public class ProductDetailViewModel
     {
         public ProductModel Producto { get; set; }
-        public IEnumerable<ProductModel> SliderProducts { get; set; }
+        public IEnumerable<ItemProductModel> SliderProducts { get; set; }
     }
 }

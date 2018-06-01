@@ -61,6 +61,7 @@
           <Property Name="nameProduct" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="extendDescription" Type="varchar" MaxLength="700" Nullable="false" />
+          <Property Name="Image_link" Type="varchar" MaxLength="100" />
           <Property Name="idBrand" Type="bigint" Nullable="false" />
           <Property Name="idCategory" Type="bigint" Nullable="false" />
           <Property Name="idSubCategory" Type="bigint" Nullable="false" />
@@ -379,6 +380,7 @@
           <NavigationProperty Name="subcategories" Relationship="Self.products_ibfk_3" FromRole="products" ToRole="subcategories" />
           <NavigationProperty Name="sizes_product" Relationship="Self.sizes_product_ibfk_1" FromRole="products" ToRole="sizes_product" />
           <Property Name="limitWholeSalePrice" Type="Int64" Nullable="false" />
+          <Property Name="Image_link" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="sizes_product">
           <Key>
@@ -676,6 +678,7 @@
           <EntitySetMapping Name="products">
             <EntityTypeMapping TypeName="dbContextLARModel.products">
               <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="Image_link" ColumnName="Image_link" />
                 <ScalarProperty Name="limitWholeSalePrice" ColumnName="limitWholeSalePrice" />
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
                 <ScalarProperty Name="nameProduct" ColumnName="nameProduct" />

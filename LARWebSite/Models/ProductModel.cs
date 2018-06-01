@@ -12,6 +12,7 @@ namespace LARWebSite.Models
         public string NombreProducto { get; set; }
         public string Descripcion { get; set; }
         public string ExtDescripcion { get; set; }
+        public string Image_Link { get; set; }
         public long IdMarca { get; set; }
         public string Marca { get; set; }
         public long IdCategoria { get; set; }
@@ -41,6 +42,7 @@ namespace LARWebSite.Models
             this.NombreProducto = _products.nameProduct;
             this.Descripcion = _products.description;
             this.ExtDescripcion = _products.extendDescription;
+            this.Image_Link = _products.Image_link;
             this.IdMarca = _products.idBrand;
             this.Marca = _products.brands.Brand;
             this.IdCategoria = _products.idCategory;

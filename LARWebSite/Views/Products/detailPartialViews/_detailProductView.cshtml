@@ -2,6 +2,13 @@
 
 @{ 
     int iActiveItem = 0;
+
+    //Calcualate the price if the disccount value is set.
+    //Sale price
+    decimal _salePrice = Model.Producto.Descuento != 0 ? (Model.Producto.PrecioVenta - Model.Producto.Descuento) : Model.Producto.PrecioVenta;
+    //Wholesale price.
+    decimal _wholesalePrice = Model.Producto.Descuento != 0 ? (Model.Producto.PrecioMayoreo - Model.Producto.Descuento) : Model.Producto.PrecioMayoreo;
+
 }
 
 <!-- Single-product-Detail -->
@@ -20,13 +27,13 @@
                                 if (iActiveItem == 0)
                                 {
                                     <div class="item active">
-                                        <img src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
+                                        <img src="~/Assets/images/product_link/@Model.Producto.Image_Link" alt="@_imgProduct.Image_b">
                                     </div>
                                 }
                                 else
                                 {
                                     <div class="item">
-                                        <img src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
+                                        <img src="~/Assets/images/product_link/@Model.Producto." alt="@_imgProduct.Image_b">
                                     </div>
                                 }
                                 iActiveItem++;
@@ -75,14 +82,65 @@
                     <hr />
 
                     <div class="product-info">
+
+                        @if (Model.Producto.Descuento != 0)
+                        {
+                            <div class="info">
+                                <p><i class="lnr lnr-tag"></i><span>Descuento: $  @Model.Producto.Descuento</span></p>
+                            </div>
+                        }
                         <div class="info">
-                            <p><i class="lnr lnr-tag"></i><span>Precio: $ @Model.Producto.PrecioVenta</span></p>
+                            <p>
+                                <i class="lnr lnr-tag"></i>
+                                <span>
+                                    Precio:
+                                    @if (Model.Producto.Descuento != 0)
+                                    {
+                                        <span style="text-decoration:line-through;">@Model.Producto.PrecioVenta &nbsp;&nbsp;</span>
+                                        @_salePrice
+                                    }
+                                    else
+                                    {
+                                        <span>@Model.Producto.PrecioVenta</span>
+                                    }
+                                </span>
+                            </p>
                         </div>
+                        <div class="info">
+                            <p>
+                                <i class="lnr lnr-tag"></i>
+                                <span>
+                                    Mayoreo:
+                                    @if (Model.Producto.Descuento != 0)
+                                    {
+                                        <span style="text-decoration:line-through;">@Model.Producto.PrecioMayoreo &nbsp;&nbsp;</span>
+                                        @_wholesalePrice
+                                    }
+                                    else
+                                    {
+                                        <span>@Model.Producto.PrecioMayoreo</span>
+                                    }
+                                </span>
+                            </p>
+                        </div>
+
+                        <!-- Category -->
                         <div class="info">
                             <p><i class="lnr lnr-film-play"></i><span>Categoría: <a href="#link"> @Model.Producto.Categoria</a></span></p>
                         </div>
+
+                        <!-- SubCategory -->
                         <div class="info">
-                            <p><i class="lnr lnr-menu"></i><span>Código artículo: @Model.Producto.CodigoProducto </span></p>
+                            <p><i class="lnr lnr-film-play"></i><span>Tipo: <a href="#link"> @Model.Producto.SubCategoria</a></span></p>
+                        </div>
+
+                        <!-- Brand -->
+                        <div class="info">
+                            <p><i class="lnr lnr-page-break"></i><span>Marca: <a href="@Url.Action("brand","products", new { id = Model.Producto.IdMarca, brand = Model.Producto.Marca})"> @Model.Producto.Marca</a></span></p>
+                        </div>
+
+                        <div class="info">
+                            <p><i class="lnr lnr-menu"></i><span>Código artículo: <a href="#code">@Model.Producto.CodigoProducto</a>  </span></p>
                         </div>
                     </div><!-- / project-info -->
                 </div><!-- product-details -->

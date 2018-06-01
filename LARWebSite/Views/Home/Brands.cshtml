@@ -1,0 +1,15 @@
+﻿@model IEnumerable<LARWebSite.Models.MarcasModel>
+
+<div class="widget-title">
+    <h4>Marcas</h4>
+</div>
+<div class="link-widget">
+
+    @foreach (var marca in Model)
+    {
+        <div class="info">
+            <a href="@Url.Action("brand","products", new { id = marca.IdMarca, brand = marca.NombreMarca})">@marca.NombreMarca.ToString()</a>
+        </div>
+    }
+
+</div>

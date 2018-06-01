@@ -15,13 +15,49 @@ namespace LARWebSite.Utilerias
         {
             //We will search the product by using the code field.
             return await context.products
-                .Include("products.brands")
-                .Include("products.categories")
-                .Include("products.subcategories")
-                .Include("products.images")
-                .Include("products.sizes_product")
-                .Include("products.product_label")
+                .Include("brands")
+                .Include("categories")
+                .Include("subcategories")
+                .Include("images")
+                .Include("sizes_product")
+                .Include("product_label")
                 .FirstOrDefaultAsync(m => m.idProduct == idProduct && m.keyProduct == code);
+        }
+        //-------------------------------------------------------------------------
+
+        
+        //Get the products by looking for the Id brand.
+        public static async Task<IEnumerable<ProductModel>> ProductsByIdBrand(this dbContextLAR context, int idBrand)
+        {
+            //Get the products filtered by the brand id.
+            var _products = await context.products
+                .Include("brands")
+                .Include("categories")
+                .Include("subcategories")
+                .Include("images")
+                .Include("sizes_product")
+                .Include("product_label")
+                .Where(m => m.idBrand == idBrand).ToListAsync();
+
+
+            List<ProductModel> _viewModelProduct = new List<ProductModel>();
+
+            foreach(var _product in _products)
+            {
+                _viewModelProduct.Add(new ProductModel(_product));
+            }
+
+            //We will search the product by using the code field.
+            return _viewModelProduct;
+        }
+        //-------------------------------------------------------------------------
+
+        public static async Task<IEnumerable<products>> GetRelatedProducts(this dbContextLAR context, long idBrand, long idCategory, long idSubcategory)
+        {
+            return await context.products
+                .Include("images")
+                .Where(m => m.idBrand == idBrand || m.idCategory == idCategory || m.idSubCategory == idSubcategory)
+                .Take(4).ToListAsync();
         }
         //-------------------------------------------------------------------------
     }

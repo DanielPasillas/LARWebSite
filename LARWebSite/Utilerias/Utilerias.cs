@@ -9,6 +9,8 @@ namespace LARWebSite.Utilerias
 {
     public class Utilerias
     {
-        public int MyProperty { get; set; }
+
+
+       
     }
 }

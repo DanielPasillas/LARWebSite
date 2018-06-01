@@ -135,5 +135,23 @@ namespace LARWebSite.Controllers
             return PartialView("LoadMenu", _viewModel);
         }
         //-------------------------
+
+        [ActionName("brands")]
+        [OutputCache(Duration = 50, VaryByParam = "none")]
+        public async Task<ActionResult> Brands()
+        {
+            //Get the brands list.
+            var brands = await _dbContext.brands.Take(5).ToListAsync();
+
+            List<MarcasModel> _vieModelMarcas = new List<MarcasModel>();
+
+            foreach(var _brand in brands)
+            {
+                _vieModelMarcas.Add(new MarcasModel(_brand));
+            }
+
+            return PartialView("Brands", _vieModelMarcas);
+        }
+        //----------------------------------------------
     }
 }

@@ -2,6 +2,7 @@
 using LARWebSite.Utilerias;
 using System.Data.Entity;
 using LARWebSite.Models;
+using LARWebSite.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace LARWebSite.Controllers
         }
 
         [ActionName("detail")]
-        public async Task<ActionResult> ProductDetail(int id, string code, string name)
+        public async Task<ActionResult> Detail(int id, string code, string name)
         {
             //Get product information.
             var _product = await _dbContext.ProductByCodeAndId(id, code);
@@ -37,8 +38,37 @@ namespace LARWebSite.Controllers
 
             ProductModel _viewModelProduct = new ProductModel(_product);
 
-            return View("ProductDetail", _viewModelProduct);
+            //Get the related products.
+            List<ItemProductModel> _viewModelProductList = new List<ItemProductModel>();
+
+            //Get the list of products.
+            var _productList = await _dbContext.GetRelatedProducts(_viewModelProduct.IdMarca, _viewModelProduct.IdCategoria, _viewModelProduct.IdSubCategoria);
+
+            foreach (var _listProducts in _productList)
+            {
+                _viewModelProductList.Add(new ItemProductModel(_listProducts));
+            }
+
+            //View model for the Product Detail Module.
+            ProductDetailViewModel _viewModelDetail = new ProductDetailViewModel()
+            {
+                Producto = _viewModelProduct,
+                SliderProducts = _viewModelProductList
+            };
+
+            return View("Detail", _viewModelDetail);
         }
         //----------------------------------------------
+
+        [ActionName("brand")]
+        public async Task<ActionResult> Brand(int id, string brand)
+        {
+            //Get the products filtered by the brand id.
+            var _products = await _dbContext.ProductsByIdBrand(id);
+
+            return View("Brand", _products);
+        }
+        //----------------------------------------------
+
     }
 }

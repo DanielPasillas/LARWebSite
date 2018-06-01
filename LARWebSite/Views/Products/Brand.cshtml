@@ -1,0 +1,13 @@
+﻿@model IEnumerable<LARWebSite.Models.ProductModel>
+
+@{
+    ViewBag.Title = "Brand";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var product in Model)
+{
+    <span>@product.NombreProducto</span>
+    <span>@product.Marca</span>
+}
+
