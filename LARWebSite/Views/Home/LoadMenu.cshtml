@@ -16,7 +16,7 @@
 
             @foreach (var _typeCategory in menu._TypeCategorias)
             {
-                <li class="dropdown">
+                <li class="dropdown-submenu">
                     @_typeCategory.TypeCategory
 
                     @if (_typeCategory.Categories.Any())
@@ -24,18 +24,18 @@
                         <ul class="dropdown-menu pulse animated">
                             @foreach (var _categories in _typeCategory.Categories)
                             {
-                                <li class="dropdown">
+                                <li class="dropdown-submenu">
                                     @_categories.Category
 
-                                @if (_categories.SubCategories.Any())
-                                {
-                                    <ul class="dropdown-menu pulse animated">
-                                        @foreach (var _subCategory in _categories.SubCategories)
-                                        {
-                                            <li>@_subCategory.SubCategory</li>
-                                        }
-                                    </ul>
-                                }
+                                    @if (_categories.SubCategories.Any())
+                                    {
+                                        <ul class="dropdown-menu pulse animated">
+                                            @foreach (var _subCategory in _categories.SubCategories)
+                                            {
+                                                <li>@_subCategory.SubCategory</li>
+                                            }
+                                        </ul>
+                                    }
                             </li>
 
                         }

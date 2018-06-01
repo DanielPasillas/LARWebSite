@@ -63,6 +63,7 @@ namespace LARWebSite.Controllers
         //-------------------------
 
         [ActionName("menu")]
+        [OutputCache(Duration = 50, VaryByParam = "none")]
         public async Task<ActionResult> LoadMenu()
         {
             //Get the master categories and types.
