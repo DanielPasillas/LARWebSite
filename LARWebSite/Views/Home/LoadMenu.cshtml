@@ -1,17 +1,54 @@
-﻿
-@{
-    Layout = null;
+﻿@model LARWebSite.ViewModels.MenuViewModel
+
+
+
+
+@foreach(var menu in Model.MasterMenu)
+{
+
+
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@menu.MainType <span class="caret"></span></a>
+
+    @if (menu._TypeCategorias.Any())
+    {
+        <ul class="dropdown-menu pulse animated">
+
+            @foreach (var _typeCategory in menu._TypeCategorias)
+            {
+                <li class="dropdown">
+                    @_typeCategory.TypeCategory
+
+                    @if (_typeCategory.Categories.Any())
+                    {
+                        <ul class="dropdown-menu pulse animated">
+                            @foreach (var _categories in _typeCategory.Categories)
+                            {
+                                <li class="dropdown">
+                                    @_categories.Category
+
+                                @if (_categories.SubCategories.Any())
+                                {
+                                    <ul class="dropdown-menu pulse animated">
+                                        @foreach (var _subCategory in _categories.SubCategories)
+                                        {
+                                            <li>@_subCategory.SubCategory</li>
+                                        }
+                                    </ul>
+                                }
+                            </li>
+
+                        }
+                        </ul>
+                    }
+
+            </li>
+
+        }
+
+        </ul>
+    }
+
+</li>
+    
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>LoadMenu</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>

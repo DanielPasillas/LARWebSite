@@ -186,7 +186,7 @@
     <Compile Include="Models\master_menu_type.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MenuClasses\Menu.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\products.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>
@@ -211,6 +211,7 @@
     <Compile Include="Utilerias\Extensions.cs" />
     <Compile Include="Utilerias\Utilerias.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\ProductDetailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

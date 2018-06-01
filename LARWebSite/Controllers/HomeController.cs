@@ -63,10 +63,75 @@ namespace LARWebSite.Controllers
         //-------------------------
 
         [ActionName("menu")]
-        public ActionResult LoadMenu()
+        public async Task<ActionResult> LoadMenu()
         {
+            //Get the master categories and types.
+            var _MasterMenuItems = await _dbContext.master_menu_type.ToListAsync();
 
-            return View();
+            //Create viewModel for MasterCategories.
+            List<Menu> _mainMenu = new List<Menu>();
+
+            foreach(var _masterType in _MasterMenuItems)
+            {
+                //Fetch the type categories for the products.
+                var _typeCategory = await _dbContext.types_categories.Where(m => m.idMenuMaster == _masterType.idMenuMaster).ToListAsync();
+
+                //Fill up the category viewModel.
+                //-----------------------------
+                List<MenuTypeCategories> _listTypeCategories = new List<MenuTypeCategories>();
+                foreach (var type in _typeCategory)
+                {
+
+                    //Select all the categories that includes the type_categiry Id.
+                    var _categories = await _dbContext.categories.Where(m => m.parentCategory == type.idMasterCategory).ToListAsync();
+
+                    List<MenuCategories> _viewModelCategory = new List<MenuCategories>();
+                    foreach(var _category in _categories)
+                    {
+
+                        var _subCategories = await _dbContext.subcategories.Where(m => m.idCategory == _category.idCategory).ToListAsync();
+
+                        List<SubCategories> _viewModelSubCategories = new List<SubCategories>();
+                        foreach(var _subcategory in _subCategories)
+                        {
+                            _viewModelSubCategories.Add(new SubCategories()
+                            {
+                                IdSubCategory = _subcategory.idSubCategory,
+                                SubCategory = _subcategory.subCategoryName
+                            });
+                        }
+
+                        _viewModelCategory.Add(new MenuCategories()
+                        {
+                            IdCategory = _category.idCategory,
+                            Category = _category.categoryName.ToString(),
+                            SubCategories = _viewModelSubCategories
+                        });
+                    }
+
+
+                    _listTypeCategories.Add(new MenuTypeCategories()
+                    {
+                        IdTypeCategory = type.idMasterCategory,
+                        TypeCategory = type.parentCategory.ToString(),
+                        Categories = _viewModelCategory
+                    });
+                }
+
+                _mainMenu.Add(new Menu()
+                {
+                    IdMainType = _masterType.idMenuMaster,
+                    MainType = _masterType.nameMasterMenu.ToString(),
+                    _TypeCategorias = _listTypeCategories
+                });
+            }
+
+            MenuViewModel _viewModel = new MenuViewModel()
+            {
+                MasterMenu = _mainMenu
+            };
+
+            return PartialView("LoadMenu", _viewModel);
         }
         //-------------------------
     }

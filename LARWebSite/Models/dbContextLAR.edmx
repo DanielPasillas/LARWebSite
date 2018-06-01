@@ -11,8 +11,8 @@
           </Key>
           <Property Name="idBrand" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Brand" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Image_b" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Image_s" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Image_b" Type="varchar" MaxLength="100" />
+          <Property Name="Image_s" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="categories">
           <Key>
@@ -57,7 +57,7 @@
           <Key>
             <PropertyRef Name="idProduct" />
           </Key>
-          <Property Name="idProduct" Type="bigint" Nullable="false" />
+          <Property Name="idProduct" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nameProduct" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="extendDescription" Type="varchar" MaxLength="700" Nullable="false" />
@@ -98,6 +98,7 @@
           </Key>
           <Property Name="idSubCategory" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="subCategoryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="idCategory" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="types_categories">
           <Key>
@@ -135,20 +136,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="product_label_ibfk_1">
-          <End Role="products" Type="Self.products" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="product_label" Type="Self.product_label" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="products">
-              <PropertyRef Name="idProduct" />
-            </Principal>
-            <Dependent Role="product_label">
-              <PropertyRef Name="idProduct" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="product_label_ibfk_2">
           <End Role="labels" Type="Self.labels" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -160,6 +147,20 @@
             </Principal>
             <Dependent Role="product_label">
               <PropertyRef Name="idLabel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_label_ibfk_3">
+          <End Role="products" Type="Self.products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="product_label" Type="Self.product_label" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="idProduct" />
+            </Principal>
+            <Dependent Role="product_label">
+              <PropertyRef Name="idProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -219,6 +220,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="subcategories_ibfk_1">
+          <End Role="categories" Type="Self.categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="subcategories" Type="Self.subcategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="idCategory" />
+            </Principal>
+            <Dependent Role="subcategories">
+              <PropertyRef Name="idCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="types_categories_ibfk_1">
           <End Role="master_menu_type" Type="Self.master_menu_type" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -253,12 +268,12 @@
             <End Role="products" EntitySet="products" />
             <End Role="images" EntitySet="images" />
           </AssociationSet>
-          <AssociationSet Name="product_label_ibfk_1" Association="Self.product_label_ibfk_1">
-            <End Role="products" EntitySet="products" />
-            <End Role="product_label" EntitySet="product_label" />
-          </AssociationSet>
           <AssociationSet Name="product_label_ibfk_2" Association="Self.product_label_ibfk_2">
             <End Role="labels" EntitySet="labels" />
+            <End Role="product_label" EntitySet="product_label" />
+          </AssociationSet>
+          <AssociationSet Name="product_label_ibfk_3" Association="Self.product_label_ibfk_3">
+            <End Role="products" EntitySet="products" />
             <End Role="product_label" EntitySet="product_label" />
           </AssociationSet>
           <AssociationSet Name="products_ibfk_1" Association="Self.products_ibfk_1">
@@ -276,6 +291,10 @@
           <AssociationSet Name="sizes_product_ibfk_1" Association="Self.sizes_product_ibfk_1">
             <End Role="products" EntitySet="products" />
             <End Role="sizes_product" EntitySet="sizes_product" />
+          </AssociationSet>
+          <AssociationSet Name="subcategories_ibfk_1" Association="Self.subcategories_ibfk_1">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="subcategories" EntitySet="subcategories" />
           </AssociationSet>
           <AssociationSet Name="types_categories_ibfk_1" Association="Self.types_categories_ibfk_1">
             <End Role="master_menu_type" EntitySet="master_menu_type" />
@@ -305,6 +324,7 @@
           <NavigationProperty Name="products" Relationship="Self.products_ibfk_2" FromRole="categories" ToRole="products" />
           <Property Name="parentCategory" Type="Int64" Nullable="false" />
           <NavigationProperty Name="types_categories" Relationship="dbContextLARModel.categories_ibfk_1" FromRole="categories" ToRole="types_categories" />
+          <NavigationProperty Name="subcategories" Relationship="dbContextLARModel.subcategories_ibfk_1" FromRole="categories" ToRole="subcategories" />
         </EntityType>
         <EntityType Name="images">
           <Key>
@@ -387,6 +407,8 @@
           <Property Name="idSubCategory" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="subCategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="products" Relationship="Self.products_ibfk_3" FromRole="subcategories" ToRole="products" />
+          <Property Name="idCategory" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="categories" Relationship="dbContextLARModel.subcategories_ibfk_1" FromRole="subcategories" ToRole="categories" />
         </EntityType>
         <Association Name="products_ibfk_1">
           <End Role="brands" Type="Self.brands" Multiplicity="1">
@@ -534,6 +556,10 @@
             <End Role="master_menu_type" EntitySet="master_menu_type" />
             <End Role="types_categories" EntitySet="types_categories" />
           </AssociationSet>
+          <AssociationSet Name="subcategories_ibfk_1" Association="dbContextLARModel.subcategories_ibfk_1">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="subcategories" EntitySet="subcategories" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="types_categories">
           <Key>
@@ -578,6 +604,20 @@
             </Principal>
             <Dependent Role="types_categories">
               <PropertyRef Name="idMenuMaster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="subcategories_ibfk_1">
+          <End Type="dbContextLARModel.categories" Role="categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="dbContextLARModel.subcategories" Role="subcategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="idCategory" />
+            </Principal>
+            <Dependent Role="subcategories">
+              <PropertyRef Name="idCategory" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -678,6 +718,7 @@
           <EntitySetMapping Name="subcategories">
             <EntityTypeMapping TypeName="dbContextLARModel.subcategories">
               <MappingFragment StoreEntitySet="subcategories">
+                <ScalarProperty Name="idCategory" ColumnName="idCategory" />
                 <ScalarProperty Name="idSubCategory" ColumnName="idSubCategory" />
                 <ScalarProperty Name="subCategoryName" ColumnName="subCategoryName" />
               </MappingFragment>

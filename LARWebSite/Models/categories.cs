@@ -18,6 +18,7 @@ namespace LARWebSite.Models
         public categories()
         {
             this.products = new HashSet<products>();
+            this.subcategories = new HashSet<subcategories>();
         }
     
         public long idCategory { get; set; }
@@ -27,5 +28,7 @@ namespace LARWebSite.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<products> products { get; set; }
         public virtual types_categories types_categories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<subcategories> subcategories { get; set; }
     }
 }

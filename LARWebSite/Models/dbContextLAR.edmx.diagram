@@ -25,6 +25,7 @@
         <AssociationConnector Association="dbContextLARModel.categories_ibfk_1" />
         <EntityTypeShape EntityType="dbContextLARModel.master_menu_type" Width="1.5" PointX="0.75" PointY="14.125" />
         <AssociationConnector Association="dbContextLARModel.types_categories_ibfk_1" />
+        <AssociationConnector Association="dbContextLARModel.subcategories_ibfk_1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
