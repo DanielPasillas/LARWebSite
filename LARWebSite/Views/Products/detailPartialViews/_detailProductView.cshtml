@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <!-- product content area -->
-            <div class="col-sm-6 col-md-7 content-area">
+            <div class="col-sm-6 col-md-6 content-area">
                 <div class="product-content-area">
                     <div id="product-slider" class="carousel slide" data-ride="carousel">
                         <!-- wrapper for slides -->
@@ -27,13 +27,13 @@
                                 if (iActiveItem == 0)
                                 {
                                     <div class="item active">
-                                        <img src="~/Assets/images/product_link/@Model.Producto.Image_Link" alt="@_imgProduct.Image_b">
+                                        <img src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
                                     </div>
                                 }
                                 else
                                 {
                                     <div class="item">
-                                        <img src="~/Assets/images/product_link/@Model.Producto." alt="@_imgProduct.Image_b">
+                                        <img src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
                                     </div>
                                 }
                                 iActiveItem++;
@@ -53,8 +53,15 @@
                             </a>
                             <!-- / controls -->
                         }
-
+                        <div style="width:100%;border:1px solid rgba(0,0,0,0.1);padding:15px;">
+                            @foreach (var tumb in Model.Producto.Imagenes)
+                            {
+                                <span>@tumb.Image_s</span>
+                            }
+                        </div>
                     </div><!-- / product-slider -->
+
+                   
 
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="active"><a href="#description" role="tab" data-toggle="tab" aria-expanded="true">Descripción</a></li>
@@ -75,9 +82,9 @@
             <!-- / project-content-area -->
 
             <!-- project sidebar area -->
-            <div class="col-sm-6 col-md-5 product-sidebar">
+            <div class="col-sm-6 col-md-6 product-sidebar">
                 <div class="product-details">
-                    <h3>@Model.Producto.NombreProducto</h3>
+                    <h3>@Model.Producto.Marca - @Model.Producto.NombreProducto</h3>
                     <p>@Model.Producto.Descripcion</p>
                     <hr />
 
@@ -126,7 +133,7 @@
 
                         <!-- Category -->
                         <div class="info">
-                            <p><i class="lnr lnr-film-play"></i><span>Categoría: <a href="#link"> @Model.Producto.Categoria</a></span></p>
+                            <p><i class="lnr lnr-film-play"></i><span>Categoría: <a href="@Url.Action("getproductsbycategory", "products", new { id = Model.Producto.IdCategoria, category = Model.Producto.Categoria })"> @Model.Producto.Categoria</a></span></p>
                         </div>
 
                         <!-- SubCategory -->

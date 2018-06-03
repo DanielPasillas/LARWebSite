@@ -224,6 +224,7 @@
     <Content Include="Assets\css\owl.carousel.css" />
     <Content Include="Assets\css\owl.theme.css" />
     <Content Include="Assets\css\Site.css" />
+    <Content Include="Assets\css\smoothproducts.css" />
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\fonts\fontawesome-webfont3e6e.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular-2.html" />
@@ -244,6 +245,7 @@
     <Content Include="Assets\images\brands\strike-pro.png" />
     <Content Include="Assets\images\brands\zoom.png" />
     <Content Include="Assets\images\contact-landing-page.jpg" />
+    <Content Include="Assets\images\not-found.jpg" />
     <Content Include="Assets\images\product_b\LAR-001.jpg" />
     <Content Include="Assets\images\product_link\LAR-001.jpg" />
     <Content Include="Assets\images\red-logo.png" />
@@ -257,6 +259,7 @@
     <Content Include="Assets\js\preloader.js" />
     <Content Include="Assets\js\red\products\visualizer.detail.js" />
     <Content Include="Assets\js\scrolling-nav.js" />
+    <Content Include="Assets\js\smoothproducts.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -337,6 +340,8 @@
     <Content Include="Views\Home\LoadMenu.cshtml" />
     <Content Include="Views\Home\Brands.cshtml" />
     <Content Include="Views\Products\Brand.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Products\GetProductsByCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

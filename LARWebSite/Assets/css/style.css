@@ -3077,7 +3077,7 @@ section {
 }
 
 #page-header.contact {
-  background-image: url("../images/contact-landing-page.jpg");
+  background-image: url("../../Assets/images/contact-landing-page.jpg");
 }
 
 #page-header.login-register {
@@ -3893,7 +3893,7 @@ a.btn-social {
 }
 
 #page-not-found {
-  background: url("../images/pnf.jpg");
+  background: url("../images/not-found.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

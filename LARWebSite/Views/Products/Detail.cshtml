@@ -1,5 +1,6 @@
 ﻿@model LARWebSite.ViewModels.ProductDetailViewModel
 
+<link href='~/Assets/css/smoothproducts.css' rel='stylesheet' type='text/css'>
 
 @{
     ViewBag.Title = Model.Producto.NombreProducto;
@@ -16,5 +17,11 @@
 
 <!-- Load bundles for scripting -->
 @Scripts.Render("~/bundles/visualizer")
+
+
+@section scripts
+{
+    <script src="~/Assets/js/smoothproducts.min.js"></script>
+}
 
 

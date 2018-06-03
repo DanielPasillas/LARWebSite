@@ -13,23 +13,30 @@ namespace LARWebSite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Custom Route for list accessing to the categories path.
+            routes.MapRoute(
+                name: "ProductsByCategories",
+                url: "Products/{action}/{id}/{brand}",
+                defaults: new { controller = "Products", action = "getproductsbycategory", id = UrlParameter.Optional, category = UrlParameter.Optional }
+            );
+
             //Custom Route for list the products by Id Brand.
             routes.MapRoute(
                 name: "ProductsbyBrand.",
-                url: "{controller}/{action}/{id}/{brand}",
-                defaults: new { controller = "Product", action = "Brand", id = UrlParameter.Optional}
+                url: "Products/{action}/{id}/{brand}",
+                defaults: new { controller = "Products", action = "Brand", id = UrlParameter.Optional}
             );
 
             //Custom Route for product detail
             routes.MapRoute(
                 name: "ProductDetailPath",
-                url: "{controller}/{action}/{id}/{code}/{name}",
-                defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional, code = UrlParameter.Optional, name = UrlParameter.Optional }
+                url: "Products/{action}/{id}/{code}/{name}",
+                defaults: new { controller = "Products", action = "Detail", id = UrlParameter.Optional, code = UrlParameter.Optional, name = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "Default",
-                url: "",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

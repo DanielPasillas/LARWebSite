@@ -153,5 +153,11 @@ namespace LARWebSite.Controllers
             return PartialView("Brands", _vieModelMarcas);
         }
         //----------------------------------------------
+
+        public ActionResult Error()
+        {
+            return View();
+        }
+        //----------------------------------------------
     }
 }

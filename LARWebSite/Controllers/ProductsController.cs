@@ -26,6 +26,7 @@ namespace LARWebSite.Controllers
         {
             return View();
         }
+        //----------------------------------------------
 
         [ActionName("detail")]
         public async Task<ActionResult> Detail(int id, string code, string name)
@@ -67,6 +68,38 @@ namespace LARWebSite.Controllers
             var _products = await _dbContext.ProductsByIdBrand(id);
 
             return View("Brand", _products);
+        }
+        //----------------------------------------------
+
+        /*
+         *We will retrieve the data by using AJAX requests. 
+         
+        [ActionName("related")]
+        [HttpPost]
+        public async Task<ActionResult> RelatedProducts()
+        {
+
+        }
+        */
+        //----------------------------------------------
+
+        /*
+         * We will retrieve the list if products by using the 
+         * Category Id as parameter.
+         */
+        [ActionName("getproductsbycategory")]
+        public async Task<ActionResult> GetProductsByCategory(int id, string category)
+        {
+            var _products = await _dbContext.products.Where(m => m.idCategory == id).ToListAsync();
+
+            List<ItemProductModel> _viewModelProduct = new List<ItemProductModel>();
+
+            foreach(var _product in _products)
+            {
+                _viewModelProduct.Add(new ItemProductModel(_product));
+            }
+
+            return View("GetProductsByCategory", _viewModelProduct);
         }
         //----------------------------------------------
 
