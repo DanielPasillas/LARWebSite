@@ -21,6 +21,7 @@
           <Property Name="idCategory" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="parentCategory" Type="bigint" Nullable="false" />
           <Property Name="categoryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="images">
           <Key>
@@ -44,6 +45,7 @@
           </Key>
           <Property Name="idMenuMaster" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nameMasterMenu" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="showRecord" Type="int" />
         </EntityType>
         <EntityType Name="product_label">
           <Key>
@@ -326,6 +328,7 @@
           <Property Name="parentCategory" Type="Int64" Nullable="false" />
           <NavigationProperty Name="types_categories" Relationship="dbContextLARModel.categories_ibfk_1" FromRole="categories" ToRole="types_categories" />
           <NavigationProperty Name="subcategories" Relationship="dbContextLARModel.subcategories_ibfk_1" FromRole="categories" ToRole="subcategories" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="images">
           <Key>
@@ -594,6 +597,7 @@
           <Property Name="idMenuMaster" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nameMasterMenu" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="types_categories" Relationship="dbContextLARModel.types_categories_ibfk_1" FromRole="master_menu_type" ToRole="types_categories" />
+          <Property Name="showRecord" Type="Int32" />
         </EntityType>
         <Association Name="types_categories_ibfk_1">
           <End Type="dbContextLARModel.master_menu_type" Role="master_menu_type" Multiplicity="1">
@@ -642,6 +646,7 @@
           <EntitySetMapping Name="categories">
             <EntityTypeMapping TypeName="dbContextLARModel.categories">
               <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="parentCategory" ColumnName="parentCategory" />
                 <ScalarProperty Name="idCategory" ColumnName="idCategory" />
                 <ScalarProperty Name="categoryName" ColumnName="categoryName" />
@@ -739,6 +744,7 @@
           <EntitySetMapping Name="master_menu_type">
             <EntityTypeMapping TypeName="dbContextLARModel.master_menu_type">
               <MappingFragment StoreEntitySet="master_menu_type">
+                <ScalarProperty Name="showRecord" ColumnName="showRecord" />
                 <ScalarProperty Name="nameMasterMenu" ColumnName="nameMasterMenu" />
                 <ScalarProperty Name="idMenuMaster" ColumnName="idMenuMaster" />
               </MappingFragment>

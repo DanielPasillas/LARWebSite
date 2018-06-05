@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using LARWebSite.Models;
+using LARWebSite.Models.MenuClasses;
 using LARWebSite.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace LARWebSite.Controllers
 
         public async Task<ActionResult> Index()
         {
+            //Get Slider List.
             var _slides = await _dbContext.slider.ToListAsync();
 
             List<SliderModel> _carousel = new List<SliderModel>();
@@ -31,11 +33,39 @@ namespace LARWebSite.Controllers
             {
                 _carousel.Add(new SliderModel(carousel));
             }
+            //------------------//
+
+            //Get Categories Collage.
+            //At this point we only will take only 3 random records.
+            var _categories = await _dbContext.categories.Take(3).ToListAsync();
+
+            List<CategoriasModel> _viewModelCategories = new List<CategoriasModel>();
+
+            foreach(var category in _categories)
+            {
+                _viewModelCategories.Add(new CategoriasModel(category));
+            }
+            //------------------//
+
+            //Get The new Products
+            //We will take the newer products. Only 8 records.
+            var _newProducts = await _dbContext.products.OrderByDescending(m => m.fecha_alta).Take(17).ToListAsync();
+
+            List<ItemProductModel> _viewModelProduct = new List<ItemProductModel>();
+            
+            foreach(var _itemProduct in _newProducts)
+            {
+                _viewModelProduct.Add(new ItemProductModel(_itemProduct));
+            }
 
             IndexViewModel _viewModel = new IndexViewModel()
             {
-                Carousel = _carousel
+                Carousel = _carousel,
+                Categorias = _viewModelCategories,
+                NuevosProductos = _viewModelProduct.Take(8).ToList(),
+                ProductosGallery = _viewModelProduct.Skip(8).Take(9).ToList()
             };
+
 
             return View(_viewModel);
         }
@@ -67,7 +97,7 @@ namespace LARWebSite.Controllers
         public async Task<ActionResult> LoadMenu()
         {
             //Get the master categories and types.
-            var _MasterMenuItems = await _dbContext.master_menu_type.ToListAsync();
+            var _MasterMenuItems = await _dbContext.master_menu_type.Where(m => m.showRecord == 1).ToListAsync();
 
             //Create viewModel for MasterCategories.
             List<Menu> _mainMenu = new List<Menu>();

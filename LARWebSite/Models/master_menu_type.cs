@@ -22,6 +22,7 @@ namespace LARWebSite.Models
     
         public long idMenuMaster { get; set; }
         public string nameMasterMenu { get; set; }
+        public Nullable<int> showRecord { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<types_categories> types_categories { get; set; }

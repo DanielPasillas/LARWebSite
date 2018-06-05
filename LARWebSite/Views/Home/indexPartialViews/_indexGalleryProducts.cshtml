@@ -1,0 +1,51 @@
+﻿@model  LARWebSite.ViewModels.IndexViewModel
+
+<section id="shop">
+    <div class="page-header text-center wsub">
+        <h2>Artículos destacados</h2>
+    </div><!--/ page-header -->
+    <div class="container">
+        <div id="grid" class="row shuffle" style="position: relative; overflow: hidden; height: 2178.28px; transition: height 250ms ease-out;">
+
+            @foreach (var _article in Model.ProductosGallery)
+            {
+                <!-- product -->
+                <div class="col-xs-6 col-md-4 product shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; transition: transform 250ms ease-out, opacity 250ms ease-out;">
+                    <a href="@Url.Action("detail","products", new {id = _article.IdProducto, code = _article.Codigo, name = _article.NombreProducto })" class="product-link"></a>
+                    <!-- / product-link -->
+                    <img src="~/Assets/images/product_link/@_article.ImagenDetalle" alt="@_article.NombreProducto">
+                    <!-- / product-image -->
+                    <!-- product-hover-tools -->
+                    <div class="product-hover-tools">
+                        <a href="@Url.Action("detail","products", new {id = _article.IdProducto, code = _article.Codigo, name = _article.NombreProducto })" class="view-btn">
+                            <i class="lnr lnr-eye"></i>
+                        </a>
+                        <!--a href="#" class="add-to-cart">
+                            <i class="lnr lnr-cart"></i>
+                        </a-->
+                    </div><!-- / product-hover-tools -->
+                    <!-- product-details -->
+                    <div class="product-details">
+                        <h3 class="product-title">@_article.NombreProducto</h3>
+                        <h6 class="product-price">
+                            @if (_article.Descuento != 0)
+                            {
+                                <span>$</span><del> @_article.Precio</del>
+                                <span class="sale-price">$ @_article.PrecioDescuento</span>
+                            }
+                            else
+                            {
+                                <span class="sale-price">$ @_article.Precio</span>
+                            }
+                        </h6>
+                    </div><!-- / product-details -->
+                </div><!-- / product -->
+            }
+
+            <!-- grid-resizer -->
+            <div class="col-xs-6 col-md-4 shuffle_sizer shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; opacity: 1; transform: translate3d(369px, 1743px, 0px) scale3d(1, 1, 1); transition: transform 250ms ease-out, opacity 250ms ease-out;"></div>
+            <!-- / grid-resizer -->
+
+        </div><!-- / row -->
+    </div><!-- / container -->
+</section>

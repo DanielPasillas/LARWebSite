@@ -188,6 +188,7 @@
     <Compile Include="Models\master_menu_type.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MenuClasses\CategoriasModel.cs" />
     <Compile Include="Models\MenuClasses\Menu.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\products.cs">
@@ -244,6 +245,7 @@
     <Content Include="Assets\images\brands\rebel.png" />
     <Content Include="Assets\images\brands\strike-pro.png" />
     <Content Include="Assets\images\brands\zoom.png" />
+    <Content Include="Assets\images\categories\rods.jpg" />
     <Content Include="Assets\images\contact-landing-page.jpg" />
     <Content Include="Assets\images\not-found.jpg" />
     <Content Include="Assets\images\product_b\LAR-001.jpg" />
@@ -257,6 +259,7 @@
     <Content Include="Assets\js\jquery.shuffle.min.js" />
     <Content Include="Assets\js\owl.carousel.min.js" />
     <Content Include="Assets\js\preloader.js" />
+    <Content Include="Assets\js\red\index\main.index.js" />
     <Content Include="Assets\js\red\products\visualizer.detail.js" />
     <Content Include="Assets\js\scrolling-nav.js" />
     <Content Include="Assets\js\smoothproducts.min.js" />
@@ -342,6 +345,7 @@
     <Content Include="Views\Products\Brand.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Products\GetProductsByCategory.cshtml" />
+    <Content Include="Views\Home\indexPartialViews\_indexGalleryProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

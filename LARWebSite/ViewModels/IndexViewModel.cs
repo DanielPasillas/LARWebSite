@@ -1,5 +1,6 @@
 ﻿using System;
 using LARWebSite.Models;
+using LARWebSite.Models.MenuClasses;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,18 @@ namespace LARWebSite.ViewModels
      */
     public class IndexViewModel
     {
+        //Property for Slider/Carousel.
         public IEnumerable<SliderModel> Carousel { get; set; }
+
+        //Enumerable property to list the categories.
+        public IEnumerable<CategoriasModel> Categorias { get; set; }
+
+        //Property to list the newProducts.
+        public IEnumerable<ItemProductModel> NuevosProductos { get; set; }
+
+        public IEnumerable<ItemProductModel> ProductosGallery { get; set; }
+
+
+
     }
 }

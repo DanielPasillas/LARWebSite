@@ -24,6 +24,7 @@ namespace LARWebSite.Models
         public long idCategory { get; set; }
         public string categoryName { get; set; }
         public long parentCategory { get; set; }
+        public string Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<products> products { get; set; }

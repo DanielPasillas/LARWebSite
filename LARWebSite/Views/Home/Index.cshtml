@@ -1,7 +1,7 @@
 ﻿@model  LARWebSite.ViewModels.IndexViewModel
 
 @{
-    ViewBag.Title = "Bienvenid@ ";
+    ViewBag.Title = "La Red ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,9 +11,14 @@
 <!-- Landing page slider  -->
 @Html.Partial("indexPartialViews/_slider")
 
+<!-- Categories Partial View  -->
+@Html.Partial("indexPartialViews/_indexCategoriesCarousel")
 
 <!-- New Products -->
 @Html.Partial("indexPartialViews/_indexNewProducts")
+
+<!-- Article Gallery -->
+@Html.Partial("indexPartialViews/_indexGalleryProducts")
 
 <!-- Brands slider -->
 @Html.Partial("indexPartialViews/_brands")

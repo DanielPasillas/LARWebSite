@@ -87,7 +87,7 @@ namespace LARWebSite.Controllers
          * We will retrieve the list if products by using the 
          * Category Id as parameter.
          */
-        [ActionName("getproductsbycategory")]
+        [ActionName("category")]
         public async Task<ActionResult> GetProductsByCategory(int id, string category)
         {
             var _products = await _dbContext.products.Where(m => m.idCategory == id).ToListAsync();

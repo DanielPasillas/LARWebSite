@@ -16,21 +16,21 @@ namespace LARWebSite
             //Custom Route for list accessing to the categories path.
             routes.MapRoute(
                 name: "ProductsByCategories",
-                url: "Products/{action}/{id}/{brand}",
-                defaults: new { controller = "Products", action = "getproductsbycategory", id = UrlParameter.Optional, category = UrlParameter.Optional }
+                url: "Products/{action}/{id}/{category}",
+                defaults: new { controller = "Products", action = "category", id = UrlParameter.Optional, category = UrlParameter.Optional }
             );
 
             //Custom Route for list the products by Id Brand.
             routes.MapRoute(
                 name: "ProductsbyBrand.",
-                url: "Products/{action}/{id}/{brand}",
+                url: "products/{action}/{id}/{brand}",
                 defaults: new { controller = "Products", action = "Brand", id = UrlParameter.Optional}
             );
 
             //Custom Route for product detail
             routes.MapRoute(
                 name: "ProductDetailPath",
-                url: "Products/{action}/{id}/{code}/{name}",
+                url: "products/{action}/{id}/{code}/{name}",
                 defaults: new { controller = "Products", action = "Detail", id = UrlParameter.Optional, code = UrlParameter.Optional, name = UrlParameter.Optional }
             );
 
