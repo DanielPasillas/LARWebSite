@@ -218,6 +218,7 @@
     <Compile Include="ViewModels\ProductDetailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.html" />
     <Content Include="Assets\css\animate.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\font-awesome.min.css" />

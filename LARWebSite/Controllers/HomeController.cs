@@ -184,10 +184,5 @@ namespace LARWebSite.Controllers
         }
         //----------------------------------------------
 
-        public ActionResult Error()
-        {
-            return View();
-        }
-        //----------------------------------------------
     }
 }
