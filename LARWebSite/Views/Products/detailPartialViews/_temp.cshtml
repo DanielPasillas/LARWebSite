@@ -1,0 +1,140 @@
+﻿<div id="top">
+    <div class="row-container visible-first">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <!-- Logo -->
+                <div id="logo" class="span4">
+                    <a href="https://livedemo00.template-help.com/virtuemart_62170/">
+                        <img src="/virtuemart_62170/images/logo.png" alt="DEEP Fish">
+                        <h1 class="heading-style-1 visible-first"><span class="item_title_char0 item_title_char_odd item_title_char_first_half item_title_char_first">D</span><span class="item_title_char1 item_title_char_even item_title_char_first_half">E</span><span class="item_title_char2 item_title_char_odd item_title_char_first_half">E</span><span class="item_title_char3 item_title_char_even item_title_char_first_half">P</span><span class="item_title_char4 item_title_char_odd item_title_char_first_half"> </span><span class="item_title_char5 item_title_char_even item_title_char_second_half">F</span><span class="item_title_char6 item_title_char_odd item_title_char_second_half">i</span><span class="item_title_char7 item_title_char_even item_title_char_second_half">s</span><span class="item_title_char8 item_title_char_odd item_title_char_second_half item_title_char_last">h</span></h1>
+                    </a>
+                </div>
+                <div class="span8 mobile">
+                    <div class="moduletable cart ">
+                        <div class="module_container">
+                            <!-- Virtuemart 2 Ajax Card -->
+                            <div class="vmCartModule_ajax vmCartModule cart vmCartModule_248" id="vmCartModule">
+
+                                <div class="total_products"><a class="" href="/virtuemart_62170/index.php/checkout" rel="nofollow"><span class="title">My cart</span><span class="total_items">1</span> item(s)</a></div>
+
+                                <div class="hiddencontainer" style=" display: none; ">
+                                    <div class="vmcontainer">
+                                        <div class="spinner"></div>
+                                        <div class="image">
+                                        </div>
+                                        <div class="product_row">
+                                            <span class="product_name"></span>
+                                            <span class="quantity"></span><div class="prices" style="display:inline;"></div>
+
+                                            <a class="vm2-remove_from_cart remove" title="Remove product" onclick="remove_product_cart(this);"><i class="fa fa-times-circle"></i><span class="product_cart_id" style="display:none;"></span></a>
+                                            <div class="product_attributes"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="vm_cart_products" class="">
+                                    <div class="text-cart">
+                                        Recently added item(s)
+                                    </div>
+                                    <div class="vm_cart_products">
+
+
+                                        <div class="vmcontainer">
+                                            <div class="spinner"></div>
+                                            <div class="image">
+                                                <img src="https://livedemo00.template-help.com/virtuemart_62170/images/stories/virtuemart/product/image_product_43.png">
+                                            </div>
+                                            <div class="product_row">
+                                                <span class="product_name"><a href="/virtuemart_62170/index.php/online-store/Fishing-Tackle-Seat-Box-Includes-Padded-Strap">Fishing Tackle Seat Box Includes Padded Strap</a></span>
+                                                <span class="quantity">1&nbsp;x&nbsp;</span><div class="prices" style="display:inline;">$90.00</div>
+
+                                                <a class="vm2-remove_from_cart remove" title="Remove product" onclick="remove_product_cart(this);"><i class="fa fa-times-circle"></i><span class="product_cart_id" style="display:none;">0</span></a>
+                                                <div class="product_attributes"><div class="vm-customfield-mod"></div></div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="totalBox">
+                                        <div class="carttotaltext">
+                                            <span class="totalText">Total:</span>
+                                        </div>
+                                        <div class="total">
+                                            $90.00
+                                        </div>
+                                    </div>
+                                    <div class="show_cart">
+                                        <a class="btn" href="/virtuemart_62170/index.php/checkout">Show Cart</a>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <noscript>
+                                        MOD_VIRTUEMART_CART_AJAX_CART_PLZ_JAVASCRIPT
+                                    </noscript>
+                                </div>
+                            </div>
+                            <script>
+	jQuery(function(){
+
+		jQuery('.product_row .vm2-remove_from_cart').live('click',function(){
+			jQuery(this).parent().parent().find('.spinner').addClass('removing');
+		});
+		if(jQuery('body').hasClass('mobile')){
+			jQuery('#vmCartModule .total_products').on('click',function(){
+				//alert('');
+				jQuery('#vmCartModule').find('#vm_cart_products').stop().toggleClass('shown');
+				return false;
+			})
+		}
+		else{
+			jQuery('#vmCartModule').hover(function(){
+				jQuery('.vmCartModule_248 #vm_cart_products').stop().addClass('shown')
+			},function(){
+				jQuery('.vmCartModule_248 #vm_cart_products').stop().delay(1000)
+	                .queue(function(n){
+	                    jQuery(this)
+	                    .removeClass('shown')
+	                    n();
+	                });
+			})
+		}
+		jQuery('.vm-customfield-mod .product-field-type-C span').each(function(){
+			jQuery(this).text(jQuery(this).text().split('/')[0]);
+		});
+		//jQuery('.remove').tooltip()
+	});
+function remove_product_cart(elm) {
+	var cart_id = jQuery(elm).children("span.product_cart_id").text();
+	jQuery.ajax({
+		url: 'index.php?option=com_virtuemart&view=cart&task=delete&removeProductCart=cart_virtuemart_product_id='+cart_id,
+		type: 'post',
+		data: 'cart_virtuemart_product_id='+cart_id,
+		dataType: 'html',
+		beforeSend: function(){
+                //jQuery('.product_remove_id'+cart_id).closest('.vmcontainer').addClass('removing');
+            },
+		success: function(html){
+						jQuery('body').trigger('updateVirtueMartCartModule');
+			jQuery('#vm_cart_products').removeClass('shown');
+			jQuery('.vm-customfield-mod .product-field-type-C span').each(function(){
+				jQuery(this).text(jQuery(this).text().split('/')[0]);
+			})
+		}
+});
+}
+
+
+                            </script>
+                        </div>
+                    </div><div class="moduletable customphone ">
+                        <div class="module_container">
+                            <div class="mod-custom mod-custom__customphone">
+                                <a href="callto:800-2345-678">800-2345-6789</a>
+                                <span>7 Days a week from 9:00 am to 7:00 pm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 ﻿@model LARWebSite.ViewModels.ProductDetailViewModel
 
-@{ 
+@{
     int iActiveItem = 0;
 
     //Calcualate the price if the disccount value is set.
@@ -11,7 +11,27 @@
 
 }
 
-<!-- Single-product-Detail -->
+<!--div id="gal1">
+
+    <a href="#" data-image="~/Assets/images/product_link/LAR-001.jpg" data-zoom-image="~/Assets/images/product_b/LAR-00-1.jpg">
+        <img id="img_01" src="~/Assets/images/product_link/LAR-001.jpg" />
+    </a>
+
+    <a href="#" data-image="~/Assets/images/product_link/LAR-001.jpg" data-zoom-image="~/Assets/images/product_b/LAR-00-1.jpg">
+        <img id="img_01" src="~/Assets/images/product_link/LAR-001.jpg" />
+    </a>
+
+    <a href="#" data-image="~/Assets/images/product_link/LAR-001.jpg" data-zoom-image="~/Assets/images/product_b/LAR-00-1.jpg">
+        <img id="img_01" src="~/Assets/images/product_link/LAR-001.jpg" />
+    </a>
+
+    <a href="#" data-image="~/Assets/images/product_link/LAR-001.jpg" data-zoom-image="~/Assets/images/product_b/LAR-00-1.jpg">
+        <img id="img_01" src="~/Assets/images/product_link/LAR-001.jpg" />
+    </a>
+
+</div--><!-- Single-product-Detail -->
+
+
 <section id="shop">
     <div class="container">
         <div class="row">
@@ -27,13 +47,13 @@
                                 if (iActiveItem == 0)
                                 {
                                     <div class="item active">
-                                        <img src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
+                                        <img id="zoom_visualizer" src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
                                     </div>
                                 }
                                 else
                                 {
                                     <div class="item">
-                                        <img src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
+                                        <img id="zoom_visualizer" src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
                                     </div>
                                 }
                                 iActiveItem++;
@@ -55,7 +75,7 @@
                         }
                     </div><!-- / product-slider -->
 
-                   
+
 
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="active"><a href="#description" role="tab" data-toggle="tab" aria-expanded="true">Descripción</a></li>
@@ -74,7 +94,6 @@
                 <!-- product pagination -->
             </div>
             <!-- / project-content-area -->
-
             <!-- project sidebar area -->
             <div class="col-sm-6 col-md-6 product-sidebar">
                 <div class="product-details">
@@ -151,7 +170,8 @@
 
         </div><!-- / row -->
 
-       
+
     </div><!-- / container -->
 </section>
 <!-- / shop single-product -->
+

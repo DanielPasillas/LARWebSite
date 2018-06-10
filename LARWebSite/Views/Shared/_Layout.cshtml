@@ -41,14 +41,14 @@
     <header>
 
         <!-- This menu will be hidden till we start developing the ecommerce environment -->
-        <div class="top-menu top-menu">
+        <!--div class="top-menu top-menu">
             <div class="container">
                 <p>
                     <span class="left"> <a href="#phone-number"><i class="lnr lnr-phone-handset"></i> <span> Llamanos! 01 449 918 6217</span></a></span> </span>
                     
                 </p>
             </div>
-        </div>
+        </div-->
 
         <nav class="navbar navbar-inverse">
             <div class="container">
@@ -99,11 +99,14 @@
                     </div><!-- / widget -->
                     <!-- / first widget -->
                     <div class="col-sm-6 col-md-2 widget">
-                       <!-- Load dinamyc brands -->
-                        @Html.Action("brands","home")
+                        <!-- Load dinamyc brands -->
+                        @Html.Action("brands", "home")
+                    </div><!-- / widget -->
+                    <div class="col-sm-6 col-md-2 widget">
+                        <!-- Load dinamyc brands -->
+                        @Html.Action("categories", "home")
                     </div><!-- / widget -->
                     <!-- / second widget -->
-                    
                     <!-- / third widget -->
                     <div class="col-sm-6 col-md-4 widget">
                         <div class="widget-title">
@@ -120,17 +123,17 @@
                                 <a href="mailto:hello@yoursite.com"><i class="lnr lnr-envelope"></i><span>office@yoursite.com</span></a>
                             </div>
                             <!--div class="info">
-                                <p class="social pull-left">
-                                    <a class="no-margin" href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#"><i class="fa fa-dribbble"></i></a>
-                                </p>
-                            </div-->
-                        </div><!-- / contact-widget -->
-                    </div><!-- / widget -->
+                <p class="social pull-left">
+                    <a class="no-margin" href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                </p>
+            </div-->
+                    </div><!-- / contact-widget -->
+                </div><!-- / widget -->
                     <!-- / fourth widget -->
                 </div><!-- / row -->
             </div><!-- / container -->

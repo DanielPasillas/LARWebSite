@@ -184,7 +184,7 @@
     <Compile Include="Models\labels.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MarcasModel.cs" />
+    <Compile Include="Models\MenuClasses\MarcasModel.cs" />
     <Compile Include="Models\master_menu_type.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>
     </Compile>
@@ -221,12 +221,12 @@
     <Content Include="404.html" />
     <Content Include="Assets\css\animate.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\css\colors.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
     <Content Include="Assets\css\linear-icons.css" />
     <Content Include="Assets\css\owl.carousel.css" />
     <Content Include="Assets\css\owl.theme.css" />
     <Content Include="Assets\css\Site.css" />
-    <Content Include="Assets\css\smoothproducts.css" />
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\fonts\fontawesome-webfont3e6e.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular-2.html" />
@@ -256,6 +256,7 @@
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\jquery.easing.min.js" />
+    <Content Include="Assets\js\jquery.elevate.zoom.js" />
     <Content Include="Assets\js\jquery.min.js" />
     <Content Include="Assets\js\jquery.shuffle.min.js" />
     <Content Include="Assets\js\owl.carousel.min.js" />
@@ -263,7 +264,6 @@
     <Content Include="Assets\js\red\index\main.index.js" />
     <Content Include="Assets\js\red\products\visualizer.detail.js" />
     <Content Include="Assets\js\scrolling-nav.js" />
-    <Content Include="Assets\js\smoothproducts.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -347,6 +347,8 @@
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Products\GetProductsByCategory.cshtml" />
     <Content Include="Views\Home\indexPartialViews\_indexGalleryProducts.cshtml" />
+    <Content Include="Views\Home\GetCategories.cshtml" />
+    <Content Include="Views\Products\detailPartialViews\_temp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

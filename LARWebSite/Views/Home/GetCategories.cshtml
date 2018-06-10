@@ -1,0 +1,15 @@
+﻿@model IEnumerable<LARWebSite.Models.MenuClasses.CategoriasModel>
+
+    <div class="widget-title">
+        <h4>Categorías</h4>
+    </div>
+    <div class="link-widget">
+
+        @foreach (var category in Model)
+        {
+        <div class="info">
+            <a href="#">@category.NombreCategoria</a>
+        </div>
+        }
+
+    </div>

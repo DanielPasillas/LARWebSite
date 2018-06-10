@@ -3893,10 +3893,9 @@ a.btn-social {
 }
 
 #page-not-found {
-  background: url("../images/not-found.jpg");
+
   background-repeat: no-repeat;
-  opacity: 0.3;
-  background-size: cover;
+  background-size: 50% 50%;
   background-position: center;
   padding: 130px 0;
 }

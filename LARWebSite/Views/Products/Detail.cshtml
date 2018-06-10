@@ -1,7 +1,5 @@
 ﻿@model LARWebSite.ViewModels.ProductDetailViewModel
 
-<link href='~/Assets/css/smoothproducts.css' rel='stylesheet' type='text/css'>
-
 @{
     ViewBag.Title = Model.Producto.NombreProducto;
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,13 +13,12 @@
 @Html.Partial("detailPartialViews/_detailRelatedProducts")
 
 
-<!-- Load bundles for scripting -->
-@Scripts.Render("~/bundles/visualizer")
-
-
 @section scripts
 {
-    <script src="~/Assets/js/smoothproducts.min.js"></script>
+    <script src="~/Assets/js/jquery.elevate.zoom.js"></script>
+    <script>
+
+        $("#zoom_visualizer").elevateZoom({ scrollZoom: true, gallery: 'gallery_01', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif' });
+       
+    </script>
 }
-
-

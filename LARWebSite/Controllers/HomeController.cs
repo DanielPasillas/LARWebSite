@@ -184,5 +184,23 @@ namespace LARWebSite.Controllers
         }
         //----------------------------------------------
 
+        [ActionName("categories")]
+        public async Task<ActionResult> GetCategories()
+        {
+            var _categories = await _dbContext.categories.Take(5).ToListAsync();
+
+            //List categories for the Main footer.
+            List<CategoriasModel> _viewListCategories = new List<CategoriasModel>();
+
+            foreach(var _category in _categories)
+            {
+                _viewListCategories.Add(new CategoriasModel(_category));
+            }
+
+            return PartialView("GetCategories", _viewListCategories);
+
+        }
+        //----------------------------------------------
+
     }
 }

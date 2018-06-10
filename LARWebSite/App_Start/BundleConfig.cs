@@ -34,6 +34,7 @@ namespace LARWebSite
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Assets/css/bootstrap.min.css",
+                      "~/Assets/css/colors.css",
                       "~/Assets/css/animate.css",
                       "~/Assets/css/owl.carousel.css",
                       "~/Assets/css/owl.theme.css",
