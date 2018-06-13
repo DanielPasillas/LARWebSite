@@ -1736,7 +1736,7 @@ if (typeof Object.create !== 'function') {
         zoomActivation: "hover", // Can also be click (PLACEHOLDER FOR NEXT VERSION)
         zoomEnabled: true, //false disables zoomwindow from showing
         preloading: 1, //by default, load all the images, if 0, then only load images after activated (PLACEHOLDER FOR NEXT VERSION)
-        zoomLevel: 1, //default zoom level of image
+        zoomLevel: 0.5, //default zoom level of image
         scrollZoom: false, //allow zoom on mousewheel, true to activate
         scrollZoomIncrement: 0.1,  //steps of the scrollzoom
         minZoomLevel: false,
@@ -1744,11 +1744,11 @@ if (typeof Object.create !== 'function') {
         easing: false,
         easingAmount: 12,
         lensSize: 200,
-        zoomWindowWidth: 400,
-        zoomWindowHeight: 400,
+        zoomWindowWidth: 700,
+        zoomWindowHeight: 490,
         zoomWindowOffetx: 0,
         zoomWindowOffety: 0,
-        zoomWindowPosition: 1,
+        zoomWindowPosition: 2,
         zoomWindowBgColour: "#fff",
         lensFadeIn: false,
         lensFadeOut: false,
