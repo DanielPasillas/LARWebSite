@@ -220,14 +220,17 @@
   <ItemGroup>
     <Content Include="404.html" />
     <Content Include="Assets\css\animate.css" />
+    <Content Include="Assets\css\awesome.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\colors.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
     <Content Include="Assets\css\linear-icons.css" />
+    <Content Include="Assets\css\megamenu.css" />
     <Content Include="Assets\css\owl.carousel.css" />
     <Content Include="Assets\css\owl.theme.css" />
     <Content Include="Assets\css\Site.css" />
     <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\css\style.megamenu.css" />
     <Content Include="Assets\fonts\fontawesome-webfont3e6e.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular-2.html" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular-3.html" />
@@ -259,6 +262,7 @@
     <Content Include="Assets\js\jquery.elevate.zoom.js" />
     <Content Include="Assets\js\jquery.min.js" />
     <Content Include="Assets\js\jquery.shuffle.min.js" />
+    <Content Include="Assets\js\megamenu.js" />
     <Content Include="Assets\js\owl.carousel.min.js" />
     <Content Include="Assets\js\preloader.js" />
     <Content Include="Assets\js\red\index\main.index.js" />

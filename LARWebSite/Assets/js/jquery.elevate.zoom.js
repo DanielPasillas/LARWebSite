@@ -1758,7 +1758,7 @@ if (typeof Object.create !== 'function') {
         zoomWindowAlwaysShow: false,
         zoomTintFadeIn: false,
         zoomTintFadeOut: false,
-        borderSize: 4,
+        borderSize: 1,
         showLens: true,
         borderColour: "#888",
         lensBorderSize: 1,

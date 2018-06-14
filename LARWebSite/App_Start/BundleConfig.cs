@@ -30,6 +30,7 @@ namespace LARWebSite
                       "~/Assets/js/jquery.easing.min.js",
                       "~/Assets/js/owl.carousel.min.js",
                       "~/Assets/js/preloader.js",
+                      "~/Assets/js/megamenu.js",
                       "~/Assets/js/scrolling-nav.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -39,7 +40,9 @@ namespace LARWebSite
                       "~/Assets/css/owl.carousel.css",
                       "~/Assets/css/owl.theme.css",
                       "~/Assets/css/style.css",
-                      "~/Assets/css/font-awesome.min.css",
+                      "~/Assets/css/awesome.css",
+                      "~/Assets/css/megamenu.css",
+                      "~/Assets/css/style.megamenu.css",
                       "~/Assets/css/site.css"));
 
 

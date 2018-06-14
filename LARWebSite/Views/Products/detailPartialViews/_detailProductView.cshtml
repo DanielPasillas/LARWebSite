@@ -64,7 +64,14 @@
 
                         <!-- / description-tab -->
                         <div role="tabpanel" class="tab-pane animated fadeIn active" id="description">
-                            <p>@Model.Producto.ExtDescripcion</p>
+                            @if (string.IsNullOrEmpty(@Model.Producto.ExtDescripcion))
+                            {
+                                <i>No existe una descripción para este producto</i>
+                            }
+                            else
+                            {
+                                <p>@Model.Producto.ExtDescripcion</p>
+                            }
                         </div>
                         <!-- / description-tab -->
                     </div>
