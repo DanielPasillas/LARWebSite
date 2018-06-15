@@ -7,7 +7,7 @@
 
 
 <li>
-    <a href="#"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;@menu.MainType<span class="arrow"></span></a>
+    <a href="#">&nbsp;&nbsp;@menu.MainType<span class="arrow"></span></a>
 
     @if (menu._TypeCategorias.Any())
     {
@@ -27,7 +27,7 @@
                             <li class="title">@_categories.Category</li>
                             @foreach (var _subCategory in _categories.SubCategories)
                             {
-                                <li><a href="#"><i class="fa fa-arrow-circle-right"></i>@_subCategory.SubCategory</a></li>
+                                <li><a href="#">@_subCategory.SubCategory</a></li>
                             }
 
                             </ul>

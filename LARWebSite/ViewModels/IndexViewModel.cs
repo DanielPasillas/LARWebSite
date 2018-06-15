@@ -24,6 +24,7 @@ namespace LARWebSite.ViewModels
         //Property to list the newProducts.
         public IEnumerable<ItemProductModel> NuevosProductos { get; set; }
 
+        //Collage of products.
         public IEnumerable<ItemProductModel> ProductosGallery { get; set; }
 
 

@@ -15,10 +15,11 @@
                 string _classActive = iActive == 0 ? "active" : "";
                 <div class="item @_classActive " >
                     <div class="container">
+                        <img style="width:100%;height:80%;" src="~/Assets/images/slider/@slide.Imagen" />
                         <div class="carousel-caption">
-                            <img src="~/Assets/images/slider/@slide.Imagen"/>
+
                             <div class="row">
-                                <div class="col-md-12 slider-content">
+                                <div  class="col-md-12 slider-content">
                                     <h2 class="slide-title fadeInDown animated first"><span class="text-primary"></span>@slide.Title</h2>
                                     <p class="slide-text flipInX animated second">@slide.Descripcion</p>
 
@@ -34,10 +35,6 @@
                 </div><!-- / slide 1 -->
                 iActive++;
             }
-
-
-
-
         </div><!-- /carousel-inner -->
         <!-- controls -->
         <a class="left carousel-control" href="#slider" data-slide="prev"><span class="lnr lnr-chevron-left"></span></a>
