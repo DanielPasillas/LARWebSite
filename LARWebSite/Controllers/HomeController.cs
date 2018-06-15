@@ -22,6 +22,9 @@ namespace LARWebSite.Controllers
         }
         //---------------------
 
+        /* 
+         *   Home Page.
+         */
         public async Task<ActionResult> Index()
         {
             //Get Slider List.
@@ -49,7 +52,9 @@ namespace LARWebSite.Controllers
 
             //Get The new Products
             //We will take the newer products. Only 8 records.
-            var _newProducts = await _dbContext.products.OrderByDescending(m => m.fecha_alta).Take(17).ToListAsync();
+            string _queryNewProducts = "SELECT idProduct, nameProduct, description, extendDescription, Image_link, idBrand, idCategory, idSubCategory, keyProduct," +
+                                           " stock, discount, salePrice, wholesalePrice, limitWholeSalePrice, fecha_alta, status FROM products WHERE status = 1 ORDER BY fecha_alta DESC LIMIT 8";
+            var _newProducts =  _dbContext.products.SqlQuery(_queryNewProducts).ToList<products>();
 
             List<ItemProductModel> _viewModelProduct = new List<ItemProductModel>();
             
@@ -58,12 +63,24 @@ namespace LARWebSite.Controllers
                 _viewModelProduct.Add(new ItemProductModel(_itemProduct));
             }
 
+            //Get 9 random products.
+            string _collageProductString = "SELECT idProduct, nameProduct, description, extendDescription, Image_link, idBrand, idCategory, idSubCategory, keyProduct," +
+                                           " stock, discount, salePrice, wholesalePrice, limitWholeSalePrice, fecha_alta, status FROM products WHERE status = 1 ORDER BY rand() LIMIT 9";
+            var _collageProductsGallery = _dbContext.products.SqlQuery(_collageProductString).ToList<products>();
+
+            List<ItemProductModel> _collageViewModel = new List<ItemProductModel>();
+
+            foreach(var _productCollage in _collageProductsGallery)
+            {
+                _collageViewModel.Add(new ItemProductModel(_productCollage));
+            }
+
             IndexViewModel _viewModel = new IndexViewModel()
             {
                 Carousel = _carousel,
                 Categorias = _viewModelCategories,
-                NuevosProductos = _viewModelProduct.Take(8).ToList(),
-                ProductosGallery = _viewModelProduct.Skip(8).Take(9).ToList()
+                NuevosProductos = _viewModelProduct,
+                ProductosGallery = _collageViewModel
             };
 
 
@@ -71,6 +88,9 @@ namespace LARWebSite.Controllers
         }
         //---------------------------
 
+        /* 
+         *   Contact Page.
+         */
         [ActionName("contacto")]
         public ActionResult Contact()
         {
@@ -78,6 +98,9 @@ namespace LARWebSite.Controllers
         }
         //-------------------------
 
+        /* 
+         *   About Page.
+         */
         [ActionName("about")]
         public ActionResult About()
         {
@@ -85,6 +108,9 @@ namespace LARWebSite.Controllers
         }
         //-------------------------
 
+        /* 
+         *   Offers Page.
+         */
         [ActionName("offers")]
         public ActionResult Offers()
         {
@@ -92,6 +118,9 @@ namespace LARWebSite.Controllers
         }
         //-------------------------
 
+        /* 
+         *   By using this resource we load the mega menu for categories and subcategories.
+         */
         [ActionName("menu")]
         [OutputCache(Duration = 50, VaryByParam = "none")]
         public async Task<ActionResult> LoadMenu()
@@ -166,12 +195,17 @@ namespace LARWebSite.Controllers
         }
         //-------------------------
 
+        /* 
+         *   Get the brands.
+         */
         [ActionName("brands")]
         [OutputCache(Duration = 50, VaryByParam = "none")]
-        public async Task<ActionResult> Brands()
+        public ActionResult Brands()
         {
             //Get the brands list.
-            var brands = await _dbContext.brands.Take(5).ToListAsync();
+            //We will user a direct MySQL query for getting the random values.
+            string _queryBrand = "SELECT idBrand, Brand, Image_b, Image_s FROM brands ORDER BY rand() LIMIT 5";
+            var brands = _dbContext.brands.SqlQuery(_queryBrand).ToList<brands>();
 
             List<MarcasModel> _vieModelMarcas = new List<MarcasModel>();
 
@@ -184,10 +218,16 @@ namespace LARWebSite.Controllers
         }
         //----------------------------------------------
 
+        /* 
+         *    Categories Page.
+         */
         [ActionName("categories")]
-        public async Task<ActionResult> GetCategories()
-        {
-            var _categories = await _dbContext.categories.Take(5).ToListAsync();
+        public ActionResult GetCategories()
+        {   
+            //Get the random values from database.
+            string _queryCategories = "SELECT idCategory, parentCategory, categoryName, Image FROM categories ORDER BY rand() LIMIT 5  ";
+
+            var _categories = _dbContext.categories.SqlQuery(_queryCategories).ToList<categories>();
 
             //List categories for the Main footer.
             List<CategoriasModel> _viewListCategories = new List<CategoriasModel>();

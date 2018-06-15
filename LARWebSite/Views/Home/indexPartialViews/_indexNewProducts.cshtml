@@ -1,56 +1,47 @@
 ﻿@model  LARWebSite.ViewModels.IndexViewModel
 
-<!-- Show the new products -->
+<!-- featured-products -->
 <section id="featured-products">
     <div class="page-header text-center wsub">
-        <h2>Nuevos productos</h2>
+        <h2>Nuevos Productos</h2>
     </div><!--/ page-header -->
-    <div id="products-carousel" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+    <div id="products-carousel" class="owl-carousel">
 
         @foreach (var _newProduct in Model.NuevosProductos)
         {
             <!-- item -->
-            <div class="owl-wrapper-outer">
-                <div class="owl-wrapper" style="width: 4368px; left: 0px; display: block; transition: all 800ms ease; transform: translate3d(-1365px, 0px, 0px);">
-                    <div class="owl-item" style="width: 273px;">
-                        <div class="item product">
-                            <a href="@Url.Action("detail", "products", new { id = _newProduct.IdProducto, code = _newProduct.Codigo, name = _newProduct.NombreProducto})" class="product-link"></a>
-                            <!-- / product-link -->
-                            <img src="~/Assets/images/product_link/@_newProduct.ImagenDetalle" alt="">
-                            <!-- / product-image -->
-                            <!-- product-hover-tools -->
-                            <div class="product-hover-tools">
-                                <a href="single-product.html" class="view-btn">
-                                    <i class="lnr lnr-eye"></i>
-                                </a>
-                                <!--a href="shopping-cart.html" class="add-to-cart">
-                                    <i class="lnr lnr-cart"></i>
-                                </a-->
-                            </div><!-- / product-hover-tools -->
-                            <!-- product-details -->
-                            <div class="product-details">
-                                <h3 class="product-title">@_newProduct.NombreProducto</h3>
-                                <h6 class="product-price">
-                                    @if (_newProduct.Descuento != 0)
-                                    {
-                                        <span>$</span><del> @_newProduct.Precio</del>
-                                        <span class="sale-price">$ @_newProduct.PrecioDescuento</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="sale-price">$ @_newProduct.Precio</span>
-                                    }
-                                </h6>
-                            </div><!-- / product-details -->
-                        </div>
-                    </div>
-                </div>
+            <div class="item product">
+                <!-- / sale-label -->
+                <a href="@Url.Action("detail", "products", new { id = _newProduct.IdProducto, code = _newProduct.Codigo, name = _newProduct.NombreProducto})"  class="product-link"></a>
+                <!-- / product-link -->
+
+                <img src="~/Assets/images/product_link/@_newProduct.ImagenDetalle" alt="">
+                <!-- / product-image -->
+                <!-- product-hover-tools -->
+                <div class="product-hover-tools">
+                    <a href="single-product.html" class="view-btn">
+                        <i class="lnr lnr-eye"></i>
+                    </a>
+                </div><!-- / product-hover-tools -->
+                <!-- product-details -->
+                <div class="product-details">
+                    <h3 class="product-title">@_newProduct.NombreProducto</h3>
+                    <h6 class="product-price">
+                        @if (_newProduct.Descuento != 0)
+                        {
+                            <span>$</span><del> @_newProduct.Precio</del>
+                            <span class="sale-price">$ @_newProduct.PrecioDescuento</span>
+                        }
+                        else
+                        {
+                            <span class="sale-price">$ @_newProduct.Precio</span>
+                        }
+                    </h6>
+                </div><!-- / product-details -->
             </div>
             <!-- / item -->
         }
 
-
-        <!-- / item -->
-        <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div></div></div>
-    </div> <!-- / products-carousel -->
+        </div> <!-- / products-carousel -->
 </section>
+<!-- / featured-products -->
