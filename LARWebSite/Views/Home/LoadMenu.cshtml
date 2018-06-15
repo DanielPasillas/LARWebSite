@@ -2,54 +2,47 @@
 
 
 
-
 @foreach(var menu in Model.MasterMenu)
 {
 
 
-<li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@menu.MainType <span class="caret"></span></a>
+<li>
+    <a href="#"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;@menu.MainType<span class="arrow"></span></a>
 
     @if (menu._TypeCategorias.Any())
     {
-        <ul class="dropdown-menu pulse animated">
+        <div class="megamenu clearfix halfmenu">
+           
 
-            @foreach (var _typeCategory in menu._TypeCategorias)
-            {
-                <li class="dropdown">
-                    <a href="#">@_typeCategory.TypeCategory</a>
+                @foreach (var _typeCategory in menu._TypeCategorias)
+                {
+
                     
-
-                    @if (_typeCategory.Categories.Any())
+                    foreach (var _categories in _typeCategory.Categories)
                     {
-                        <ul>
-                            @foreach (var _categories in _typeCategory.Categories)
+                        
+                        if (_categories.SubCategories.Any())
+                        {
+                            <ul class="megacollink">
+                            <li class="title">@_categories.Category</li>
+                            @foreach (var _subCategory in _categories.SubCategories)
                             {
-                                <li class="dropdown">
-                                    @_categories.Category
+                                <li><a href="#"><i class="fa fa-arrow-circle-right"></i>@_subCategory.SubCategory</a></li>
+                            }
 
-                                    @if (_categories.SubCategories.Any())
-                                    {
-                                        <ul>
-                                            @foreach (var _subCategory in _categories.SubCategories)
-                                            {
-                                                <li>@_subCategory.SubCategory</li>
-                                            }
-                                        </ul>
-                                    }
-                            </li>
-
+                            </ul>
                         }
-                        </ul>
+                        
                     }
+                   
+                }
 
-            </li>
-
-        }
-
-        </ul>
-    }
+            
+        </div>
+                  }
 
 </li>
     
 }
+
+

@@ -1,44 +1,197 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <meta name="description" content="Responsive Shop Theme">
+    <meta name="keywords" content="tienda, pesca, red, aguascalientes, caza" />
+    <meta name="author" content="Assis">
+
+    <!-- favicon -->
+    <link rel="icon" href="~/favicon.png">
+
+    <!-- page title -->
+    <title>@ViewBag.Title | Tienda de Pesca y Caza</title>
+
+    <!-- bootstrap css -->
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700" rel="stylesheet">
+    <link href='~/fonts/FontAwesome.otf' rel='stylesheet' type='text/css'>
+    <!-- Import linear-icons directly because of the lost of fonts.._. -->
+    <link href='~/Assets/css/linear-icons.css' rel='stylesheet' type='text/css'>
+    <style>
+        /*Remove margin and padding from top body*/
+        body {
+            padding-top: 0px;
+            margin-top: 0px;
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
+    <!-- preloader -->
+    <div id="preloader">
+        <div class="spinner spinner-round"></div>
     </div>
+    <!-- / preloader -->
+    <!-- header -->
+    <header>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
-    </div>
+        <!-- This menu will be hidden till we start developing the ecommerce environment -->
+        <!--div class="top-menu top-menu">
+            <div class="container">
+                <p>
+                    <span class="left"> <a href="#phone-number"><i class="lnr lnr-phone-handset"></i> <span> Llamanos! 01 449 918 6217</span></a></span> </span>
+
+                </p>
+            </div>
+        </div-->
+
+        <div id="overlapblackbg"></div>
+        <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"><img style="width:233px;height:68px;" src="~/Assets/images/red-logo.png" width="120" alt="" /></a> <a class="callusicon" href="tel:123456789"><span class="fa fa-phone"></span></a> </div>
+
+        <!--Main Menu HTML Code-->
+        <nav class="wsmenu clearfix">
+            <div class="logo clearfix"><a href="/" title="La Red Caza y Pesca"><img src="~/Assets/images/red-logo.png" alt="" /></a></div>
+            <ul class="mobile-sub wsmenu-list">
+                <li>
+                    <a href="@Url.Action("index","home")"><i class="fa fa-align-justify"></i>&nbsp;&nbsp;Inicio </a>
+
+                </li>
+                <li>
+                    <a href="@Url.Action("about","home")"><i class="fa fa-align-justify"></i>&nbsp;&nbsp;Sobre nosotros </a>
+                </li>
+                @Html.Action("menu", "home")
+                <li class="emptdiv"><a href="#"></a></li>
+                <li>
+                    <a href="@Url.Action("offers","home")"><i class="fa fa-align-justify"></i>&nbsp;&nbsp;Ofertas </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("contacto","home")"><i class="fa fa-align-justify"></i>&nbsp;&nbsp;Contacto </a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;Contact<span class="arrow"></span></a>
+                    <div class="megamenu halfdiv">
+                        <h3 class="title">Contact Us</h3>
+                        <form name="contact_name" class="menu_form">
+                            <input type="text" placeholder="Name">
+                            <input type="text" placeholder="Email">
+                            <textarea placeholder="Your message..."></textarea>
+                            <input type="button" value="Reset">
+                            <input type="submit" value="Send">
+                        </form>
+                        <div class="cl"></div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!--Menu HTML Code-->
+
+    </header>
+    <br /><br /><br /><br />
+
+    <!-- / header -->
+    <!-- content -->
+    <!-- categories -->
+    <!-- rendered body section -->
+    @RenderBody()
+    <!-- ends the rendered body section  -->
+    <!-- footer -->
+    <footer class="dark-footer">
+        <div class="widget-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 widget">
+                        <div class="about-widget">
+                            <div class="widget-title-image">
+                                <img id="lar-img-footer" src="~/Assets/images/red-logo.png" alt="">
+                            </div>
+                            <p>!Aventúrate a la acción con <b>La Red Caza y Pesca.</b></p>
+                        </div><!-- / about-widget -->
+                    </div><!-- / widget -->
+                    <!-- / first widget -->
+                    <div class="col-sm-6 col-md-2 widget">
+                        <!-- Load dinamyc brands -->
+                        @Html.Action("brands", "home")
+                    </div><!-- / widget -->
+                    <div class="col-sm-6 col-md-2 widget">
+                        <!-- Load dinamyc brands -->
+                        @Html.Action("categories", "home")
+                    </div><!-- / widget -->
+                    <!-- / second widget -->
+                    <!-- / third widget -->
+                    <div class="col-sm-6 col-md-4 widget">
+                        <div class="widget-title">
+                            <h4>Contáctanos</h4>
+                        </div>
+                        <div-- class="contact-widget">
+                            <div class="info">
+                                <p><i class="lnr lnr-map-marker"></i><span>Victoria 705, Centro, 20000 Aguascalientes, Ags.</span></p>
+                            </div>
+                            <div class="info">
+                                <a href="tel:+0123456789"><i class="lnr lnr-phone-handset"></i><span> 01 449 918 6217</span></a>
+                            </div>
+                            <div class="info">
+                                <a href="mailto:hello@yoursite.com"><i class="lnr lnr-envelope"></i><span>office@yoursite.com</span></a>
+                            </div>
+                            <!--div class="info">
+                                <p class="social pull-left">
+                                    <a class="no-margin" href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                </p>
+                            </div-->
+                    </div><!-- / contact-widget -->
+                </div><!-- / widget -->
+                <!-- / fourth widget -->
+            </div><!-- / row -->
+        </div><!-- / container -->
+        <div class="footer-info">
+            <div class="container">
+                <div class="pull-left">
+                    <p>&copy; @DateTime.Now.Year - <strong>La Red Caza y Pesca</strong></p>
+                </div>
+                <br />
+            </div><!-- / container -->
+        </div><!-- / footer-info -->
+    </footer>
+    <!-- / footer -->
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <!-- javascript -->
+    <!-- featured-products carousel -->
+    <script>
+        $(document).ready(function () {
+            $("#products-carousel").owlCarousel({
+                autoPlay: 3000, //set autoPlay to 3 seconds.
+                items: 4,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 3],
+            });
+        });
+    </script>
+    <!-- / featured-products carousel -->
+    <!-- brands carousel -->
+    <script>
+        $(document).ready(function () {
+            $("#brands-carousel").owlCarousel({
+                autoPlay: 5000, //set autoPlay to 5 seconds.
+                items: 5,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 3]
+            });
+
+        });
+    </script>
+
 </body>
+
 </html>
