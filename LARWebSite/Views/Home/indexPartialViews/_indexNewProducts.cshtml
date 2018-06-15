@@ -1,25 +1,25 @@
 ﻿@model  LARWebSite.ViewModels.IndexViewModel
 
+<!------------------------->
 <!-- featured-products -->
 <section id="featured-products">
     <div class="page-header text-center wsub">
         <h2>Nuevos Productos</h2>
     </div><!--/ page-header -->
     <div id="products-carousel" class="owl-carousel">
-
         @foreach (var _newProduct in Model.NuevosProductos)
         {
             <!-- item -->
             <div class="item product">
                 <!-- / sale-label -->
-                <a href="@Url.Action("detail", "products", new { id = _newProduct.IdProducto, code = _newProduct.Codigo, name = _newProduct.NombreProducto})"  class="product-link"></a>
+                <a href="#" class="product-link"></a>
                 <!-- / product-link -->
 
                 <img src="~/Assets/images/product_link/@_newProduct.ImagenDetalle" alt="">
                 <!-- / product-image -->
                 <!-- product-hover-tools -->
                 <div class="product-hover-tools">
-                    <a href="single-product.html" class="view-btn">
+                    <a href="@Url.Action("detail", "products", new { id = _newProduct.IdProducto, code = _newProduct.Codigo, name = _newProduct.NombreProducto})" class="view-btn">
                         <i class="lnr lnr-eye"></i>
                     </a>
                 </div><!-- / product-hover-tools -->
@@ -41,7 +41,7 @@
             </div>
             <!-- / item -->
         }
-
-        </div> <!-- / products-carousel -->
+    </div> <!-- / products-carousel -->
 </section>
 <!-- / featured-products -->
+<!------------------------->

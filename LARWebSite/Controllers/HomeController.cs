@@ -222,6 +222,7 @@ namespace LARWebSite.Controllers
          *    Categories Page.
          */
         [ActionName("categories")]
+        [OutputCache(Duration = 50, VaryByParam = "none")]
         public ActionResult GetCategories()
         {   
             //Get the random values from database.
@@ -238,7 +239,6 @@ namespace LARWebSite.Controllers
             }
 
             return PartialView("GetCategories", _viewListCategories);
-
         }
         //----------------------------------------------
 
