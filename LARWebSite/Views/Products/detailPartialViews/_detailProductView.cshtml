@@ -54,8 +54,6 @@
                         }
                     </div><!-- / product-slider -->
 
-
-
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="active"><a href="#description" role="tab" data-toggle="tab" aria-expanded="true">Descripción</a></li>
                     </ul>
@@ -92,12 +90,11 @@
                         @if (Model.Producto.Descuento != 0)
                         {
                             <div class="info">
-                                <p><i class="lnr lnr-tag"></i><span>Descuento: $  @Model.Producto.Descuento</span></p>
+                                <p><span>Descuento: $  @Model.Producto.Descuento</span></p>
                             </div>
                         }
                         <div class="info">
                             <p>
-                                <i class="lnr lnr-tag"></i>
                                 <span>
                                     Precio:
                                     @if (Model.Producto.Descuento != 0)
@@ -114,7 +111,6 @@
                         </div>
                         <div class="info">
                             <p>
-                                <i class="lnr lnr-tag"></i>
                                 <span>
                                     Mayoreo:
                                     @if (Model.Producto.Descuento != 0)
@@ -132,21 +128,21 @@
 
                         <!-- Category -->
                         <div class="info">
-                            <p><i class="lnr lnr-film-play"></i><span>Categoría: <a href="@Url.Action("getproductsbycategory", "products", new { id = Model.Producto.IdCategoria, category = Model.Producto.Categoria })"> @Model.Producto.Categoria</a></span></p>
+                            <p><span>Categoría: <a href="@Url.Action("getproductsbycategory", "products", new { id = Model.Producto.IdCategoria, category = Model.Producto.Categoria })"> @Model.Producto.Categoria</a></span></p>
                         </div>
 
                         <!-- SubCategory -->
                         <div class="info">
-                            <p><i class="lnr lnr-film-play"></i><span>Tipo: <a href="#link"> @Model.Producto.SubCategoria</a></span></p>
+                            <p><span>Tipo: <a href="#link"> @Model.Producto.SubCategoria</a></span></p>
                         </div>
 
                         <!-- Brand -->
                         <div class="info">
-                            <p><i class="lnr lnr-page-break"></i><span>Marca: <a href="@Url.Action("brand","products", new { id = Model.Producto.IdMarca, brand = Model.Producto.Marca})"> @Model.Producto.Marca</a></span></p>
+                            <p><span>Marca: <a href="@Url.Action("brand","products", new { id = Model.Producto.IdMarca, brand = Model.Producto.Marca})"> @Model.Producto.Marca</a></span></p>
                         </div>
 
                         <div class="info">
-                            <p><i class="lnr lnr-menu"></i><span>Código artículo: <a href="#code">@Model.Producto.CodigoProducto</a>  </span></p>
+                            <p><span>Código artículo: <a href="#code">@Model.Producto.CodigoProducto</a>  </span></p>
                         </div>
                     </div><!-- / project-info -->
                 </div><!-- product-details -->

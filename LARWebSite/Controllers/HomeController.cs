@@ -20,7 +20,7 @@ namespace LARWebSite.Controllers
         {
             _dbContext = new dbContextLAR();
         }
-        //---------------------
+        //----------------------------------------------
 
         /* 
          *   Home Page.
@@ -40,7 +40,8 @@ namespace LARWebSite.Controllers
 
             //Get Categories Collage.
             //At this point we only will take only 3 random records.
-            var _categories = await _dbContext.categories.Take(3).ToListAsync();
+            string _queryRandomCategories = "SELECT idCategory, parentCategory, categoryName, Image FROM categories ORDER BY rand() LIMIT 3";
+            var _categories = _dbContext.categories.SqlQuery(_queryRandomCategories).ToList<categories>();
 
             List<CategoriasModel> _viewModelCategories = new List<CategoriasModel>();
 
@@ -86,7 +87,7 @@ namespace LARWebSite.Controllers
 
             return View(_viewModel);
         }
-        //---------------------------
+        //----------------------------------------------
 
         /* 
          *   Contact Page.
@@ -96,7 +97,7 @@ namespace LARWebSite.Controllers
         {
             return View("Contacto");
         }
-        //-------------------------
+        //----------------------------------------------
 
         /* 
          *   About Page.
@@ -106,7 +107,7 @@ namespace LARWebSite.Controllers
         {
             return View();
         }
-        //-------------------------
+        //----------------------------------------------
 
         /* 
          *   Offers Page.
@@ -116,7 +117,7 @@ namespace LARWebSite.Controllers
         {
             return View();
         }
-        //-------------------------
+        //----------------------------------------------
 
         /* 
          *   By using this resource we load the mega menu for categories and subcategories.
@@ -193,10 +194,10 @@ namespace LARWebSite.Controllers
 
             return PartialView("LoadMenu", _viewModel);
         }
-        //-------------------------
+        //----------------------------------------------
 
         /* 
-         *   Get the brands.
+         *    Brands List Section - Master _Layout.
          */
         [ActionName("brands")]
         [OutputCache(Duration = 50, VaryByParam = "none")]
@@ -219,7 +220,7 @@ namespace LARWebSite.Controllers
         //----------------------------------------------
 
         /* 
-         *    Categories Page.
+         *    Categories List Section - Master _Layout.
          */
         [ActionName("categories")]
         [OutputCache(Duration = 50, VaryByParam = "none")]
