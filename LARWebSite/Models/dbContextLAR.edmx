@@ -90,9 +90,6 @@
           </Key>
           <Property Name="idSlider" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Image" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="title" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="description" Type="varchar" MaxLength="300" Nullable="false" />
-          <Property Name="hasLink" Type="int" Nullable="false" />
           <Property Name="url_target" Type="varchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="subcategories">
@@ -400,9 +397,6 @@
           </Key>
           <Property Name="idSlider" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="hasLink" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="url_target" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="subcategories">
@@ -715,12 +709,9 @@
             <EntityTypeMapping TypeName="dbContextLARModel.slider">
               <MappingFragment StoreEntitySet="slider">
                 <ScalarProperty Name="url_target" ColumnName="url_target" />
-                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="idSlider" ColumnName="idSlider" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="hasLink" ColumnName="hasLink" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="subcategories">

@@ -198,6 +198,7 @@ namespace LARWebSite.Controllers
 
         /* 
          *    Brands List Section - Master _Layout.
+         *    This dynamic menu is shown in the main menu.
          */
         [ActionName("brands")]
         [OutputCache(Duration = 50, VaryByParam = "none")]
@@ -221,6 +222,7 @@ namespace LARWebSite.Controllers
 
         /* 
          *    Categories List Section - Master _Layout.
+         *    This menu is shonw it the main footer.
          */
         [ActionName("categories")]
         [OutputCache(Duration = 50, VaryByParam = "none")]

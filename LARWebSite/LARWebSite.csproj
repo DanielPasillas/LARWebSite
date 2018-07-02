@@ -232,6 +232,7 @@
     <Content Include="Assets\css\awesome.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\colors.css" />
+    <Content Include="Assets\css\flick-slider.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
     <Content Include="Assets\css\linear-icons.css" />
     <Content Include="Assets\css\megamenu.css" />
@@ -264,9 +265,11 @@
     <Content Include="Assets\images\product_b\LAR-001.jpg" />
     <Content Include="Assets\images\product_link\LAR-001.jpg" />
     <Content Include="Assets\images\red-logo.png" />
+    <Content Include="Assets\images\slider\slide_1.jpg" />
     <Content Include="Assets\images\slider\slide1.jpg" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\custom.js" />
+    <Content Include="Assets\js\flick-slider.js" />
     <Content Include="Assets\js\jquery.easing.min.js" />
     <Content Include="Assets\js\jquery.elevate.zoom.js" />
     <Content Include="Assets\js\jquery.min.js" />
@@ -364,6 +367,7 @@
     <Content Include="Views\Products\detailPartialViews\_temp.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\aboutPartialViews\_aboutMisionAndVision.cshtml" />
+    <Content Include="Views\Home\indexPartialViews\test_slider.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

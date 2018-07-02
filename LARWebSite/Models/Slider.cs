@@ -16,9 +16,6 @@ namespace LARWebSite.Models
     {
         public long idSlider { get; set; }
         public string Image { get; set; }
-        public string description { get; set; }
-        public int hasLink { get; set; }
-        public string title { get; set; }
         public string url_target { get; set; }
     }
 }

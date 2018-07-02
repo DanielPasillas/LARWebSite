@@ -5,7 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<!-- Import carousel css -->
+<link rel="stylesheet" href="~/Assets/css/flick-slider.css" media="screen">
 
 
 <!-- Landing page slider  -->
@@ -22,3 +23,17 @@
 
 <!-- Brands slider -->
 @Html.Partial("indexPartialViews/_brands")
+
+<!-- Import script for local carousel -->
+@section scripts
+{
+    <script src="~/Assets/js/flick-slider.js"></script>
+
+    <script>
+        $('.main-gallery').flickity({
+            // options
+            cellAlign: 'left',
+            contain: true
+        });
+    </script>
+}
