@@ -67,20 +67,10 @@ namespace LARWebSite.Controllers
             //Get the products filtered by the brand id.
             var _products = await _dbContext.ProductsByIdBrand(id);
 
+            ViewBag.TitleBrand = brand;
+
             return View("Brand", _products);
         }
-        //----------------------------------------------
-
-        /*
-         *We will retrieve the data by using AJAX requests. 
-         
-        [ActionName("related")]
-        [HttpPost]
-        public async Task<ActionResult> RelatedProducts()
-        {
-
-        }
-        */
         //----------------------------------------------
 
         /*
@@ -98,6 +88,8 @@ namespace LARWebSite.Controllers
             {
                 _viewModelProduct.Add(new ItemProductModel(_product));
             }
+
+            ViewBag.TitleCategory = category;
 
             return View("GetProductsByCategory", _viewModelProduct);
         }
