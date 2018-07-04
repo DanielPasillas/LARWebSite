@@ -367,7 +367,6 @@
     <Content Include="Views\Products\detailPartialViews\_temp.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\aboutPartialViews\_aboutMisionAndVision.cshtml" />
-    <Content Include="Views\Home\indexPartialViews\test_slider.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

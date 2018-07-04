@@ -1,4 +1,5 @@
 ﻿@model  LARWebSite.ViewModels.IndexViewModel
+@using LARWebSite.Utilerias
 
 @{
     ViewBag.Title = "La Red ";
@@ -8,9 +9,9 @@
 <!-- Import carousel css -->
 <link rel="stylesheet" href="~/Assets/css/flick-slider.css" media="screen">
 
-
 <!-- Landing page slider  -->
 @Html.Partial("indexPartialViews/_slider")
+<br />
 
 <!-- Categories Partial View  -->
 @Html.Partial("indexPartialViews/_indexCategoriesCarousel")
