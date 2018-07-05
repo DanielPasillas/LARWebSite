@@ -161,6 +161,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HtmlHelpersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -261,14 +262,14 @@
     <Content Include="Assets\images\brands\strike-pro.png" />
     <Content Include="Assets\images\brands\zoom.png" />
     <Content Include="Assets\images\categories\rods.jpg" />
+    <Content Include="Assets\images\cbk.jpg" />
     <Content Include="Assets\images\contact-landing-page.jpg" />
-    <Content Include="Assets\images\not-found.jpg" />
     <Content Include="Assets\images\product_b\LAR-001.jpg" />
     <Content Include="Assets\images\product_link\LAR-001.jpg" />
     <Content Include="Assets\images\red-logo.png" />
     <Content Include="Assets\images\slider\slide_1.jpg" />
     <Content Include="Assets\images\slider\slide1.jpg" />
-    <Content Include="Assets\images\sml-logo.png" />
+    <Content Include="Assets\images\small-logo-red.png" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\flick-slider.js" />
@@ -352,7 +353,7 @@
     <Content Include="Views\Home\indexPartialViews\_brands.cshtml" />
     <Content Include="Views\Home\indexPartialViews\_categories.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Offers.cshtml" />
+    <Content Include="Views\Home\Galeria.cshtml" />
     <Content Include="Views\Home\indexPartialViews\_slider.cshtml" />
     <Content Include="Views\Home\indexPartialViews\_indexNewProducts.cshtml" />
     <Content Include="Views\Home\indexPartialViews\_indexCategoriesCarousel.cshtml" />
@@ -370,6 +371,7 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\aboutPartialViews\_aboutMisionAndVision.cshtml" />
     <Content Include="Views\Search\Category.cshtml" />
+    <Content Include="Views\HtmlHelpers\GetHtmlResponseByCategoryId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

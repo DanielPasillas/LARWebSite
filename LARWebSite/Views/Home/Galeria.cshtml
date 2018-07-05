@@ -1,0 +1,97 @@
+﻿@model IEnumerable<LARWebSite.Models.MenuClasses.CategoriasModel>
+
+@{
+
+    int i = 0;
+
+    ViewBag.Title = "Galería de artículos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-success">
+        No se encontraron registros de categoría.
+    </div>
+}
+else
+{
+    <!-- shop 3col -->
+    <section id="shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 content-area">
+
+                    <!-- product filter by category -->
+                    <ul class="product-filter list-inline text-center">
+
+                        @foreach (var _categoryGroup in Model)
+                        {
+                            if (i == 0)
+                            {
+                                <li>
+                                    <a href="#" data-group="@_categoryGroup.IdCategoria" data-name="@_categoryGroup.NombreCategoria" class="active red-category-item-select">
+                                        @_categoryGroup.NombreCategoria
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a class="red-category-item-select" href="#" data-group="@_categoryGroup.IdCategoria" data-name="@_categoryGroup.NombreCategoria">@_categoryGroup.NombreCategoria</a></li>
+                            }
+
+                            i++;
+                        }
+                    </ul>
+
+                    <!-- / product filter -->
+                    <div id="grid" class="row">
+                       
+                        
+                       
+                    </div><!-- / row -->
+                </div><!-- / content-area -->
+            </div><!-- / row -->
+        </div><!-- / container -->
+    </section>
+    <!-- / shop 3col -->
+
+
+    @section scripts
+    {
+        <script>
+            (function () {
+                $(document).on("click", ".red-category-item-select", function (e) {
+                    'use strict';
+                    e.preventDefault();
+
+                    var _self = $(this);
+
+                    try {
+
+                        $("#grid").html('< div id = "preloader" ><div class="spinner spinner-round"></div></div >');
+
+                        $.ajax({
+                            url: window.location.origin + "/htmlhelpers/galleryfilter?id="+_self.attr("data-group")+"&category="+_self.attr("data-name"),
+                            type: 'post',
+                            cache: false,
+                            dataType: 'html',
+                            success: function (response) {
+                                $("#grid").html(response);
+                            },
+                            error: function (xhr, j, p) {
+                                console.log(xhr.responseText);
+                            }
+                        });
+                    } catch (e) {
+                        console.log("An exception occurred." + e);
+                    }
+                });
+            })();
+        </script>
+    }
+
+}
+
+        <br /><br />

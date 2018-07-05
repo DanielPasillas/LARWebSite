@@ -112,10 +112,22 @@ namespace LARWebSite.Controllers
         /* 
          *   Offers Page.
          */
-        [ActionName("offers")]
-        public ActionResult Offers()
+        [ActionName("gallery")]
+        public async Task<ActionResult> Galeria()
         {
-            return View();
+            //Get the list of categories.
+            //Everytime users clic on a category record, we will retrieve the products related with that category.
+            var _categories = await _dbContext.categories.ToArrayAsync();
+
+            //Initialize the category view model.
+            List<CategoriasModel> _viewModelCategories = new List<CategoriasModel>();
+
+            foreach(var _category in _categories)
+            {
+                _viewModelCategories.Add(new CategoriasModel(_category));
+            }
+
+            return View("Galeria", _viewModelCategories);
         }
         //----------------------------------------------
 
@@ -244,6 +256,7 @@ namespace LARWebSite.Controllers
             return PartialView("GetCategories", _viewListCategories);
         }
         //----------------------------------------------
+
 
     }
 }

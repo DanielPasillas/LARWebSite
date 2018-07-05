@@ -4,6 +4,17 @@
     font-family: 'Roboto', sans-serif;
 }
 
+
+/**  Img background style - About Section   **/
+.about-img-style{
+padding:10px;
+}
+
+.about-img-style img {
+    box-shadow: 1px 0px 3px rgba(0,0,0,0.3);
+}
+
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
