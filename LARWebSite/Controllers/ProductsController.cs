@@ -38,6 +38,18 @@ namespace LARWebSite.Controllers
             if (_product == null)
                 throw new HttpException(404, "Error 404, product not found.");
 
+            //We convert the product name to SEO URL, after that, we will make a validation.
+            string _expectedName = _product.nameProduct.ToSeoUrl();
+
+            //Validate if the expected name is actually the same that the given by the url.
+            string actualName = (name ?? "").ToLower();
+            
+            if( _expectedName != actualName )
+            {
+                //If the name is not the same, we will redirect to the right location by passing the name in a SEO format.
+                return RedirectToActionPermanent("detail", "products", new { id = _product.idProduct, code = _product.keyProduct, name = _expectedName });
+            }
+
             ProductModel _viewModelProduct = new ProductModel(_product);
 
             //Get the related products.
