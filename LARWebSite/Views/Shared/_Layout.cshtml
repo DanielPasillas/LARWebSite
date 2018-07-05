@@ -37,7 +37,7 @@
         <!-- Starts the menu setion  -->
         <div class="wsmenucontainer clearfix">
             <div id="overlapblackbg"></div>
-            <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"><img src="#" width="87" alt="" /></a> <a class="callusicon" href="tel:123456789"><span class="fa fa-phone"></span></a> </div>
+            <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"><img src="~/Assets/images/small-logo.png"  alt="" /></a> <a class="callusicon" href="tel:123456789"><span class="fa fa-phone"></span></a> </div>
             <div class="headtoppart clearfix">
                 <div class="headerwp">
                     <div class="headertopleft">
@@ -57,11 +57,13 @@
                                     <button class="btnstyle"><i class="searchicon fa fa-search" aria-hidden="true"></i></button>
                                 </form>
                             </li>
-                            <li><a href="/" class="active menuhomeicon"><i class="fa fa-home"></i><span class="mobiletext">Inicio</span></a></li>
+                            <li>
+                                <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" href="@Url.Action("index", "home")">Inicio</a>
+                            </li>
 
                             <!-- Who we are section -->
                             <li>
-                                <a href="@Url.Action("about", "home")">Quiénes somos</a>
+                                <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "about" ? "active" : "")" href="@Url.Action("about", "home")">Quiénes somos</a>
                             </li>
 
                             <!-- Load Dynamic Menu - Gallery  -->
@@ -69,7 +71,7 @@
 
                             <!-- Contact Section -->
                             <li>
-                                <a href="@Url.Action("contacto", "home")">Contacto</a>
+                                <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "contacto" ? "active" : "")" href="@Url.Action("contacto", "home")">Contacto</a>
                             </li>
 
                             <!-- Offers Section -->
@@ -79,22 +81,13 @@
                         </ul>
                     </nav>
                 </div>
-
-                <div class="wrapper" style="z-index:2147483647;">
-                    <div class="moreoption clearfix" style="margin-top:0px;">
-                        <div class="row">
-                            
-                        </div>
-                    </div>
-                </div>
                 <!--Menu HTML Code-->
             </div>
-            <br /><br />
         </div>
         <!-- Ends the menu section -->
         <!----------------------------->
 
-    </header><br /><br /><br />
+    </header>
    
 
     <!-- / header -->

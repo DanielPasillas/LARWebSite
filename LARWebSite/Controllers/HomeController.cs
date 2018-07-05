@@ -39,7 +39,6 @@ namespace LARWebSite.Controllers
             //------------------//
 
             //Get Categories Collage.
-            //At this point we only will take only 3 random records.
             string _queryRandomCategories = "SELECT idCategory, parentCategory, categoryName, Image FROM categories ORDER BY rand() LIMIT 3";
             var _categories = _dbContext.categories.SqlQuery(_queryRandomCategories).ToList<categories>();
 
@@ -53,6 +52,7 @@ namespace LARWebSite.Controllers
 
             //Get The new Products
             //We will take the newer products. Only 8 records.
+
             string _queryNewProducts = "SELECT idProduct, nameProduct, description, extendDescription, Image_link, idBrand, idCategory, idSubCategory, keyProduct," +
                                            " stock, discount, salePrice, wholesalePrice, limitWholeSalePrice, fecha_alta, status FROM products WHERE status = 1 ORDER BY fecha_alta DESC LIMIT 8";
             var _newProducts =  _dbContext.products.SqlQuery(_queryNewProducts).ToList<products>();

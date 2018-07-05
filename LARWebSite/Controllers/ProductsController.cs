@@ -74,6 +74,7 @@ namespace LARWebSite.Controllers
         }
         //----------------------------------------------
 
+        
         /*
          * We will retrieve the list if products by using the 
          * Category Id as parameter.

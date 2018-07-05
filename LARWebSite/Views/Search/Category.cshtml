@@ -1,0 +1,98 @@
+﻿@model IEnumerable<LARWebSite.Models.ItemProductModel>
+
+
+@{
+    ViewBag.Title = ViewBag.Title;
+
+}
+<br />
+<section id="shop">
+    <div class="page-header text-center wsub">
+        <h2>@ViewBag.title</h2>
+    </div><!--/ page-header -->
+    <hr />
+
+    @if (!Model.Any())
+    {
+        <div class="container">
+            <div class="alert alert-success">
+                No se encontraron productos para <i>@ViewBag.Title</i>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div class="container">
+            <!-- Filter Section -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="red-category-orderbyname">Ordenar artículos</label>
+                        <select id="red-category-orderbyname" class="selectpicker">
+                            <option>Menor precio</option>
+                            <option>Mayor precio</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <hr />
+        <!-- Ends filter section -->
+        <div class="container">
+            <div id="grid" class="row shuffle red-category-filter-product" style="position: relative; overflow: hidden; height: 1623.1px; transition: height 250ms ease-out;">
+
+                @foreach (var _product in Model)
+                {
+                    <!-- product -->
+                    <div class="col-xs-6 col-md-4 product shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; transition: transform 250ms ease-out, opacity 250ms ease-out;">
+                        <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto})" class="product-link"></a>
+                        <!-- / product-link -->
+                        <img src="~/Assets/images/product_link/@_product.ImagenDetalle" alt="@_product.NombreProducto">
+                        <!-- / product-image -->
+                        <!-- product-hover-tools -->
+                        <div class="product-hover-tools">
+                            <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto})" class="view-btn">
+                                <i class="lnr lnr-eye"></i>
+                            </a>
+                            <!--a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto})" class="add-to-cart">
+                                <i class="lnr lnr-cart"></i>
+                            </a-->
+                        </div><!-- / product-hover-tools -->
+                        <!-- product-details -->
+                        <div class="product-details">
+                            <h3 class="product-title">@_product.NombreProducto</h3>
+                            <h6 class="product-price">
+                                @if (_product.Descuento != 0)
+                                {
+                                    <del>$ @_product.Precio</del>
+                                    <span class="sale-price">$ @_product.PrecioDescuento</span>
+                                }
+                                else
+                                {
+                                    <span class="sale-price">$ @_product.Precio</span>
+                                }
+                            </h6>
+                        </div><!-- / product-details -->
+                    </div><!-- / product -->
+                }
+                <!-- grid-resizer -->
+                <div class="col-xs-6 col-md-4 shuffle_sizer shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; opacity: 1; transform: translate3d(266px, 1302px, 0px) scale3d(1, 1, 1); transition: transform 250ms ease-out, opacity 250ms ease-out;"></div>
+                <!-- / grid-resizer -->
+
+
+            </div><!-- / row -->
+        </div><!-- / container -->
+    }
+
+
+</section>
+<br /><br />
+
+@section scripts
+{
+    <script>
+
+    </script>
+}

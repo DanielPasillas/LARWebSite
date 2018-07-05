@@ -162,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -267,6 +268,7 @@
     <Content Include="Assets\images\red-logo.png" />
     <Content Include="Assets\images\slider\slide_1.jpg" />
     <Content Include="Assets\images\slider\slide1.jpg" />
+    <Content Include="Assets\images\sml-logo.png" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\flick-slider.js" />
@@ -367,6 +369,7 @@
     <Content Include="Views\Products\detailPartialViews\_temp.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\aboutPartialViews\_aboutMisionAndVision.cshtml" />
+    <Content Include="Views\Search\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
