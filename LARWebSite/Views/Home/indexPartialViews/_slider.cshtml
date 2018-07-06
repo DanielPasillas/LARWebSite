@@ -3,8 +3,8 @@
 <div class="main-gallery">
     @foreach (var slide in Model.Carousel)
     {
-    <div class="gallery-cell">
-        <img src="~/Assets/images/slider/@slide.Imagen" alt="@slide.Imagen" />
+    <div  class="gallery-cell" style="background:url(../../../Assets/images/slider/@slide.Imagen);">
+
     </div>
     }
 </div>
