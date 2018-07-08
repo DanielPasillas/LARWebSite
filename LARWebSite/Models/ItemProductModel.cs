@@ -1,4 +1,5 @@
 ﻿using System;
+using LARWebSite.Utilerias;
 using LARWebSite.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace LARWebSite.Models
 
         public ItemProductModel(products _product)
         {
-            this.IdProducto = _product.idProduct;
+            this.IdProducto =  _product.idProduct;
             this.NombreProducto = _product.nameProduct;
             this.Precio = _product.salePrice;
             this.Descuento = _product.discount;

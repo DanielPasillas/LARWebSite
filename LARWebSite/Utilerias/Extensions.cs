@@ -27,10 +27,10 @@ namespace LARWebSite.Utilerias
 
         
         //Get the products by looking for the Id brand.
-        public static async Task<IEnumerable<ProductModel>> ProductsByIdBrand(this dbContextLAR context, int idBrand)
+        public static async Task<IEnumerable<products>> ProductsByIdBrand(this dbContextLAR context, int idBrand)
         {
             //Get the products filtered by the brand id.
-            var _products = await context.products
+           return await context.products
                 .Include("brands")
                 .Include("categories")
                 .Include("subcategories")
@@ -38,17 +38,6 @@ namespace LARWebSite.Utilerias
                 .Include("sizes_product")
                 .Include("product_label")
                 .Where(m => m.idBrand == idBrand).ToListAsync();
-
-
-            List<ProductModel> _viewModelProduct = new List<ProductModel>();
-
-            foreach(var _product in _products)
-            {
-                _viewModelProduct.Add(new ProductModel(_product));
-            }
-
-            //We will search the product by using the code field.
-            return _viewModelProduct;
         }
         //-------------------------------------------------------------------------
 

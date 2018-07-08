@@ -74,41 +74,7 @@ namespace LARWebSite.Controllers
         }
         //----------------------------------------------
 
-        [ActionName("brand")]
-        public async Task<ActionResult> Brand(int id, string brand)
-        {
-            //Get the products filtered by the brand id.
-            var _products = await _dbContext.ProductsByIdBrand(id);
-
-            ViewBag.TitleBrand = brand;
-
-            return View("Brand", _products);
-        }
-        //----------------------------------------------
-
         
-        /*
-         * We will retrieve the list if products by using the 
-         * Category Id as parameter.
-         */
-        [ActionName("category")]
-        public async Task<ActionResult> GetProductsByCategory(int id, string category)
-        {
-            var _products = await _dbContext.products.Where(m => m.idCategory == id).ToListAsync();
-
-            List<ItemProductModel> _viewModelProduct = new List<ItemProductModel>();
-
-            foreach(var _product in _products)
-            {
-                _viewModelProduct.Add(new ItemProductModel(_product));
-            }
-
-            ViewBag.TitleCategory = category;
-
-            return View("GetProductsByCategory", _viewModelProduct);
-        }
-        //----------------------------------------------
-
 
 
     }

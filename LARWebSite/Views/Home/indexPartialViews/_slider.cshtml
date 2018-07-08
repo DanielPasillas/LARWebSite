@@ -1,10 +1,11 @@
 ﻿@model  LARWebSite.ViewModels.IndexViewModel
 
+
 <div class="main-gallery">
     @foreach (var slide in Model.Carousel)
     {
-    <div  class="gallery-cell" style="background:url('../../../Assets/images/slider/@slide.Imagen'); no-repeat center center">
-    </div>
+        <div class="gallery-cell" style="background:url('../../../Assets/images/slider/@slide.Imagen'); no-repeat center center">
+        </div>
     }
 </div>
 

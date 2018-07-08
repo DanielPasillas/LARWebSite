@@ -2,13 +2,13 @@
 @using LARWebSite.Utilerias
 
 @{
-    ViewBag.Title = ViewBag.Title;
+    ViewBag.Title = ViewBag.BrandTitle;
 
 }
 <br />
 <section id="shop">
     <div class="page-header text-center wsub">
-        <h2>@ViewBag.title</h2>
+        <h2>@ViewBag.BrandTitle</h2>
     </div><!--/ page-header -->
     <hr />
 
@@ -16,7 +16,7 @@
     {
         <div class="container">
             <div class="alert alert-success">
-                No se encontraron productos para <i>@ViewBag.Title</i>
+                No se encontraron productos para <i>@ViewBag.BrandTitle</i>
             </div>
         </div>
 
@@ -25,7 +25,7 @@
     {
         <!-- Ends filter section -->
         <div class="container">
-            <div id="grid" class="row shuffle red-category-filter-product" style="position: relative; overflow: hidden; height: 1623.1px; transition: height 250ms ease-out;">
+            <div id="grid" class="row shuffle red-brand-filter-product" style="position: relative; overflow: hidden; height: 1623.1px; transition: height 250ms ease-out;">
 
                 @foreach (var _product in Model)
                 {
@@ -85,5 +85,5 @@
 
 @section scripts
 {
- 
+
 }
