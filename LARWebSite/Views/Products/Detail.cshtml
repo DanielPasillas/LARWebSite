@@ -1,10 +1,10 @@
 ﻿@model LARWebSite.ViewModels.ProductDetailViewModel
+@using LARWebSite.Utilerias
 
 @{
     ViewBag.Title = Model.Producto.NombreProducto;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <!-- Product Detail  -->
 @Html.Partial("detailPartialViews/_detailProductView")
@@ -15,6 +15,7 @@
 
 @section scripts
 {
+    
     <script src="~/Assets/js/jquery.elevate.zoom.js"></script>
     <script>
 
@@ -23,3 +24,4 @@
 
     </script>
 }
+    

@@ -1,0 +1,33 @@
+﻿@model LARWebSite.ViewModels.ProductDetailViewModel
+
+@{
+    string _default = Model.Producto.CodigoProducto + ".jpg";
+}
+
+<div class="zoom-wrapper">
+    <div class="zoom-left">
+
+        <img  class="zoom-img" id="zoom_03"
+             src="~/Assets/images/product_b/@_default"
+             data-zoom-image="/Assets/images/product_b/@_default"
+             width="100" />
+        <div id="gallery_01" style="width:500px;float:left;">
+
+
+
+            @foreach (var _imgProduct in Model.Producto.Imagenes)
+            {
+                <a href="#" class="elevatezoom-gallery active" data-update=""
+                   data-image="/Assets/images/product_b/@_imgProduct.Image_b"
+                   data-zoom-image="/Assets/images/product_b/@_imgProduct.Image_b">
+                    <img src="/Assets/images/product_b/@_imgProduct.Image_b"
+                         width="100" />
+                </a>
+            }
+
+
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+   
+</div>

@@ -256,10 +256,10 @@ textarea {
         text-decoration: none;
     }
 
-    .buttoncolor03:focus {
-        color: #fff;
-        text-decoration: none;
-    }
+.buttoncolor03:focus {
+    color: #fff;
+    text-decoration: none;
+}
 
 .headertlt {
     width: 100%;
@@ -543,6 +543,6 @@ body {
 .gallery-cell {
     width: 100%;
     height: 340px;
-   
+  
 }
 

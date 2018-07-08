@@ -372,6 +372,7 @@
     <Content Include="Views\Home\aboutPartialViews\_aboutMisionAndVision.cshtml" />
     <Content Include="Views\Search\Category.cshtml" />
     <Content Include="Views\HtmlHelpers\GetHtmlResponseByCategoryId.cshtml" />
+    <Content Include="Views\Products\detailPartialViews\TempForSaving.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

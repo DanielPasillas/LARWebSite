@@ -1,4 +1,5 @@
 ﻿@model LARWebSite.ViewModels.ProductDetailViewModel
+@using LARWebSite.Utilerias
 
 <!-- Show the related products -->
 <section id="related-products">
@@ -11,13 +12,13 @@
         {
             <!-- product -->
             <div class="col-xs-6 col-md-3 product">
-                <a href="@Url.Action("detail", "products", new { id = _relatedProduct.IdProducto, code = _relatedProduct.Codigo, name = _relatedProduct.NombreProducto })" class="product-link"></a>
+                <a href="@Url.Action("detail", "products", new { id = _relatedProduct.IdProducto, code = _relatedProduct.Codigo, name = _relatedProduct.NombreProducto.ToSeoUrl() })" class="product-link"></a>
                 <!-- / product-link -->
                 <img src="~/Assets/images/product_link/@_relatedProduct.ImagenDetalle" alt="">
                 <!-- / product-image -->
                 <!-- product-hover-tools -->
                 <div class="product-hover-tools">
-                    <a href="@Url.Action("detail", "products", new { id = _relatedProduct.IdProducto, code = _relatedProduct.Codigo, name = _relatedProduct.NombreProducto })" class="view-btn">
+                    <a href="@Url.Action("detail", "products", new { id = _relatedProduct.IdProducto, code = _relatedProduct.Codigo, name = _relatedProduct.NombreProducto.ToSeoUrl() })" class="view-btn">
                         <i class="lnr lnr-eye"></i>
                     </a>
                     <!--a href="shopping-cart.html" class="add-to-cart">

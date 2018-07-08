@@ -56,7 +56,7 @@ namespace LARWebSite.Controllers
             List<ItemProductModel> _viewModelProductList = new List<ItemProductModel>();
 
             //Get the list of products.
-            var _productList = await _dbContext.GetRelatedProducts(_viewModelProduct.IdMarca, _viewModelProduct.IdCategoria, _viewModelProduct.IdSubCategoria);
+            var _productList =  _dbContext.GetRelatedProducts(_viewModelProduct.IdMarca, _viewModelProduct.IdCategoria, _viewModelProduct.IdSubCategoria);
 
             foreach (var _listProducts in _productList)
             {

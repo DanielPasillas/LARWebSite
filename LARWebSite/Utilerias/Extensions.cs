@@ -52,12 +52,12 @@ namespace LARWebSite.Utilerias
         }
         //-------------------------------------------------------------------------
 
-        public static async Task<IEnumerable<products>> GetRelatedProducts(this dbContextLAR context, long idBrand, long idCategory, long idSubcategory)
+        public static IEnumerable<products> GetRelatedProducts(this dbContextLAR context, long idBrand, long idCategory, long idSubcategory)
         {
-            return await context.products
-                .Include("images")
-                .Where(m => m.idBrand == idBrand || m.idCategory == idCategory || m.idSubCategory == idSubcategory)
-                .Take(4).ToListAsync();
+
+            string _sqlRelatedProducts = "SELECT idProduct, nameProduct, description, extendDescription, Image_link, idBrand, idCategory, idSubCategory, keyProduct, stock, discount, salePrice, wholesalePrice, limitWholeSalePrice, fecha_alta, status FROM products WHERE products.status = 1 AND (products.idBrand = " + idBrand + " OR products.idCategory = " + idCategory + " OR products.idSubCategory = " + idSubcategory + ") ORDER BY rand() LIMIT 4";
+
+            return context.products.SqlQuery(_sqlRelatedProducts).ToList<products>();                
         }
         //-------------------------------------------------------------------------
     }
