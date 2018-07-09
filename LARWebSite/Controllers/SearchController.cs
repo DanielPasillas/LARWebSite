@@ -57,7 +57,7 @@ namespace LARWebSite.Controllers
 
             if(_expectedBrandName != actualBrandName)
             {
-                //If the brand name is not the same, we will redirect to the right location by passing the name in a SEO format.
+                //If the brand name is not the same, we will redirect to the proper location by passing the name in a SEO format.
                 return RedirectToActionPermanent("brand", "search", new { id = _brand.idBrand, name = _expectedBrandName });
             }
 
@@ -65,9 +65,10 @@ namespace LARWebSite.Controllers
             ViewBag.BrandTitle = _brand.Brand;
             ViewBag.BrandTitleAjax = _expectedBrandName;
             ViewBag.idCode = _brand.idBrand;
+            ViewBag.recordsTake = 9;
 
             //Get the products by IdBrand.
-            var productsByBrand = await _dbContext.ProductsByIdBrand(id);
+            var productsByBrand =  _dbContext.ProductsByIdBrand(id, 9);
 
             //View model for saving the products.
             List<ItemProductModel> _viewModelProducts = new List<ItemProductModel>();
@@ -81,6 +82,40 @@ namespace LARWebSite.Controllers
 
         }
         //----------------------------
+
+        [ActionName("brandrecords")]
+        [HttpPost]
+        public ActionResult BrandProductSearch(int id, string name, int records)
+        {
+            if(Request.IsAjaxRequest())
+            {
+                int _take = records + 9;
+
+                //Get the products by IdBrand.
+                var productsByBrand = _dbContext.ProductsByIdBrand(id, _take);
+
+                //Otherwise, set the name of the brand in a ViewBag variable
+                ViewBag.BrandTitleAjax = name;
+                ViewBag.idCode = id;
+                ViewBag.recordsTake = _take;
+
+                //View model for saving the products.
+                List<ItemProductModel> _viewModelProducts = new List<ItemProductModel>();
+
+                foreach (var _product in productsByBrand)
+                {
+                    _viewModelProducts.Add(new ItemProductModel(_product));
+                }
+
+
+                return PartialView("_brandProductsSearch/_serverRenderBrandsView", _viewModelProducts);
+            }
+            else
+            {
+                throw new HttpException(404, "Not Ajax Request");
+            }
+        }
+
 
 
     }

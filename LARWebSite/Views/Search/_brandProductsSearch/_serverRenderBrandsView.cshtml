@@ -1,1 +1,53 @@
-﻿
+﻿@model IEnumerable<LARWebSite.Models.ItemProductModel>
+@using LARWebSite.Utilerias
+
+    <!-- Partial view, will be loades as in the ajax mode as in the server render mode -->
+    <div id="grid" class="row shuffle red-brand-filter-product" style="position: relative; overflow: hidden; height: 1623.1px; transition: height 250ms ease-out;">
+
+        @foreach (var _product in Model)
+        {
+            <!-- product -->
+            <div class="col-xs-6 col-md-4 product shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; transition: transform 250ms ease-out, opacity 250ms ease-out;">
+                <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl()})" class="product-link"></a>
+                <!-- / product-link -->
+                <img src="~/Assets/images/product_link/@_product.ImagenDetalle" alt="@_product.NombreProducto">
+                <!-- / product-image -->
+                <!-- product-hover-tools -->
+                <div class="product-hover-tools">
+                    <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl()})" class="view-btn">
+                        <i class="lnr lnr-eye"></i>
+                    </a>
+
+                    <!--a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl()})" class="add-to-cart">
+                        <i class="lnr lnr-cart"></i>
+                    </a-->
+                </div><!-- / product-hover-tools -->
+                <!-- product-details -->
+                <div class="product-details">
+                    <h3 class="product-title">@_product.NombreProducto</h3>
+                    <h6 class="product-price">
+                        @if (_product.Descuento != 0)
+                        {
+                            <del>$ @_product.Precio</del>
+                            <span class="sale-price">$ @_product.PrecioDescuento</span>
+                        }
+                        else
+                        {
+                            <span class="sale-price">$ @_product.Precio</span>
+                        }
+                    </h6>
+                </div><!-- / product-details -->
+            </div><!-- / product -->
+        }
+        <!-- grid-resizer -->
+        <div class="col-xs-6 col-md-4 shuffle_sizer shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; opacity: 1; transform: translate3d(266px, 1302px, 0px) scale3d(1, 1, 1); transition: transform 250ms ease-out, opacity 250ms ease-out;"></div>
+        <!-- / grid-resizer -->
+    </div><!-- / row -->
+    <hr />
+    <div class="row">
+        <div class="col-md-12" style="text-align:center;">
+            <a href="#" role="button" data-total-records="@ViewBag.recordsTake" data-brand-id="@ViewBag.idCode" data-brand-name="@ViewBag.BrandTitleAjax" class="btn btn-lg btn-success-filled red-btn-brand-load-records">
+                Ver más productos
+            </a>
+        </div>
+    </div>
