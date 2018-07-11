@@ -173,6 +173,7 @@
     <Compile Include="Models\categories.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\dbContextLAR.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -335,7 +336,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -376,6 +379,7 @@
     <Content Include="Views\Search\_brandProductsSearch\_serverRenderBrandsView.cshtml" />
     <Content Include="Views\Search\_brandProductsSearch\_ajaxRenderBrandsView.cshtml" />
     <Content Include="Views\Search\BrandProductSearch.cshtml" />
+    <Content Include="Views\Home\contactPartialViews\_contactInformationSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -85,9 +85,8 @@
                 </div>
 
                 <div class="wrapper">
-                    <div class="moreoption clearfix">
+                    <div class="moreoption clearfix" style="height:0;margin-top:0;z-index:1;background:red;">
                          <div class="colorlink01 clearfix">
-                             
                          </div>
                     </div>
                 </div>
@@ -106,8 +105,10 @@
     <!-- categories -->
     <!-- rendered body section -->
     
-    @RenderBody()
-       
+    <div>
+        @RenderBody()
+    </div>
+
     <!-- ends the rendered body section  -->
     <!-- footer -->
     <footer class="dark-footer">

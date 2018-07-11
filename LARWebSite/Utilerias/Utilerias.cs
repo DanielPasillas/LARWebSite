@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Net.Mail;
+using System.Net;
 
 namespace LARWebSite.Utilerias
 {
@@ -36,4 +39,46 @@ namespace LARWebSite.Utilerias
         //---------------------------
     }
     //---------------------------
+
+    public class Utilerias
+    {
+        public bool SendEmailAsync(string emailFrom, string nombre, string mailbody)
+        {
+            
+
+            System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
+
+            msg.To.Add("asis.analytic@gmail.com");
+
+            msg.From = new MailAddress(emailFrom, nombre, System.Text.Encoding.UTF8);
+
+            msg.Subject = "La Red Caza y Pesca WebSite - Contacto";
+
+            msg.SubjectEncoding = System.Text.Encoding.UTF8;
+
+            msg.Body = mailbody;
+
+            msg.BodyEncoding = System.Text.Encoding.UTF8;
+
+            msg.IsBodyHtml = false;
+
+            //Aquí es donde se hace lo especial
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new System.Net.NetworkCredential("asis.analytic@gmail.com", "asis.analytics.333");
+            client.Port = 25;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true; //Esto es para que vaya a través de SSL que es obligatorio con GMail
+            try
+            {
+                client.Send(msg);
+            }
+            catch (System.Net.Mail.SmtpException)
+            {
+                throw;
+            }
+
+            return true;
+
+        }
+    }
 }

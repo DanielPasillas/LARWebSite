@@ -1,8 +1,11 @@
-﻿@{
+﻿@model LARWebSite.Models.ContactModel
+
+@{
     ViewBag.Title = "Contacto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!-- Contact Header section -->
 <div id="page-header" class="contact">
     <div class="container">
         <div class="page-header-content text-center">
@@ -14,45 +17,8 @@
     </div><!-- / container -->
 </div><!-- / page-header -->
 <!-- contact -->
-<section id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 contact-details">
-                <h4>Teléfono</h4>
-                <p><a href="#">+52 449 918 6217</a></p>
-
-                <h4 class="space-top">Dirección</h4>
-                <p><a href="mailto:press@yoursite.com">Victoria 705, Centro, 20000 Aguascalientes.</a></p>
-                <h4 class="space-top">Correo</h4>
-                <p><a href="mailto:orders@yoursite.com">lared@gmail.com</a></p>
-            </div>
-
-            <div class="col-sm-6 form-container">
-                <!-- contact form -->
-                <div id="contact-form-1">
-                    <form id="contactForm" data-toggle="validator">
-                        <div class="form-group">
-                            <input style="min-width:100%;" type="text" class="form-control" id="name" placeholder="Nombre completo" required autocomplete="off">
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <input style="min-width:100%;" type="email" class="form-control" id="email" placeholder="Correo electrónico" required autocomplete="off">
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <textarea style="min-width:100%;" id="message" class="form-control" rows="5" placeholder="Comentarios" required autocomplete="off"></textarea>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <button type="submit" id="form-submit" class="btn btn-md btn-primary-filled btn-form-submit btn-rounded">Enviar mensaje</button>
-                        <div id="msgSubmit" class="h3 text-center hidden"></div>
-                        <div class="clearfix"></div>
-                    </form>
-                </div><!-- / contact form -->
-            </div><!-- / form-container -->
-
-        </div><!-- / row -->
-    </div><!-- / container -->
-</section>
+<!-- Partial View Contact Information Section -->
+@Html.Partial("contactPartialViews/_contactInformationSection")
 
 <!-- map -->
 <div id="map"></div>
@@ -82,4 +48,7 @@
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+    <!-- ////////////////////////////////////////////////////////////  -->
+
+    @Scripts.Render("~/bundles/jqueryval")
 }

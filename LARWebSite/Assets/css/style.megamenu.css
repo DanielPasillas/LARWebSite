@@ -597,9 +597,13 @@
 }
 
 .halfmenu {
-  width: 40%;
-  right: auto !important;
-  left: auto !important;
+    width: 40%;
+    right: auto !important;
+    left: auto !important;
+    position:fixed;
+    top:auto;
+    transition:all 0.189s;
+    z-index: 10000000;
 }
 
 .halfmenu .megacollink {

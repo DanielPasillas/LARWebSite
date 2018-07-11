@@ -1,4 +1,5 @@
 ﻿using System;
+using LARWebSite.Utilerias;
 using System.Data.Entity;
 using LARWebSite.Models;
 using LARWebSite.Models.MenuClasses;
@@ -16,9 +17,13 @@ namespace LARWebSite.Controllers
 
         private readonly dbContextLAR _dbContext;
 
+        private Utilerias.Utilerias _utilerias;
+
         public HomeController()
         {
             _dbContext = new dbContextLAR();
+
+            _utilerias = new Utilerias.Utilerias();
         }
         //----------------------------------------------
 
@@ -98,6 +103,38 @@ namespace LARWebSite.Controllers
             return View("Contacto");
         }
         //----------------------------------------------
+
+        /* 
+         *   We use this method to send the contact information
+         */
+        [ActionName("contact")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Contact(ContactModel _viewModelContact)
+        {
+            //If model is invalid
+            if (!ModelState.IsValid)
+                return View("contact", _viewModelContact);
+
+            //Otherwise
+            try
+            {
+                bool isSent =  _utilerias.SendEmailAsync(_viewModelContact.EmailContacto, _viewModelContact.NombreContacto, _viewModelContact.ComentarioContacto);
+
+                if (!isSent)
+                    return Content("An error occurred while sending the Email");
+
+                //Otherwise
+                return Content("The message was successfully sent");
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+
+            
+        }
 
         /* 
          *   About Page.
