@@ -44,8 +44,34 @@ namespace LARWebSite.Utilerias
     {
         public bool SendEmailAsync(string emailFrom, string nombre, string mailbody)
         {
-            
 
+            try
+            {
+                MailMessage _sendMessage = new MailMessage(emailFrom, "asis.analytic@gmail.com");
+                _sendMessage.Subject = "La Red Caza y Pesca - WebSite Contacto";
+                _sendMessage.Body = mailbody;
+                _sendMessage.IsBodyHtml = false;
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+
+                NetworkCredential _nc = new NetworkCredential("asis.analytic@gmail.com", "asis.analytics.333");
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = _nc;
+                smtp.Send(_sendMessage);
+
+            }
+            catch (System.Net.Mail.SmtpException)
+            {
+
+                throw;
+            }
+
+
+            return true;
+            /*
             System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
 
             msg.To.Add("asis.analytic@gmail.com");
@@ -78,7 +104,7 @@ namespace LARWebSite.Utilerias
             }
 
             return true;
-
+            */
         }
     }
 }
