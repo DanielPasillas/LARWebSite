@@ -43,6 +43,19 @@ namespace LARWebSite.Utilerias
         }
         //-------------------------------------------------------------------------
 
+        public static async Task<IEnumerable<products>> GetProductsBySubCategoryId(this dbContextLAR context, int idSubCategory)
+        {
+            return await context.products
+                        .Include("brands")
+                        .Include("categories")
+                        .Include("subcategories")
+                        .Include("images")
+                        .Include("sizes_product")
+                        .Include("product_label")
+                        .Where(m => m.idSubCategory == idSubCategory).ToListAsync();
+        }
+        //-------------------------------------------------------------------------
+
         public static IEnumerable<products> GetRelatedProducts(this dbContextLAR context, long idBrand, long idCategory, long idSubcategory)
         {
 

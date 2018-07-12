@@ -1,0 +1,17 @@
+﻿@model IEnumerable<LARWebSite.Models.ItemProductModel>
+
+
+@{
+    ViewBag.Title = ViewBag.SubCategoryTitle ;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>
+    @ViewBag.SubCategoryTitle
+</h2>
+
+@foreach(var itemProduct in Model)
+{
+    <h3>@itemProduct.NombreProducto</h3>
+}
+

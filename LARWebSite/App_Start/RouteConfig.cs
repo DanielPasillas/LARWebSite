@@ -13,10 +13,17 @@ namespace LARWebSite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Custom Route for list products by SubCategory.
+            routes.MapRoute(
+                name: "SubCategorySearchFilter",
+                url: "search/{action}/{id}/{nameSubCategory}",
+                defaults: new { controller = "Search", action = "filtersubcategory", id = UrlParameter.Optional, nameSubCategory = UrlParameter.Optional }
+            );
+
             //Custom Route for list accessing to the categories path.
             routes.MapRoute(
                 name: "ProductsByCategories",
-                url: "Search/{action}/{id}/{category}",
+                url: "search/{action}/{id}/{category}",
                 defaults: new { controller = "Search", action = "Category", id = UrlParameter.Optional, category = UrlParameter.Optional }
             );
 

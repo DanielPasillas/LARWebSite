@@ -42,7 +42,9 @@ namespace LARWebSite.Controllers
         }
         //----------------------------
 
-        
+        /*
+         *  Search products by using the brand Id.
+         */
         [ActionName("brand")]
         public async Task<ActionResult> BrandProductSearch(int id, string name)
         {
@@ -115,6 +117,56 @@ namespace LARWebSite.Controllers
                 throw new HttpException(404, "Not Ajax Request");
             }
         }
+        //----------------------------
+
+        
+        /*
+         * Method for showing the products by subcategory Id.
+         */
+        [ActionName("filtersubcategory")]
+        public async Task<ActionResult> GetProductsBySubCategory(int id, string nameSubCategory)
+        {
+
+            //--------------------------------------//
+            // VALIDATE SEO SECTIO  FOR URL //.
+
+            var _subCategory = await _dbContext.subcategories.FirstOrDefaultAsync(m => m.idSubCategory == id);
+
+            if (_subCategory == null)
+                throw new HttpException(404, "SubCategory not Found");
+
+            string _expectedSubCategoryname = _subCategory.subCategoryName.ToLower();
+
+            string actualCategoryName = (nameSubCategory ?? "").ToLower();
+
+            if (_expectedSubCategoryname != actualCategoryName)
+            {
+                //If the brand name is not the same, we will redirect to the proper location by passing the name in a SEO format.
+                return RedirectToActionPermanent("filtersubcategory", "search", new { id = _subCategory.idSubCategory, nameSubCategory = _expectedSubCategoryname });
+            }
+
+            //Get the list of products by using the SubCategory Id as a parameter.
+            var _productsByCategory = await _dbContext.GetProductsBySubCategoryId(id);
+            
+            //We throw an exception if the product was not found
+            if (_productsByCategory == null)
+                throw new HttpException(404, "Product not found");
+
+            //Display names
+            ViewBag.SubCategoryTitle = _subCategory.subCategoryName;
+
+            List<ItemProductModel> _viewModelProducts = new List<ItemProductModel>();
+
+            foreach(var product in _productsByCategory)
+            {
+                _viewModelProducts.Add(new ItemProductModel(product));
+            }
+            //------------------------------------------
+
+
+            return View("GetProductsBySubCategory", _viewModelProducts);
+        }
+        //----------------------------
 
 
 
