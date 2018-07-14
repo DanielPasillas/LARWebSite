@@ -144,7 +144,7 @@
 }
 
 .topmenusearch input:focus {
-  color: #fff;
+  color: #fff !important;
   width: 240px;
 }
 

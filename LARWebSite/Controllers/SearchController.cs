@@ -171,11 +171,19 @@ namespace LARWebSite.Controllers
         /*
          * Typehaead functionality 
          */
-        /*[HttpPost]
-        public async Task<JsonResult> AutocompleteSearchFilter()
+        [HttpGet]
+        [ActionName("autocomplete")]
+        public async Task<JsonResult> AutocompleteSearchFilter(string query)
         {
-            return null;
-        }*/
+            
+            var result = await (from e in _dbContext.products
+                          where e.nameProduct.StartsWith(query)
+                          select e.nameProduct).ToListAsync();//_list.Where(m => m.NombreProducto.Contains(query)).ToList();
+
+            
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         //----------------------------
 
     }

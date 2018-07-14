@@ -56,8 +56,7 @@
                             <li class="rightmenu">
                                 @using (Html.BeginForm("search", "products", FormMethod.Get, new { @class = "topmenusearch", @id = "red-form-search" }))
                                 {
-
-                                    <input placeholder="Buscar productos..." name="keywords" autocomplete="off" class="red-search-input">
+                                    <input placeholder="Buscar productos..." name="keywords" autocomplete="off" class="red-search-input js-typeahead">
                                     <button class="btnstyle"><i class="searchicon fa fa-search" aria-hidden="true"></i></button>
                                 }
 

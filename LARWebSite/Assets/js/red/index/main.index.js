@@ -30,8 +30,6 @@
 
 /* Autocompletion for searching */
 (function () {
-
-    
-
+   
 })();
 
