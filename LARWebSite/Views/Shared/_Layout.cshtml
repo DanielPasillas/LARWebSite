@@ -54,10 +54,13 @@
                     <nav class="wsmenu clearfix">
                         <ul class="mobile-sub wsmenu-list">
                             <li class="rightmenu">
-                                <form class="topmenusearch">
-                                    <input placeholder="Buscar productos..." autocomplete="off">
+                                @using (Html.BeginForm("search", "products", FormMethod.Get, new { @class = "topmenusearch", @id = "red-form-search" }))
+                                {
+
+                                    <input placeholder="Buscar productos..." name="keywords" autocomplete="off" class="red-search-input">
                                     <button class="btnstyle"><i class="searchicon fa fa-search" aria-hidden="true"></i></button>
-                                </form>
+                                }
+
                             </li>
                             <li>
                                 <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" href="@Url.Action("index", "home")">Inicio</a>
@@ -86,25 +89,25 @@
 
                 <div class="wrapper">
                     <div class="moreoption clearfix" style="height:0;margin-top:0;z-index:1;background:red;">
-                         <div class="colorlink01 clearfix">
-                         </div>
+                        <div class="colorlink01 clearfix">
+                        </div>
                     </div>
                 </div>
                 <!--Menu HTML Code-->
             </div>
-            
+
         </div>
         <!-- Ends the menu section -->
         <!----------------------------->
 
     </header>
-   
+
 
     <!-- / header -->
     <!-- content -->
     <!-- categories -->
     <!-- rendered body section -->
-    
+
     <div>
         @RenderBody()
     </div>
@@ -172,6 +175,7 @@
     <!-- / footer -->
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/red-library")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <!-- javascript -->

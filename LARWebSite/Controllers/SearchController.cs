@@ -21,7 +21,7 @@ namespace LARWebSite.Controllers
         //-----------------------
 
         /*
-         * We will retrieve the list if products by using the 
+         * We will retrieve the list of products by using the 
          * Category Id as parameter.
          */
         [ActionName("category")]
@@ -168,7 +168,15 @@ namespace LARWebSite.Controllers
         }
         //----------------------------
 
-
+        /*
+         * Typehaead functionality 
+         */
+        /*[HttpPost]
+        public async Task<JsonResult> AutocompleteSearchFilter()
+        {
+            return null;
+        }*/
+        //----------------------------
 
     }
 }

@@ -125,7 +125,7 @@ namespace LARWebSite.Controllers
                     return Content("An error occurred while sending the Email");
 
                 //Otherwise
-                return Content("The message was successfully sent");
+                return View("_SentContactSuccessful");
             }
             catch (Exception e)
             {
@@ -133,6 +133,7 @@ namespace LARWebSite.Controllers
                 throw;
             }
         }
+        //----------------------------------------------
 
         /* 
          *   About Page.

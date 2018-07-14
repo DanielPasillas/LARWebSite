@@ -74,7 +74,37 @@ namespace LARWebSite.Controllers
         }
         //----------------------------------------------
 
-        
+
+        [ActionName("search")]
+        [HttpGet]
+        public ActionResult SearchFilterProducts(string keywords)
+        {
+            //Check is the query is empty
+            if(String.IsNullOrWhiteSpace(keywords))
+            {
+                var _viewModelProduct = new List<ItemProductModel>();
+
+                ViewBag.TitleKeyWords = keywords;
+                return View("SearchFilterProducts", _viewModelProduct);
+
+            }
+            //--------------------------------------------------------
+                
+            var _productSearch = _dbContext.ProductSearch(keywords);
+
+            List<ItemProductModel> _viewModelProducts = new List<ItemProductModel>();
+
+            foreach (var _product in _productSearch)
+            {
+                _viewModelProducts.Add(new ItemProductModel(_product));
+            }
+
+            ViewBag.TitleKeyWords = keywords;
+
+            return View("SearchFilterProducts", _viewModelProducts);
+        }
+        //----------------------------
+
 
 
     }

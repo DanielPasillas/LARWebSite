@@ -16,8 +16,8 @@ namespace LARWebSite
                         "~/Scripts/jquery.validate*"));
 
             //Bundle for product visualizerdetail.
-            bundles.Add(new ScriptBundle("~/bundles/visualizer").Include(
-                       "~/Assets/js/red/products/visualizer.detail.js"));
+            bundles.Add(new ScriptBundle("~/bundles/red-library").Include(
+                       "~/Assets/js/red/index/main.index.js"));
 
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.

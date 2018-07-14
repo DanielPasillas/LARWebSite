@@ -64,5 +64,35 @@ namespace LARWebSite.Utilerias
             return context.products.SqlQuery(_sqlRelatedProducts).ToList<products>();                
         }
         //-------------------------------------------------------------------------
+
+        
+        /*
+         *  WE USE THIS METHOD FOR SEARCHING PRODUCTS
+         */
+        public static IEnumerable<products> ProductSearch(this dbContextLAR context, string query)
+        {
+            //search order
+            //1. Look for the related tables.
+            //2. Brands. 
+            //3. Categories => Señuelos, Cañas, Carretes, etc.
+            //4. Sub Categories => Cucharillas, Jigs, Plásticos, etc...
+            //5. Labels => plasticos, curricanes, agua dulce, etc...
+            //6. At the end
+
+            string _searchQuery = "(SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products" +
+                " INNER JOIN(SELECT brands.idBrand FROM brands WHERE MATCH(brands.Brand) AGAINST('"+ query + "*' IN BOOLEAN MODE)) AS b ON b.idBrand = products.idBrand LIMIT 9 )" +
+                " UNION" +
+                " (SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products" +
+                " INNER JOIN(SELECT categories.idCategory FROM categories WHERE MATCH(categories.categoryName) AGAINST('"+ query + "*' IN BOOLEAN MODE)) AS c ON c.idCategory = products.idCategory LIMIT 9 )" +
+                " UNION" +
+                " (SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products" +
+                " INNER JOIN(SELECT subcategories.idSubCategory FROM subcategories WHERE MATCH(subcategories.subCategoryName) AGAINST('"+ query + "*' IN BOOLEAN MODE)) AS s ON s.idSubCategory = products.idSubCategory LIMIT 9)" +
+                " UNION" +
+                " (SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products" +
+                " WHERE MATCH(products.nameProduct, products.description, products.extendDescription) AGAINST('"+ query + "*' IN BOOLEAN MODE) LIMIT 9 )";
+
+            return context.products.SqlQuery(_searchQuery.Trim()).ToList<products>();
+        }
+        //-------------------------------------------------------------------------
     }
 }

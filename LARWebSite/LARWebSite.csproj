@@ -282,7 +282,6 @@
     <Content Include="Assets\js\owl.carousel.min.js" />
     <Content Include="Assets\js\preloader.js" />
     <Content Include="Assets\js\red\index\main.index.js" />
-    <Content Include="Assets\js\red\products\visualizer.detail.js" />
     <Content Include="Assets\js\scrolling-nav.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -381,6 +380,8 @@
     <Content Include="Views\Search\BrandProductSearch.cshtml" />
     <Content Include="Views\Home\contactPartialViews\_contactInformationSection.cshtml" />
     <Content Include="Views\Search\GetProductsBySubCategory.cshtml" />
+    <Content Include="Views\Home\_SentContactSuccessful.cshtml" />
+    <Content Include="Views\Products\SearchFilterProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
