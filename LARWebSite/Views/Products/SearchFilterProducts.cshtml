@@ -10,12 +10,18 @@
 
 @if (!Model.Any())
 {
+
       <div class="container">
           <div class="alert alert-info">
-              No se encontraron resultados para <i>@ViewBag.TitleKeyWords</i>
+              No se encontraron resultados para <i>@</i>
           </div>
       </div>
-    
+      <div class="red-info-container">
+          Puedes utilizar palabras más exactas para mejorar tu búsqueda, por ejemplo; 
+          <strong>
+              Carretes , cañas, señuelos, etc.
+          </strong>
+      </div>    
 }
 else
 {

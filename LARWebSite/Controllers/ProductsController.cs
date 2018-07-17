@@ -100,6 +100,7 @@ namespace LARWebSite.Controllers
             }
 
             ViewBag.TitleKeyWords = keywords;
+            ViewBag.keywords = keywords;
 
             return View("SearchFilterProducts", _viewModelProducts);
         }
