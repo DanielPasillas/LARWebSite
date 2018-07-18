@@ -47,15 +47,22 @@ namespace LARWebSite.Utilerias
 
             try
             {
+
+                string _bodyMessage = "Enviado por: <strong>" + nombre + "</strong><br>";
+                _bodyMessage += "Email de contacto: <strong>"+ emailFrom +"</strong><br><br>";
+                _bodyMessage += mailbody;
+
+
                 MailMessage _sendMessage = new MailMessage(emailFrom, "asis.analytic@gmail.com");
                 _sendMessage.Subject = "La Red Caza y Pesca - WebSite Contacto";
-                _sendMessage.Body = mailbody;
-                _sendMessage.IsBodyHtml = false;
+                _sendMessage.Body = _bodyMessage;
+                _sendMessage.IsBodyHtml = true;
 
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
                 smtp.EnableSsl = true;
+
 
                 NetworkCredential _nc = new NetworkCredential("asis.analytic@gmail.com", "asis.analytics.333");
                 smtp.UseDefaultCredentials = true;
@@ -71,40 +78,6 @@ namespace LARWebSite.Utilerias
 
 
             return true;
-            /*
-            System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
-
-            msg.To.Add("asis.analytic@gmail.com");
-
-            msg.From = new MailAddress(emailFrom, nombre, System.Text.Encoding.UTF8);
-
-            msg.Subject = "La Red Caza y Pesca WebSite - Contacto";
-
-            msg.SubjectEncoding = System.Text.Encoding.UTF8;
-
-            msg.Body = mailbody;
-
-            msg.BodyEncoding = System.Text.Encoding.UTF8;
-
-            msg.IsBodyHtml = false;
-
-            //Aquí es donde se hace lo especial
-            SmtpClient client = new SmtpClient();
-            client.Credentials = new System.Net.NetworkCredential("asis.analytic@gmail.com", "asis.analytics.333");
-            client.Port = 25;
-            client.Host = "smtp.gmail.com";
-            client.EnableSsl = true; //Esto es para que vaya a través de SSL que es obligatorio con GMail
-            try
-            {
-                client.Send(msg);
-            }
-            catch (System.Net.Mail.SmtpException)
-            {
-                throw;
-            }
-
-            return true;
-            */
         }
     }
 }

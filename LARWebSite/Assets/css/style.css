@@ -3080,9 +3080,11 @@ section {
   background-image: url("../images/blog-page-header.jpg");
 }
 
+/*
 #page-header.contact {
   background-image: url("../../Assets/images/contact-landing-page.jpg");
 }
+*/
 
 #page-header.login-register {
   background-image: url("../images/log-page-header.jpg");
