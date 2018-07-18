@@ -13,15 +13,22 @@
 
       <div class="container">
           <div class="alert alert-info">
-              No se encontraron resultados para <i>@</i>
+              No se encontraron resultados para <i>@ViewBag.TitleKeyWords</i>
           </div>
-      </div>
-      <div class="red-info-container">
-          Puedes utilizar palabras más exactas para mejorar tu búsqueda, por ejemplo; 
-          <strong>
-              Carretes , cañas, señuelos, etc.
-          </strong>
-      </div>    
+          <div class="red-info-container" style="min-width:100%;padding:20px;box-shadow:1px 0px 3px rgba(0,0,0,0.2);">
+              Puedes utilizar palabras más exactas para mejorar tu búsqueda, por ejemplo;
+              <strong>
+                  Carretes , cañas, señuelos, etc.
+              </strong><hr />
+              <ul class="list-inline">
+                  <li><a href="/">Inicio</a></li>
+                  <li><a href="/home/about">Sobre nosotros</a></li>
+                  <li><a href="/home/contacto">Contacto</a></li>
+                  <li><a href="/home/offers">Ofertas</a></li>
+              </ul>
+          </div>
+          <br /><br />
+      </div>  
 }
 else
 {
@@ -66,10 +73,7 @@ else
             <!-- grid-resizer -->
             <div class="col-xs-6 col-md-4 shuffle_sizer shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; opacity: 1; transform: translate3d(266px, 1302px, 0px) scale3d(1, 1, 1); transition: transform 250ms ease-out, opacity 250ms ease-out;"></div>
             <!-- / grid-resizer -->
-
-
         </div><!-- / row -->
-
         <hr />
         <div class="row">
             <div class="col-md-12" style="text-align:center;">
