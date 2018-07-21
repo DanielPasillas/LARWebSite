@@ -17,10 +17,10 @@
     <div class="container">
         <div class="row">
             <!-- product content area -->
-            <div class="col-sm-6 col-md-6 content-area" style="margin-top:4px;">
+            <div class="col-sm-4 col-md-4 content-area" style="margin-top:4px;">
                 <div class="product-content-area">
                     <div id="product-slider" class="carousel slide" data-ride="carousel">
-                        <div class="slider slider-for" style="border:1px solid rgba(0,0,0,0.2);">
+                        <div class="slider slider-for" style="border:1px solid rgba(0,0,0,0.089);">
                             @foreach (var _imgProduct in Model.Producto.Imagenes)
                             {
 
@@ -28,27 +28,13 @@
                                 <div>
                                     <img class="zoom_visualizer" src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
                                 </div>
-
-                                /*if (iActiveItem == 0)
-                                {
-                                <div class="item active">
-                                    <img id="zoom_visualizer" src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
-                                </div>
-                                }
-                                else
-                                {
-                                <div class="item">
-                                    <img id="zoom_visualizer" src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
-                                </div>
-                                }
-                                iActiveItem++;*/
                             }
                         </div>
-                        <div class="slider slider-nav">
+                        <div class="slider slider-nav" style="border:1px solid rgba(0,0,0,0.089);">
                             @foreach (var _thumbnail in Model.Producto.Imagenes)
                             {
 
-                                <div>
+                                <div style="cursor:pointer;">
                                     <img src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
                                 </div>
 
@@ -61,7 +47,7 @@
             </div>
             <!-- / project-content-area -->
             <!-- project sidebar area -->
-            <div class="col-sm-6 col-md-6 product-sidebar">
+            <div class="col-sm-8 col-md-8 product-sidebar">
                 <div class="product-details">
                     <h3>@Model.Producto.Marca - @Model.Producto.NombreProducto</h3>
                     <p>@Model.Producto.Descripcion</p>
