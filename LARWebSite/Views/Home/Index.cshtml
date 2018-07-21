@@ -42,32 +42,5 @@
             lazyLoad:1
 
         });
-
-        $(window).resize(function () {
-
-            /*
-            $(".main-gallery .red-big-slider-img").map(function () {
-                console.log(this);
-            });
-            */
-
-          
-            
-            if (window.matchMedia('(max-width: 600px)').matches) {
-                $(".red-big-slider-img").each(function (key, element) {
-
-                    console.log($(element).attr("data-img-small"));
-                    
-                });
-
-            } else {
-                $(".red-big-slider-img").each(function (key, element) {
-
-                    console.log($(element).attr("data-img-small"));
-                    
-                });
-            }
-            
-        });
     </script>
 }

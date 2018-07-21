@@ -13,6 +13,14 @@ namespace LARWebSite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Custom Route for searching products. For pagination implmementation.
+            /*routes.MapRoute(
+                name: "ProductSearchPagination",
+                url: "products/{action}/{page}/{keywords}",
+                defaults: new { controller = "Products", action = "SearchFilterProducts", page = UrlParameter.Optional, keywords = UrlParameter.Optional }
+            );
+            */
+
             //Custom Route for list products by SubCategory.
             routes.MapRoute(
                 name: "SubCategorySearchFilter",

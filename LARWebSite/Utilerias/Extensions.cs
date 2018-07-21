@@ -69,7 +69,7 @@ namespace LARWebSite.Utilerias
         /*
          *  WE USE THIS METHOD FOR SEARCHING PRODUCTS
          */
-        public static IEnumerable<products> ProductSearch(this dbContextLAR context, string query, int limitResult, out int count)
+        public static IEnumerable<products> ProductSearch(this dbContextLAR context, string query)
         {
             //search order
             //1. Look for the related tables.
@@ -91,10 +91,7 @@ namespace LARWebSite.Utilerias
                 " (SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products" +
                 " WHERE MATCH(products.nameProduct, products.description, products.extendDescription) AGAINST('"+ query + "*' IN BOOLEAN MODE))";
 
-            var  _counter = context.products.SqlQuery(_searchQuery.Trim()).ToList<products>();
-            count = _counter.Count();
-
-            return context.products.SqlQuery(_searchQuery.Trim()).Take(limitResult).ToList<products>();
+            return context.products.SqlQuery(_searchQuery.Trim()).ToList<products>();
         }
         //-------------------------------------------------------------------------
     }

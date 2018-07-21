@@ -56,11 +56,10 @@
                             <li class="rightmenu">
                                 @using (Html.BeginForm("search", "products", FormMethod.Get, new { @class = "topmenusearch", @id = "red-form-search" }))
                                 {
-                                    <input type="hidden" name="limit" value="9" />
+                                    <input type="hidden" name="page" value="1" />
                                     <input placeholder="Buscar productos..." name="keywords" value="@Request.Params["keywords"]" autocomplete="off" class="red-search-input js-typeahead">
                                     <button class="btnstyle"><i class="searchicon fa fa-search" aria-hidden="true"></i></button>
                                 }
-
                             </li>
                             <li>
                                 <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" href="@Url.Action("index", "home")">Inicio</a>

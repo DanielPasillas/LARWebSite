@@ -1,6 +1,8 @@
 ﻿using System;
 using LARWebSite.Utilerias;
 using System.Data.Entity;
+using PagedList;
+using PagedList.Mvc;
 using LARWebSite.Models;
 using LARWebSite.ViewModels;
 using System.Collections.Generic;
@@ -77,22 +79,25 @@ namespace LARWebSite.Controllers
 
         [ActionName("search")]
         [HttpGet]
-        public ActionResult SearchFilterProducts(string keywords, int limit)
+        public ActionResult SearchFilterProducts(int? page, string keywords)
         {
+            //Value that indicates the page size of pagination. 
+            const int pageSize = 9;
+
             //Check is the query is empty
-            if(String.IsNullOrWhiteSpace(keywords))
+            if (String.IsNullOrWhiteSpace(keywords) || keywords == "'")
             {
                 var _viewModelProduct = new List<ItemProductModel>();
 
                 ViewBag.TitleKeyWords = keywords;
-                return View("SearchFilterProducts", _viewModelProduct);
+                return View("SearchFilterProducts", _viewModelProduct.ToList().ToPagedList(page ?? 1, pageSize));
 
             }
             //--------------------------------------------------------
 
-            int _count = 0;
+            string keywordEscape = keywords.Replace("'", "\"");
 
-            var _productSearch = _dbContext.ProductSearch(keywords, limit, out _count);
+            var _productSearch = _dbContext.ProductSearch(keywordEscape);
 
             List<ItemProductModel> _viewModelProducts = new List<ItemProductModel>();
 
@@ -103,10 +108,8 @@ namespace LARWebSite.Controllers
 
             ViewBag.TitleKeyWords = keywords;
             ViewBag.keywords = keywords;
-            ViewBag.TotalRecords = _count;
-            ViewBag.MsgForResult = _count > 1 ? " resultados " : " resultado ";
 
-            return View("SearchFilterProducts", _viewModelProducts);
+            return View("SearchFilterProducts", _viewModelProducts.ToList().ToPagedList(page ?? 1, pageSize));
         }
         //----------------------------
 

@@ -1,4 +1,7 @@
-﻿@model IEnumerable<LARWebSite.Models.ItemProductModel>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<LARWebSite.Models.ItemProductModel>
+
 @using LARWebSite.Utilerias
 
 @{
@@ -36,10 +39,8 @@ else
 
           <!-- Info Result Section -->
           <div class="red-info-container" style="min-width:100%;padding:20px;box-shadow:1px 0px 3px rgba(0,0,0,0.2);">
-              <h3>Se encontraron @ViewBag.TotalRecords  @ViewBag.MsgForResult  para: <i>@ViewBag.TitleKeyWords</i></h3>         
-          </div>
-          <br /><br />
-
+              <h3>Resultados para: <i>@ViewBag.TitleKeyWords</i></h3>         
+          </div><hr />
           <div id="grid" class="row shuffle red-category-filter-product" style="position: relative; overflow: hidden; height: 1623.1px; transition: height 250ms ease-out;">
 
               @foreach (var _product in Model)
@@ -81,13 +82,14 @@ else
               <!-- / grid-resizer -->
           </div><!-- / row -->
           <hr />
+
+          <!-- Pagination Components -->
           <div class="row">
               <div class="col-md-12" style="text-align:center;">
-                  <button class="btn btn-lg btn-success-filled">
-                      Ver más productos
-                  </button>
+                  @Html.PagedListPager(Model, page => Url.Action("search", new{ page, keywords = ViewBag.TitleKeyWords }))
               </div>
           </div>
+          <br /><hr />  
       </div><!-- / container -->
 }
 

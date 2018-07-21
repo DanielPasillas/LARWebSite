@@ -71,7 +71,7 @@ namespace LARWebSite.Controllers
 
             //Get 9 random products.
             string _collageProductString = "SELECT idProduct, nameProduct, description, extendDescription, Image_link, idBrand, idCategory, idSubCategory, keyProduct," +
-                                           " stock, discount, salePrice, wholesalePrice, limitWholeSalePrice, fecha_alta, status FROM products WHERE status = 1 ORDER BY rand() LIMIT 9";
+                                           " stock, discount, salePrice, wholesalePrice, limitWholeSalePrice, fecha_alta, status FROM products WHERE status = 1 LIMIT 9";
             var _collageProductsGallery = _dbContext.products.SqlQuery(_collageProductString).ToList<products>();
 
             List<ItemProductModel> _collageViewModel = new List<ItemProductModel>();
