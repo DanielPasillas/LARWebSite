@@ -20,12 +20,18 @@ namespace LARWebSite
                 defaults: new { controller = "Products", action = "SearchFilterProducts", page = UrlParameter.Optional, keywords = UrlParameter.Optional }
             );
             */
-
-            //Custom Route for list products by SubCategory.
+            //Custom Route to show the products by brand id.
             routes.MapRoute(
-                name: "SubCategorySearchFilter",
-                url: "search/{action}/{id}/{nameSubCategory}",
-                defaults: new { controller = "Search", action = "filtersubcategory", id = UrlParameter.Optional, nameSubCategory = UrlParameter.Optional }
+                name: "ProductsBySubCategory",
+                url: "search/{action}/{page}/{id}/{nameSubCategory}",
+                defaults: new { controller = "Search", action = "GetProductsBySubCategory", page = UrlParameter.Optional, id = UrlParameter.Optional, nameSubCategory = UrlParameter.Optional }
+            );
+
+            //Custom Route to show the products by brand id.
+            routes.MapRoute(
+                name: "ProductsByBrandId",
+                url: "search/{action}/{page}/{id}/{name}",
+                defaults: new { controller = "Search", action = "BrandProductSearch", page = UrlParameter.Optional, id = UrlParameter.Optional, name = UrlParameter.Optional }
             );
 
             //Custom Route for list accessing to the categories path.
@@ -33,13 +39,6 @@ namespace LARWebSite
                 name: "ProductsByCategories",
                 url: "search/{action}/{id}/{category}",
                 defaults: new { controller = "Search", action = "Category", id = UrlParameter.Optional, category = UrlParameter.Optional }
-            );
-
-            //Custom Route for list the products by Id Brand.
-            routes.MapRoute(
-                name: "ProductsbyBrand.",
-                url: "products/{action}/{id}/{brand}",
-                defaults: new { controller = "Products", action = "Brand", id = UrlParameter.Optional}
             );
 
             //Custom Route for product detail

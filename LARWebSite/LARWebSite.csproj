@@ -385,8 +385,7 @@
     <Content Include="Views\Search\Category.cshtml" />
     <Content Include="Views\HtmlHelpers\GetHtmlResponseByCategoryId.cshtml" />
     <Content Include="Views\Products\detailPartialViews\TempForSaving.cshtml" />
-    <Content Include="Views\Search\_brandProductsSearch\_serverRenderBrandsView.cshtml" />
-    <Content Include="Views\Search\_brandProductsSearch\_ajaxRenderBrandsView.cshtml" />
+    <Content Include="Views\Search\_itemProductRenderPage.cshtml" />
     <Content Include="Views\Search\BrandProductSearch.cshtml" />
     <Content Include="Views\Home\contactPartialViews\_contactInformationSection.cshtml" />
     <Content Include="Views\Search\GetProductsBySubCategory.cshtml" />

@@ -27,7 +27,7 @@ namespace LARWebSite.Utilerias
 
         
         //Get the products by looking for the Id brand.
-        public static IEnumerable<products> ProductsByIdBrand(this dbContextLAR context, int idBrand, int totalRecords)
+        public static IEnumerable<products> ProductsByIdBrand(this dbContextLAR context, int idBrand)
         {
             //Get the products filtered by the brand id.
            return context.products
@@ -38,7 +38,6 @@ namespace LARWebSite.Utilerias
                 .Include("sizes_product")
                 .Include("product_label")
                 .Where(m => m.idBrand == idBrand)
-                .Take(totalRecords)
                 .ToList();
         }
         //-------------------------------------------------------------------------
@@ -53,6 +52,20 @@ namespace LARWebSite.Utilerias
                         .Include("sizes_product")
                         .Include("product_label")
                         .Where(m => m.idSubCategory == idSubCategory).ToListAsync();
+        }
+        //-------------------------------------------------------------------------
+
+
+        public static async Task<IEnumerable<products>> GetProductsByCategoryId(this dbContextLAR context, int idCategory)
+        {
+            return await context.products
+                        .Include("brands")
+                        .Include("categories")
+                        .Include("subcategories")
+                        .Include("images")
+                        .Include("sizes_product")
+                        .Include("product_label")
+                        .Where(m => m.idSubCategory == idCategory).ToListAsync();
         }
         //-------------------------------------------------------------------------
 

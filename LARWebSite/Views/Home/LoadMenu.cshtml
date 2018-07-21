@@ -26,7 +26,7 @@
                                 <li class="title">@_categories.Category</li>
                                 @foreach (var _subCategory in _categories.SubCategories)
                                 {
-                                    <li><a href="@Url.Action("filtersubcategory","search", new { id = _subCategory.IdSubCategory, nameSubCategory = _subCategory.SubCategory.ToSeoUrl()  })">@_subCategory.SubCategory</a></li>
+                                    <li><a href="@Url.Action("filtersubcategory","search", new { page = 1, id = _subCategory.IdSubCategory, nameSubCategory = _subCategory.SubCategory.ToSeoUrl()  })">@_subCategory.SubCategory</a></li>
                                 }
 
                             </ul>

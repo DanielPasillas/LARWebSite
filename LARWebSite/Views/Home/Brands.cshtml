@@ -10,7 +10,7 @@
     @foreach (var marca in Model)
     {
         <div class="info">
-            <a href="@Url.Action("brand","search", new { id = marca.IdMarca, brand = marca.NombreMarca.ToSeoUrl()})">@marca.NombreMarca.ToString()</a>
+            <a href="@Url.Action("brand","search", new { page = 1, id = marca.IdMarca, brand = marca.NombreMarca.ToSeoUrl()})">@marca.NombreMarca.ToString()</a>
         </div>
     }
 

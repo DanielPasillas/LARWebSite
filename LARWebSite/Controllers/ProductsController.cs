@@ -18,6 +18,8 @@ namespace LARWebSite.Controllers
     {
         private readonly dbContextLAR _dbContext;
 
+        private const int _pageSize = 9;
+
         public ProductsController()
         {
             _dbContext = new dbContextLAR();
@@ -81,8 +83,9 @@ namespace LARWebSite.Controllers
         [HttpGet]
         public ActionResult SearchFilterProducts(int? page, string keywords)
         {
-            //Value that indicates the page size of pagination. 
-            const int pageSize = 9;
+            //Handling the 0 value in the page number.
+            if (page < 1)
+                throw new HttpException(404, "Page size is 0");
 
             //Check is the query is empty
             if (String.IsNullOrWhiteSpace(keywords) || keywords == "'")
@@ -90,7 +93,7 @@ namespace LARWebSite.Controllers
                 var _viewModelProduct = new List<ItemProductModel>();
 
                 ViewBag.TitleKeyWords = keywords;
-                return View("SearchFilterProducts", _viewModelProduct.ToList().ToPagedList(page ?? 1, pageSize));
+                return View("SearchFilterProducts", _viewModelProduct.ToList().ToPagedList(page ?? 1, _pageSize));
 
             }
             //--------------------------------------------------------
@@ -109,7 +112,7 @@ namespace LARWebSite.Controllers
             ViewBag.TitleKeyWords = keywords;
             ViewBag.keywords = keywords;
 
-            return View("SearchFilterProducts", _viewModelProducts.ToList().ToPagedList(page ?? 1, pageSize));
+            return View("SearchFilterProducts", _viewModelProducts.ToList().ToPagedList(page ?? 1, _pageSize));
         }
         //----------------------------
 

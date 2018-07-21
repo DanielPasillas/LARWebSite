@@ -1,4 +1,6 @@
 ﻿using System;
+using PagedList;
+using PagedList.Mvc;
 using System.Data.Entity;
 using System.Collections.Generic;
 using LARWebSite.Models;
@@ -14,6 +16,9 @@ namespace LARWebSite.Controllers
     {
         private readonly dbContextLAR _dbContext;
 
+        //Page size for pagination.
+        private const int _pageSize = 9;
+
         public SearchController()
         {
             _dbContext = new dbContextLAR();
@@ -25,11 +30,34 @@ namespace LARWebSite.Controllers
          * Category Id as parameter.
          */
         [ActionName("category")]
-        public async Task<ActionResult> Category(int id, string category)
+        public async Task<ActionResult> Category(int? page, int id, string category)
         {
-            ViewBag.Title = category;
+            //Handling the 0 value in the page number.
+            if (page < 1)
+                throw new HttpException(404, "Page size is 0");
 
-            var _products = await _dbContext.products.Where(m => m.idCategory == id).Take(9).ToListAsync();
+            var _category = await _dbContext.categories.FirstOrDefaultAsync(m => m.idCategory == id);
+
+            //Check if the category is null.
+            if (_category == null)
+                throw new HttpException(404, "Category does not exist");
+
+            string _expectedCategoryName = _category.categoryName.ToSeoUrl();
+
+            string _currentCategoryName = (category ?? "").ToLower();
+
+            if(_expectedCategoryName != _currentCategoryName)
+            {
+                //If the category name is not the same, we will redirect to the proper location by passing the name in a SEO format.
+                return RedirectToActionPermanent("category", "search", new {page = 1, id = _category.idCategory, name = _expectedCategoryName });
+            }
+
+            //Get products by Category Id.
+            var _products = await _dbContext.GetProductsByCategoryId(id);
+
+            //Save category data.
+            ViewBag.CategoryId = _category.idCategory;
+            ViewBag.CategoryName = _category.categoryName;
 
             List<ItemProductModel> _viewModelProduct = new List<ItemProductModel>();
 
@@ -38,7 +66,7 @@ namespace LARWebSite.Controllers
                 _viewModelProduct.Add(new ItemProductModel(_product));
             }
 
-            return View("Category", _viewModelProduct);
+            return View("Category", _viewModelProduct.ToList().ToPagedList(page ?? 1, _pageSize));
         }
         //----------------------------
 
@@ -46,8 +74,13 @@ namespace LARWebSite.Controllers
          *  Search products by using the brand Id.
          */
         [ActionName("brand")]
-        public async Task<ActionResult> BrandProductSearch(int id, string name)
+        public async Task<ActionResult> BrandProductSearch(int? page, int id, string name)
         {
+
+            //Handling the 0 value in the page number.
+            if (page < 1)
+                throw new HttpException(404, "Page size is 0");
+
             var _brand = await _dbContext.brands.FirstOrDefaultAsync(m => m.idBrand == id);
 
             if (_brand == null)
@@ -65,12 +98,11 @@ namespace LARWebSite.Controllers
 
             //Otherwise, set the name of the brand in a ViewBag variable.
             ViewBag.BrandTitle = _brand.Brand;
-            ViewBag.BrandTitleAjax = _expectedBrandName;
-            ViewBag.idCode = _brand.idBrand;
-            ViewBag.recordsTake = 9;
+            ViewBag.BrandId = _brand.idBrand;
+
 
             //Get the products by IdBrand.
-            var productsByBrand =  _dbContext.ProductsByIdBrand(id, 9);
+            var productsByBrand =  _dbContext.ProductsByIdBrand(id);
 
             //View model for saving the products.
             List<ItemProductModel> _viewModelProducts = new List<ItemProductModel>();
@@ -80,53 +112,20 @@ namespace LARWebSite.Controllers
                 _viewModelProducts.Add(new ItemProductModel(_product));
             }
 
-            return View("BrandProductSearch", _viewModelProducts);
+            return View("BrandProductSearch", _viewModelProducts.ToList().ToPagedList(page ?? 1, _pageSize));
 
         }
         //----------------------------
-
-        [ActionName("brandrecords")]
-        [HttpPost]
-        public ActionResult BrandProductSearch(int id, string name, int records)
-        {
-            if(Request.IsAjaxRequest())
-            {
-                int _take = records + 9;
-
-                //Get the products by IdBrand.
-                var productsByBrand = _dbContext.ProductsByIdBrand(id, _take);
-
-                //Otherwise, set the name of the brand in a ViewBag variable
-                ViewBag.BrandTitleAjax = name;
-                ViewBag.idCode = id;
-                ViewBag.recordsTake = _take;
-
-                //View model for saving the products.
-                List<ItemProductModel> _viewModelProducts = new List<ItemProductModel>();
-
-                foreach (var _product in productsByBrand)
-                {
-                    _viewModelProducts.Add(new ItemProductModel(_product));
-                }
-
-
-                return PartialView("_brandProductsSearch/_serverRenderBrandsView", _viewModelProducts);
-            }
-            else
-            {
-                throw new HttpException(404, "Not Ajax Request");
-            }
-        }
-        //----------------------------
-
         
         /*
          * Method for showing the products by subcategory Id.
          */
         [ActionName("filtersubcategory")]
-        public async Task<ActionResult> GetProductsBySubCategory(int id, string nameSubCategory)
+        public async Task<ActionResult> GetProductsBySubCategory(int? page, int id, string nameSubCategory)
         {
-
+            //Handling the 0 value in the page number.
+            if (page < 1)
+                throw new HttpException(404, "Page size is 0");
             //--------------------------------------//
             // VALIDATE SEO SECTIO  FOR URL //.
 
@@ -154,6 +153,7 @@ namespace LARWebSite.Controllers
 
             //Display names
             ViewBag.SubCategoryTitle = _subCategory.subCategoryName;
+            ViewBag.IdSubCategory = _subCategory.idSubCategory;
 
             List<ItemProductModel> _viewModelProducts = new List<ItemProductModel>();
 
@@ -163,28 +163,8 @@ namespace LARWebSite.Controllers
             }
             //------------------------------------------
 
-
-            return View("GetProductsBySubCategory", _viewModelProducts);
+            return View("GetProductsBySubCategory", _viewModelProducts.ToList().ToPagedList(page ?? 1, _pageSize));
         }
         //----------------------------
-
-        /*
-         * Typehaead functionality 
-         */
-        [HttpGet]
-        [ActionName("autocomplete")]
-        public async Task<JsonResult> AutocompleteSearchFilter(string query)
-        {
-            
-            var result = await (from e in _dbContext.products
-                          where e.nameProduct.StartsWith(query)
-                          select e.nameProduct).ToListAsync();//_list.Where(m => m.NombreProducto.Contains(query)).ToList();
-
-            
-
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-        //----------------------------
-
     }
 }

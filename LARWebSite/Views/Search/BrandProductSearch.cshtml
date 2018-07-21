@@ -1,4 +1,6 @@
-﻿@model IEnumerable<LARWebSite.Models.ItemProductModel>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<LARWebSite.Models.ItemProductModel>
 @using LARWebSite.Utilerias
 
 @{
@@ -25,9 +27,17 @@
     {
         <!-- Ends filter section -->
         <div class="container">
-            <div id="reload-red-ajax-container">
+           
+            <div>
                 <!-- Include Partial View -->
-                @Html.Partial("_brandProductsSearch/_serverRenderBrandsView")
+                @Html.Partial("_itemProductRenderPage")
+            </div>
+
+            <!-- Pagination Components -->
+            <div class="row">
+                <div class="col-md-12" style="text-align:center;">
+                    @Html.PagedListPager(Model, page => Url.Action("brand", new { page, id = ViewBag.BrandId, name = ViewBag.BrandTitle }))
+                </div>
             </div>
         </div><!-- / container -->
     }
@@ -36,35 +46,3 @@
 </section>
 <br /><br />
 
-@section scripts
-{
-      <script>
-          (function(){
-              $(document).on("click", ".red-btn-brand-load-records", function (e) {
-
-                  e.preventDefault();
-
-                  var self = $(this);
-
-                  try {
-
-                      $.ajax({
-                          url: window.location.origin + "/search/brandrecords?id=" + self.attr("data-brand-id") + "&name=" + self.attr("data-brand-name") + "&records=" + self.attr("data-total-records"),
-                          type: "post",
-                          cache: false,
-                          success: function (response) {
-                              console.log(response);
-                              $("#reload-red-ajax-container").html(response);
-                          },
-                          error: function (xhr, j, p) {
-                              console.log(xhr.responseText);
-                          }
-                      });
-
-                  } catch (e) {
-                      console.log(e);
-                  }
-              });
-          })();
-      </script>
-}
