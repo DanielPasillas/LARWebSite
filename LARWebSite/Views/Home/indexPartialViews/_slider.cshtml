@@ -1,11 +1,19 @@
 ﻿@model  LARWebSite.ViewModels.IndexViewModel
 
+@{ 
+    int i = 0;
+}
+
+
+
 
 <div class="main-gallery">
     @foreach (var slide in Model.Carousel)
     {
-        <div class="gallery-cell" style="background:url(../../../Assets/images/slider/@slide.Imagen) no-repeat center;cursor:pointer; background-size:auto;">
-        </div>               
+        <!-- Div item big slider container -->
+        <div data-img-small="url(../../../Assets/images/slider/@slide.ImgSmall) no-repeat center;" data-img-big="url(../../../Assets/images/slider/@slide.Imagen) no-repeat center;" class="gallery-cell red-big-slider-img-@i" style="background:url(../../../Assets/images/slider/@slide.Imagen) no-repeat center;background-size:auto;"></div>        
+        i++;
     }
 </div>
+
 

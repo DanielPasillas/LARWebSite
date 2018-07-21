@@ -10,11 +10,13 @@ namespace LARWebSite.Models
     {
         public string Imagen { get; set; }
         public string UrlResource { get; set; }
+        public string ImgSmall { get; set; }
 
         public SliderModel(slider _slider)
         {
             this.Imagen = _slider.Image;
             this.UrlResource = _slider.url_target;
+            this.ImgSmall = _slider.ImgSmall;
         }
     }
 }

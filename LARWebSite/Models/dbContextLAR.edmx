@@ -90,6 +90,7 @@
           </Key>
           <Property Name="idSlider" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Image" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImgSmall" Type="varchar" MaxLength="300" />
           <Property Name="url_target" Type="varchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="subcategories">
@@ -398,6 +399,7 @@
           <Property Name="idSlider" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="url_target" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ImgSmall" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="subcategories">
           <Key>
@@ -708,6 +710,7 @@
           <EntitySetMapping Name="slider">
             <EntityTypeMapping TypeName="dbContextLARModel.slider">
               <MappingFragment StoreEntitySet="slider">
+                <ScalarProperty Name="ImgSmall" ColumnName="ImgSmall" />
                 <ScalarProperty Name="url_target" ColumnName="url_target" />
                 <ScalarProperty Name="idSlider" ColumnName="idSlider" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
