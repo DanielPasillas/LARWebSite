@@ -35,17 +35,3 @@ else
         </div>
     </section>
 }
-
-@section scripts{
-
-    <script>
-        (function () {
-            setTimeout(function () {
-
-                var id = 2;
-
-                history.pushState({ id }, 'Initial pushstate', 'http://localhost:49895/home/gallery?readstatus=false');
-            }, 2500);
-        })();
-    </script>
-}

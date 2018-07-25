@@ -12,6 +12,7 @@ namespace LARWebSite.Models
         public string NombreContacto { get; set; }
 
         [Required(ErrorMessage = "El campo Email es obligatorio")]
+        [EmailAddress(ErrorMessage = "Tiene que ingresar una dirección de E-mail válida")]
         public string EmailContacto { get; set; }
 
         [Required(ErrorMessage = "El campo comentario es obligatorio")]

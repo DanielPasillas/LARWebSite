@@ -65,7 +65,7 @@ namespace LARWebSite.Utilerias
                         .Include("images")
                         .Include("sizes_product")
                         .Include("product_label")
-                        .Where(m => m.idSubCategory == idCategory).ToListAsync();
+                        .Where(m => m.idCategory == idCategory).ToListAsync();
         }
         //-------------------------------------------------------------------------
 

@@ -42,5 +42,23 @@
             lazyLoad:1
 
         });
+
+
+        //function - slide link 
+        (function () {
+
+            'use strict';
+
+            $(".red-slide-get-link").on("click", function () {
+                try {
+                    var _self = $(this);
+
+                    window.location.href = _self.attr("data-red-link-slide");
+                } catch (e) {
+                    console.log("e");
+                }
+            });
+        })();
+
     </script>
 }

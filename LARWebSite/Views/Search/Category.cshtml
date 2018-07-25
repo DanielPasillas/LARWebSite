@@ -6,6 +6,8 @@
 @{
     ViewBag.Title = ViewBag.CategoryName;
 
+    string _categoryName = ViewBag.CategoryName;
+
 }
 <br />
 <section id="shop">
@@ -35,7 +37,7 @@
             <!-- Pagination Components -->
             <div class="row">
                 <div class="col-md-12" style="text-align:center;">
-                    @Html.PagedListPager(Model, page => Url.Action("category", new { page, id = ViewBag.CategoryId, category = ViewBag.CategoryName }))
+                    @Html.PagedListPager(Model, page => Url.Action("category", new { page, id = ViewBag.CategoryId, category = _categoryName.ToSeoUrl() }))
                 </div>
             </div>
         </div><!-- / container -->

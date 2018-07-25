@@ -1,48 +1,50 @@
 ﻿@model LARWebSite.ViewModels.ProductDetailViewModel
 @using LARWebSite.Utilerias
 
-<!-- Show the related products -->
-<section id="related-products">
-    <h4 class="space-left space-bottom-30">Otros clientes también vieron</h4>
-    <!--/ page-header -->
+<div class="container">
+    <!-- Show the related products -->
+    <section id="related-products">
+        <h4 class="space-left space-bottom-30">Otros clientes también vieron</h4>
+        <!--/ page-header -->
 
-    <div class="row">
+        <div class="row">
 
-        @foreach (var _relatedProduct in Model.SliderProducts)
-        {
-            <!-- product -->
-            <div class="col-xs-6 col-md-3 product">
-                <a href="@Url.Action("detail", "products", new { id = _relatedProduct.IdProducto, code = _relatedProduct.Codigo, name = _relatedProduct.NombreProducto.ToSeoUrl() })" class="product-link"></a>
-                <!-- / product-link -->
-                <img src="~/Assets/images/product_link/@_relatedProduct.ImagenDetalle" alt="">
-                <!-- / product-image -->
-                <!-- product-hover-tools -->
-                <div class="product-hover-tools">
-                    <a href="@Url.Action("detail", "products", new { id = _relatedProduct.IdProducto, code = _relatedProduct.Codigo, name = _relatedProduct.NombreProducto.ToSeoUrl() })" class="view-btn">
-                        <i class="lnr lnr-eye"></i>
-                    </a>
-                    <!--a href="shopping-cart.html" class="add-to-cart">
-                        <i class="lnr lnr-cart"></i>
-                    </a-->
-                </div><!-- / product-hover-tools -->
-                <!-- product-details -->
-                <div class="product-details">
-                    <h3 class="product-title">@_relatedProduct.NombreProducto</h3>
-                    <h6 class="product-price">
-                        @if (_relatedProduct.Descuento != 0)
-                        {
-                            <del>$ @_relatedProduct.Precio</del>
-                            <span class="sale-price">$ @_relatedProduct.PrecioDescuento</span>
-                        }
-                        else
-                        {
-                            <span class="sale-price">$ @_relatedProduct.Precio</span>
-                        }
-                    </h6>
-                </div><!-- / product-details -->
-            </div><!-- / product -->
-        }
+            @foreach (var _relatedProduct in Model.SliderProducts)
+            {
+                <!-- product -->
+                <div class="col-xs-6 col-md-3 product">
+                    <a href="@Url.Action("detail", "products", new { id = _relatedProduct.IdProducto, code = _relatedProduct.Codigo, name = _relatedProduct.NombreProducto.ToSeoUrl() })" class="product-link"></a>
+                    <!-- / product-link -->
+                    <img src="~/Assets/images/product_link/@_relatedProduct.ImagenDetalle" alt="">
+                    <!-- / product-image -->
+                    <!-- product-hover-tools -->
+                    <div class="product-hover-tools">
+                        <a href="@Url.Action("detail", "products", new { id = _relatedProduct.IdProducto, code = _relatedProduct.Codigo, name = _relatedProduct.NombreProducto.ToSeoUrl() })" class="view-btn">
+                            <i class="lnr lnr-eye"></i>
+                        </a>
+                        <!--a href="shopping-cart.html" class="add-to-cart">
+                            <i class="lnr lnr-cart"></i>
+                        </a-->
+                    </div><!-- / product-hover-tools -->
+                    <!-- product-details -->
+                    <div class="product-details">
+                        <h3 class="product-title">@_relatedProduct.NombreProducto</h3>
+                        <h6 class="product-price">
+                            @if (_relatedProduct.Descuento != 0)
+                            {
+                                <del>$ @_relatedProduct.Precio</del>
+                                <span class="sale-price">$ @_relatedProduct.PrecioDescuento</span>
+                            }
+                            else
+                            {
+                                <span class="sale-price">$ @_relatedProduct.Precio</span>
+                            }
+                        </h6>
+                    </div><!-- / product-details -->
+                </div><!-- / product -->
+            }
 
-    </div>
-</section>
+        </div>
+    </section>
+</div>
 

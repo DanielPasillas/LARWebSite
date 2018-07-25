@@ -20,6 +20,14 @@ namespace LARWebSite
                 defaults: new { controller = "Products", action = "SearchFilterProducts", page = UrlParameter.Optional, keywords = UrlParameter.Optional }
             );
             */
+
+            //Custom Route for list accessing to the categories path.
+            routes.MapRoute(
+                name: "ProductsByCategories",
+                url: "search/{action}/{page}/{id}/{category}",
+                defaults: new { controller = "Search", action = "Category", page = UrlParameter.Optional ,id = UrlParameter.Optional, category = UrlParameter.Optional }
+            );
+
             //Custom Route to show the products by brand id.
             routes.MapRoute(
                 name: "ProductsBySubCategory",
@@ -34,13 +42,6 @@ namespace LARWebSite
                 defaults: new { controller = "Search", action = "BrandProductSearch", page = UrlParameter.Optional, id = UrlParameter.Optional, name = UrlParameter.Optional }
             );
 
-            //Custom Route for list accessing to the categories path.
-            routes.MapRoute(
-                name: "ProductsByCategories",
-                url: "search/{action}/{id}/{category}",
-                defaults: new { controller = "Search", action = "Category", id = UrlParameter.Optional, category = UrlParameter.Optional }
-            );
-
             //Custom Route for product detail
             routes.MapRoute(
                 name: "ProductDetailPath",
@@ -48,6 +49,7 @@ namespace LARWebSite
                 defaults: new { controller = "Products", action = "Detail", id = UrlParameter.Optional, code = UrlParameter.Optional, name = UrlParameter.Optional }
             );
 
+            // ** Default Path ** //
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

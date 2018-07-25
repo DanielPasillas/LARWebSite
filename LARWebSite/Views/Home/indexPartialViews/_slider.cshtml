@@ -4,14 +4,22 @@
     int i = 0;
 }
 
-
-
-
 <div class="main-gallery">
     @foreach (var slide in Model.Carousel)
     {
-        <!-- Div item big slider container -->
-        <div class="gallery-cell red-big-slider-img" style="background:url(../../../Assets/images/slider/@slide.Imagen) no-repeat center;background-size:auto;"></div>        
+
+        if (String.IsNullOrEmpty(slide.UrlResource))
+        {
+            <!-- Div item big slider container -->
+            <div class="gallery-cell red-big-slider-img" style="background:url(../../../Assets/images/slider/@slide.Imagen) no-repeat center;background-size:auto;cursor:auto;"></div>
+        }
+        else
+        {
+            <!-- Div item big slider container -->
+            <div class="gallery-cell red-big-slider-img red-slide-get-link" data-red-link-slide="@slide.UrlResource" style="background:url(../../../Assets/images/slider/@slide.Imagen) no-repeat center;background-size:auto;cursor:pointer;"></div>
+        }
+
+
         i++;
     }
 </div>

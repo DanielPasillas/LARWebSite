@@ -363,7 +363,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_Temp.cshtml" />
     <Content Include="Views\Home\indexPartialViews\_brands.cshtml" />
-    <Content Include="Views\Home\indexPartialViews\_categories.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Galeria.cshtml" />
     <Content Include="Views\Home\indexPartialViews\_slider.cshtml" />
