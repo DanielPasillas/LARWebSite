@@ -11,12 +11,27 @@
         if (String.IsNullOrEmpty(slide.UrlResource))
         {
             <!-- Div item big slider container -->
-            <div class="gallery-cell red-big-slider-img" style="background:url(../../../Assets/images/slider/@slide.Imagen) no-repeat center;background-size:auto;cursor:auto;"></div>
+            <div class="gallery-cell red-big-slider-img" style="cursor:auto;">
+                <!--img src="~/Assets/images/slider/@slide.Imagen" alt="Alternate Text" /-->
+                <picture>
+                    <source media="(min-width: 600px)" srcset="~/Assets/images/slider/@slide.Imagen">
+                    <source media="(min-width: 480px)" srcset="~/Assets/images/slider/@slide.ImgSmall">
+                    <img src="~/Assets/images/slider/@slide.ImgSmall">
+                </picture>
+            </div>
         }
         else
         {
+
             <!-- Div item big slider container -->
-            <div class="gallery-cell red-big-slider-img red-slide-get-link" data-red-link-slide="@slide.UrlResource" style="background:url(../../../Assets/images/slider/@slide.Imagen) no-repeat center;background-size:auto;cursor:pointer;"></div>
+            <div class="gallery-cell red-big-slider-img red-slide-get-link" data-red-link-slide="@slide.UrlResource" style="cursor:auto;">
+                <!--img src="~/Assets/images/slider/@slide.Imagen" alt="Alternate Text" /-->
+                <picture>
+                    <source media="(min-width: 600px)" srcset="~/Assets/images/slider/@slide.Imagen">
+                    <source media="(min-width: 480px)" srcset="~/Assets/images/slider/@slide.ImgSmall">
+                    <img src="~/Assets/images/slider/@slide.ImgSmall">
+                </picture>
+            </div>
         }
 
 
