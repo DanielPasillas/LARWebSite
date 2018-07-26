@@ -1,9 +1,5 @@
 ﻿@model  LARWebSite.ViewModels.IndexViewModel
 
-@{ 
-    int i = 0;
-}
-
 <div class="main-gallery">
     @foreach (var slide in Model.Carousel)
     {
@@ -13,7 +9,7 @@
             <!-- Div item big slider container -->
             <div class="gallery-cell red-big-slider-img" style="cursor:auto;">
                 <picture>
-                  <source srcset="~/Assets/images/slider/@slide.Imagen, ~/Assets/images/slider/@slide.Imagen 2x" media="(min-width: 800px)">
+                  <source srcset="~/Assets/images/slider/@slide.Imagen, ~/Assets/images/slider/@slide.Imagen 2x" media="(min-width: 680px)">
                   <img srcset="~/Assets/images/slider/@slide.ImgSmall, ~/Assets/images/slider/@slide.ImgSmall 2x" alt="…">
                 </picture>
             </div>
@@ -22,17 +18,14 @@
         {
 
             <!-- Div item big slider container -->
-            <div class="gallery-cell red-big-slider-img red-slide-get-link" data-red-link-slide="@slide.UrlResource" style="cursor:auto;">
+            <div class="gallery-cell red-big-slider-img red-slide-get-link" data-red-link-slide="@slide.UrlResource" style="cursor:pointer;">
                 <!--img src="~/Assets/images/slider/@slide.Imagen" alt="Alternate Text" /-->
                 <picture>
-                    <source srcset="~/Assets/images/slider/@slide.Imagen, ~/Assets/images/slider/@slide.Imagen 2x" media="(min-width: 800px)">
+                    <source srcset="~/Assets/images/slider/@slide.Imagen, ~/Assets/images/slider/@slide.Imagen 2x" media="(min-width: 680px)">
                     <img srcset="~/Assets/images/slider/@slide.ImgSmall, ~/Assets/images/slider/@slide.ImgSmall 2x" alt="…">
                 </picture>
             </div>
         }
-
-
-        i++;
     }
 </div>
 

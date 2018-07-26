@@ -545,7 +545,10 @@ body {
 }
 
 .gallery-cell {
-    width: 100%;
-    height:auto;
+    width: 100%;height:auto;
+}
+
+.main-gallery {
+    max-height: 300px !important;
 }
 
