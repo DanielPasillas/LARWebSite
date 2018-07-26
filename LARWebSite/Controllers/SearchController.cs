@@ -126,9 +126,9 @@ namespace LARWebSite.Controllers
             //Handling the 0 value in the page number.
             if (page < 1)
                 throw new HttpException(404, "Page size is 0");
+
             //--------------------------------------//
             // VALIDATE SEO SECTIO  FOR URL //.
-
             var _subCategory = await _dbContext.subcategories.FirstOrDefaultAsync(m => m.idSubCategory == id);
 
             if (_subCategory == null)

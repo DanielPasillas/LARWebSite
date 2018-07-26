@@ -19,6 +19,11 @@ namespace LARWebSite
             bundles.Add(new ScriptBundle("~/bundles/red-library").Include(
                        "~/Assets/js/red/index/main.index.js"));
 
+            //Bundle for Index Section.
+            bundles.Add(new ScriptBundle("~/bundles/index").Include(
+                       "~/Assets/js/flick-slider.js"));
+
+
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

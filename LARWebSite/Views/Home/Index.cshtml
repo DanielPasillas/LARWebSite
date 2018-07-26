@@ -30,21 +30,22 @@
 <!-- Import script for local carousel -->
 @section scripts
 {
-    <script src="~/Assets/js/flick-slider.js"></script>
+    @Scripts.Render("~/bundles/index")
+    <script src="~/Assets/js/picturefill.min.js" async></script>
 
     <script>
 
         $('.main-gallery').flickity({
-            // 
+            //
             cellAlign: 'center',
             contain: true,
             autoPlay: 6000,
-            lazyLoad:1
+            lazyLoad: 1
 
         });
 
 
-        //function - slide link 
+        //function - slide link
         (function () {
 
             'use strict';

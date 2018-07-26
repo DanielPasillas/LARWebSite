@@ -12,11 +12,9 @@
         {
             <!-- Div item big slider container -->
             <div class="gallery-cell red-big-slider-img" style="cursor:auto;">
-                <!--img src="~/Assets/images/slider/@slide.Imagen" alt="Alternate Text" /-->
                 <picture>
-                    <source media="(min-width: 600px)" srcset="~/Assets/images/slider/@slide.Imagen">
-                    <source media="(min-width: 480px)" srcset="~/Assets/images/slider/@slide.ImgSmall">
-                    <img src="~/Assets/images/slider/@slide.ImgSmall">
+                  <source srcset="~/Assets/images/slider/@slide.Imagen, ~/Assets/images/slider/@slide.Imagen 2x" media="(min-width: 800px)">
+                  <img srcset="~/Assets/images/slider/@slide.ImgSmall, ~/Assets/images/slider/@slide.ImgSmall 2x" alt="…">
                 </picture>
             </div>
         }
@@ -27,9 +25,8 @@
             <div class="gallery-cell red-big-slider-img red-slide-get-link" data-red-link-slide="@slide.UrlResource" style="cursor:auto;">
                 <!--img src="~/Assets/images/slider/@slide.Imagen" alt="Alternate Text" /-->
                 <picture>
-                    <source media="(min-width: 600px)" srcset="~/Assets/images/slider/@slide.Imagen">
-                    <source media="(min-width: 480px)" srcset="~/Assets/images/slider/@slide.ImgSmall">
-                    <img src="~/Assets/images/slider/@slide.ImgSmall">
+                    <source srcset="~/Assets/images/slider/@slide.Imagen, ~/Assets/images/slider/@slide.Imagen 2x" media="(min-width: 800px)">
+                    <img srcset="~/Assets/images/slider/@slide.ImgSmall, ~/Assets/images/slider/@slide.ImgSmall 2x" alt="…">
                 </picture>
             </div>
         }

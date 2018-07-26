@@ -524,15 +524,17 @@ textarea {
 
 /*------------------------------*/
 /*------------------------------*/
-/* Style prperties for carousel */
+/* Style properties for carousel */
 /*------------------------------*/
 /*------------------------------*/
 /* external css: flickity.css  */
 
+/*
 *{
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+*/
 
 body {
     font-family: sans-serif;
@@ -544,6 +546,6 @@ body {
 
 .gallery-cell {
     width: 100%;
-    height: auto;
+    height:auto;
 }
 
