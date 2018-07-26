@@ -102,7 +102,7 @@ namespace LARWebSite.Utilerias
                 " INNER JOIN(SELECT subcategories.idSubCategory FROM subcategories WHERE MATCH(subcategories.subCategoryName) AGAINST('"+ query + "*' IN BOOLEAN MODE)) AS s ON s.idSubCategory = products.idSubCategory)" +
                 " UNION" +
                 " (SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products" +
-                " WHERE MATCH(products.nameProduct, products.description, products.extendDescription) AGAINST('"+ query + "*' IN BOOLEAN MODE))" +
+                " WHERE MATCH(products.nameProduct, products.description, products.extendDescription, products.keyProduct) AGAINST('" + query + "*' IN BOOLEAN MODE))" +
                 " UNION" +
                 " (SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products, product_label, labels " +
                 " WHERE products.idProduct = product_label.idProduct AND labels.idLabel = product_label.idLabel AND MATCH(labels.labelName) AGAINST ('" + query + "*' IN BOOLEAN MODE) ) ";
