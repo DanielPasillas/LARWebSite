@@ -3,9 +3,8 @@
 @model IPagedList<LARWebSite.Models.ItemProductModel>
 @using LARWebSite.Utilerias
 
-<!-- Partial view, will be loades as in the ajax mode as in the server render mode -->
+<!-- Partial view component -->
 <div id="grid" class="row shuffle red-brand-filter-product" style="position: relative; overflow: hidden; height: 1623.1px; transition: height 250ms ease-out;">
-
     @foreach (var _product in Model)
     {
         <!-- product -->
@@ -46,5 +45,3 @@
     <!-- / grid-resizer -->
 </div><!-- / row -->
 <hr />
-
-<!-- The pagination component will change depending on the search filter. -->

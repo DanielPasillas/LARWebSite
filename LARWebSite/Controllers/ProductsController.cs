@@ -36,7 +36,7 @@ namespace LARWebSite.Controllers
         [ActionName("detail")]
         public async Task<ActionResult> Detail(int id, string code, string name)
         {
-            //Get product information.
+            //Get product information by Id, keyProduct and Status.
             var _product = await _dbContext.ProductByCodeAndId(id, code);
 
             if (_product == null)

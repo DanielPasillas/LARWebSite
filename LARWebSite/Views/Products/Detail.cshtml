@@ -235,6 +235,14 @@
     <script src="~/Assets/js/jquery.elevate.zoom.js"></script>
     <script>
 
+        (function () {
+            $(".zoom_visualizer").each(function (i,e) {
+
+                $("#" + $(e).attr("id")).elevateZoom({ scrollZoom: true, gallery: 'gallery_01', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif' });
+                //console.log($(e).attr("id"));
+            });
+        })();
+
         $(".zoom_visualizer").elevateZoom({ scrollZoom: true, gallery: 'gallery_01', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif' });
 
 

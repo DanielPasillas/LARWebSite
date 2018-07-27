@@ -14,9 +14,10 @@ namespace LARWebSite.Controllers
 {
     public class HomeController : Controller
     {
-
+        //Db Context for connection.
         private readonly dbContextLAR _dbContext;
 
+        //Obj for Utilerias.
         private Utilerias.Utilerias _utilerias;
 
         public HomeController()
@@ -57,7 +58,6 @@ namespace LARWebSite.Controllers
 
             //Get The new Products
             //We will take the newer products. Only 8 records.
-
             string _queryNewProducts = "SELECT idProduct, nameProduct, description, extendDescription, Image_link, idBrand, idCategory, idSubCategory, keyProduct," +
                                            " stock, discount, salePrice, wholesalePrice, limitWholeSalePrice, fecha_alta, status FROM products WHERE status = 1 ORDER BY fecha_alta DESC LIMIT 8";
             var _newProducts =  _dbContext.products.SqlQuery(_queryNewProducts).ToList<products>();
@@ -253,7 +253,7 @@ namespace LARWebSite.Controllers
         public ActionResult Brands()
         {
             //Get the brands list.
-            //We will user a direct MySQL query for getting the random values.
+            //We will use a direct MySQL query for getting the random values.
             string _queryBrand = "SELECT idBrand, Brand, Image_b, Image_s FROM brands ORDER BY rand() LIMIT 5";
             var brands = _dbContext.brands.SqlQuery(_queryBrand).ToList<brands>();
 
