@@ -205,7 +205,7 @@ namespace LARWebSite.Controllers
 
             ViewBag.CategoryId = _category.idCategory;
             ViewBag.CategoryName = _category.categoryName;
-            ViewBag.IsActive = _category.idCategory;
+            ViewBag.IsActive = id; //Save the category Id.
 
             return View("Galeria", _viewModel);
         }

@@ -3,58 +3,72 @@
 @{
     int iActiveItem = 0;
 
-    //Calcualate the price if the disccount value is set.
     //Sale price
     decimal _salePrice = Model.Producto.Descuento != 0 ? (Model.Producto.PrecioVenta - Model.Producto.Descuento) : Model.Producto.PrecioVenta;
     //Wholesale price.
     decimal _wholesalePrice = Model.Producto.Descuento != 0 ? (Model.Producto.PrecioMayoreo - Model.Producto.Descuento) : Model.Producto.PrecioMayoreo;
 
+
+    int _checkFirstImage = 0;
+
+    string _defaultImg = "";
+
+    foreach (var _thumbnail in Model.Producto.Imagenes)
+    {
+        if (_checkFirstImage == 0)
+        {
+            _defaultImg = _thumbnail.Image_b;
+        }
+        _checkFirstImage++;
+    }
+
 }
-
-
 
 <section id="shop">
     <div class="container">
         <div class="row">
+            <div class="col-md-1 nopadding" style="border:1px solid rgba(0,0,0,0.089);">
+                @foreach (var _thumbnail in Model.Producto.Imagenes)
+                {
+                    if (iActiveItem == 0)
+                    {
+                        <div class="thumbnail-item-red thumb-active" id="thumb-@iActiveItem" data-red-img="@_thumbnail.Image_b">
+                            <img src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="thumbnail-item-red"  id="thumb-@iActiveItem" data-red-img="@_thumbnail.Image_b">
+                            <img src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
+                        </div>
+                    }
+
+                    iActiveItem++;
+                }
+            </div>
             <!-- product content area -->
-            <div class="col-sm-4 col-md-4 content-area" style="margin-top:4px;">
+            <div class="col-sm-5 col-md-5 content-area" style="margin-top:4px;border:1px solid rgba(0,0,0,0.089);margin-top:-0.2px;">
                 <div class="product-content-area">
                     <div id="product-slider" class="carousel slide" data-ride="carousel">
-                        <div class="slider slider-for" style="border:1px solid rgba(0,0,0,0.089);">
-                            @foreach (var _imgProduct in Model.Producto.Imagenes)
-                            {
-
-
-                                <div>
-                                    <img class="zoom_visualizer" id="red-zoom-img-@iActiveItem" src="~/Assets/images/product_b/@_imgProduct.Image_b" alt="@_imgProduct.Image_b">
-                                </div>
-
-                                iActiveItem++;
-                            }
+                        <div class="slider slider-for">
+                            <div>
+                                <img class="zoom_visualizer" id="red-big-img-visualizer" src="~/Assets/images/product_b/@_defaultImg" />
+                            </div>
                         </div>
-                        <div class="slider slider-nav" style="border:1px solid rgba(0,0,0,0.089);">
-                            @foreach (var _thumbnail in Model.Producto.Imagenes)
-                            {
-
-                                <div style="cursor:pointer;">
-                                    <img  src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
-                                </div>
-
-                            }
-                        </div>
-
                     </div><!-- / product-slider -->
                 </div><!-- / product-content-area -->
                 <!-- product pagination -->
             </div>
             <!-- / project-content-area -->
             <!-- project sidebar area -->
-            <div class="col-sm-8 col-md-8 product-sidebar">
+            <div class="col-sm-6 col-md-6 product-sidebar" style="border:1px solid rgba(0,0,0,0.089);">
                 <div class="product-details">
+
                     <h3>@Model.Producto.Marca - @Model.Producto.NombreProducto</h3>
                     <p>@Model.Producto.Descripcion</p>
                     <hr />
 
+                    <!-- Product Details -->
                     <div class="product-info">
 
                         @if (Model.Producto.Descuento != 0)
@@ -116,12 +130,12 @@
                         </div>
                     </div><!-- / project-info -->
                 </div><!-- product-details -->
-
             </div><!-- / col-sm-4 col-md-3 -->
+            
 
-           
             <div class="container">
                 <div class="col-md-12">
+                    <br /><br />
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="active"><a href="#description" role="tab" data-toggle="tab" aria-expanded="true">Descripción</a></li>
                     </ul>
@@ -149,4 +163,3 @@
     </div><!-- / container -->
 </section>
 <!-- / shop single-product -->
-

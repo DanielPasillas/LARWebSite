@@ -380,12 +380,10 @@
     <Content Include="Views\Products\GetProductsByCategory.cshtml" />
     <Content Include="Views\Home\indexPartialViews\_indexGalleryProducts.cshtml" />
     <Content Include="Views\Home\GetCategories.cshtml" />
-    <Content Include="Views\Products\detailPartialViews\_temp.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\aboutPartialViews\_aboutMisionAndVision.cshtml" />
     <Content Include="Views\Search\Category.cshtml" />
     <Content Include="Views\HtmlHelpers\GetHtmlResponseByCategoryId.cshtml" />
-    <Content Include="Views\Products\detailPartialViews\TempForSaving.cshtml" />
     <Content Include="Views\Search\_itemProductRenderPage.cshtml" />
     <Content Include="Views\Search\BrandProductSearch.cshtml" />
     <Content Include="Views\Home\contactPartialViews\_contactInformationSection.cshtml" />

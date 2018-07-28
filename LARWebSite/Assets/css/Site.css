@@ -562,3 +562,40 @@ body {
     overflow: hidden;
 }
 
+//Styles form thumbnail product details
+.thumbnail-item-red {
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0,0,0,0.089);
+    box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
+}
+
+.thumb-active {
+    border-left: 4.5px solid #00AB5E;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+
+
+@media only screen and (max-width:990px) {
+    .red-viewmode-responsive
+    {
+        display: block;
+    }
+    .red-viewmode-desktop{
+        display:none;
+    }
+}
+@media only screen and (min-width: 991px){
+    .red-viewmode-responsive {
+        display: none;
+    }
+
+    .red-viewmode-desktop {
+        display: block;
+    }
+}
