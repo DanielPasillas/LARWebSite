@@ -578,24 +578,13 @@ body {
     margin: 0 !important;
 }
 
-
-
-
-@media only screen and (max-width:990px) {
-    .red-viewmode-responsive
-    {
-        display: block;
-    }
-    .red-viewmode-desktop{
-        display:none;
-    }
+.item-product-img-responsive
+{
+    border:1px solid rgba(0,0,0,0.089);
 }
-@media only screen and (min-width: 991px){
-    .red-viewmode-responsive {
-        display: none;
-    }
 
-    .red-viewmode-desktop {
-        display: block;
-    }
+/* red-price-discount */
+.red-price-discount
+{
+    text-decoration:line-through;
 }

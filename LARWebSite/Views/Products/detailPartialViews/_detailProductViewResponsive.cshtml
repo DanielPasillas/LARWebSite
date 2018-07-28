@@ -1,0 +1,86 @@
+﻿@model LARWebSite.ViewModels.ProductDetailViewModel
+
+<!-- Here we will show an image carousel for smartphones and other responsive devices -->
+
+
+<!-- Img Gallery Section -->
+<div>
+    <div id="red-responsive-carousel-img" class="owl-carousel">
+        @foreach (var imgResponsive in Model.Producto.Imagenes)
+        {
+
+            <div class="col-md-12">
+                <div class="item-product-img-responsive">
+                    <img src="~/Assets/images/product_b/@imgResponsive.Image_b" alt="Alternate Text" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<hr />
+
+
+
+<div class="container">
+
+    <!-- Product Information -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3>@Model.Producto.Marca - @Model.Producto.NombreProducto</h3>
+            <p>@Model.Producto.Descripcion</p>
+            <hr />
+        </div>
+    </div>
+
+    <!-- Price -->
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model.Producto.Descuento != 0)
+            {
+                
+                <h4 class="red-price-discount">
+                    $ @Model.Producto.PrecioVenta
+                </h4>
+                <h1>
+                    @{
+                        decimal _realPriceWithDiscount = decimal.Parse(Model.Producto.PrecioVenta.ToString()) - decimal.Parse(Model.Producto.Descuento.ToString());
+                    }
+                    $ @_realPriceWithDiscount
+                </h1>
+            }
+            else
+            {
+                <h1>
+                    $ @Model.Producto.PrecioVenta
+                </h1>
+            }
+        </div>
+    </div>
+
+    @if (Model.Producto.PrecioMayoreo != 0)
+    {
+        <!-- wholesale price -->
+        <div class="row">
+            <div class="col-md-12">
+                Mayoreo:
+                <h3>
+                    $ @Model.Producto.PrecioMayoreo
+                </h3>
+            </div>
+        </div>
+    }
+
+    <!-- product code -->
+    <div class="row">
+        <div class="col-md-12">
+            Código:
+            <h5>
+                @Model.Producto.CodigoProducto
+            </h5>
+        </div>
+    </div>
+
+
+</div>
+
+

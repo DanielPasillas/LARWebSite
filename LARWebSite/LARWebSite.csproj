@@ -390,6 +390,7 @@
     <Content Include="Views\Search\GetProductsBySubCategory.cshtml" />
     <Content Include="Views\Home\_SentContactSuccessful.cshtml" />
     <Content Include="Views\Products\SearchFilterProducts.cshtml" />
+    <Content Include="Views\Products\detailPartialViews\_detailProductViewResponsive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -36,6 +36,9 @@ namespace LARWebSite.Controllers
         [ActionName("detail")]
         public async Task<ActionResult> Detail(int id, string code, string name)
         {
+
+            ViewBag.IsMovile = Request.Browser.IsMobileDevice;
+
             //Get product information by Id, keyProduct and Status.
             var _product = await _dbContext.ProductByCodeAndId(id, code);
 

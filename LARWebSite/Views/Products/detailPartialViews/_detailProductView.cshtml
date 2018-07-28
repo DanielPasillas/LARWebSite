@@ -27,7 +27,7 @@
 <section id="shop">
     <div class="container">
         <div class="row">
-            <div class="col-md-1 nopadding" style="border:1px solid rgba(0,0,0,0.089);">
+            <div class="col-xs-1 nopadding" style="border:1px solid rgba(0,0,0,0.089);">
                 @foreach (var _thumbnail in Model.Producto.Imagenes)
                 {
                     if (iActiveItem == 0)
@@ -47,7 +47,7 @@
                 }
             </div>
             <!-- product content area -->
-            <div class="col-sm-5 col-md-5 content-area" style="margin-top:4px;border:1px solid rgba(0,0,0,0.089);margin-top:-0.2px;">
+            <div class="col-xs-5  content-area" style="margin-top:4px;border:1px solid rgba(0,0,0,0.089);margin-top:-0.2px;">
                 <div class="product-content-area">
                     <div id="product-slider" class="carousel slide" data-ride="carousel">
                         <div class="slider slider-for">
@@ -61,7 +61,7 @@
             </div>
             <!-- / project-content-area -->
             <!-- project sidebar area -->
-            <div class="col-sm-6 col-md-6 product-sidebar" style="border:1px solid rgba(0,0,0,0.089);">
+            <div class="col-xs-6 product-sidebar" style="border:1px solid rgba(0,0,0,0.089);">
                 <div class="product-details">
 
                     <h3>@Model.Producto.Marca - @Model.Producto.NombreProducto</h3>

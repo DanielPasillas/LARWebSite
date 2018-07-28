@@ -4,75 +4,98 @@
 @{
     ViewBag.Title = Model.Producto.NombreProducto;
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    //Check whether the userAgent is MovileDevice or not.
+    bool isMovileDevice = ViewBag.IsMovile;
+
 }
 
 <!-- We include the slick slider directly from the assets folder -->
 <link href="~/Assets/css/slick-slider.css" type="text/css" rel="stylesheet" />
 
-<!-- responsive View -->
-<div class="red-viewmode-responsive">
-    <div class="alert alert-success">
-        Responsive mode
+
+@if (isMovileDevice)
+{
+    <!-- responsive View -->
+    <div class="red-viewmode-responsive">
+        @Html.Partial("detailPartialViews/_detailProductViewResponsive")
     </div>
-</div>
-
-
-<!-- Desktop View. -->
-<div class="red-viewmode-desktop">
-    <!-- Product Detail  -->
-    @Html.Partial("detailPartialViews/_detailProductView")
-</div>
-
-
+}
+else
+{
+    <!-- Desktop View. -->
+    <div class="red-viewmode-desktop">
+        <!-- Product Detail  -->
+        @Html.Partial("detailPartialViews/_detailProductView")
+    </div>
+}
 
 <!-- Other products -->
 @Html.Partial("detailPartialViews/_detailRelatedProducts")
 
 @section scripts
 {
-    
-    <script src="~/Assets/js/jquery.elevate.zoom.js"></script>
-    <script>
 
-        (function () {
+    @if (isMovileDevice)
+    {
+        <script>
+            $(document).ready(function () {
+                $("#red-responsive-carousel-img").owlCarousel({
+                    autoPlay: false, //set autoPlay to 3 seconds.
+                    items: 1,
+                    itemsDesktop: [500, 1],
+                    itemsDesktopSmall: [979, 3],
+                });
+            });
+        </script>
+    }
+    else
+    {
+        <script src="~/Assets/js/jquery.elevate.zoom.js"></script>
+        <script>
 
-            $(".zoom_visualizer").elevateZoom({ scrollZoom: true, gallery: 'gallery_01', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif' });
+            (function () {
 
-            $(".thumbnail-item-red").on("mouseover", function () {
-
-                //Remove active initial class.
-                $(".thumbnail-item-red").removeClass("thumb-active");
-                $(this).addClass("thumb-active");
-
-
-                $("#red-big-img-visualizer").attr("src", window.location.origin + "/assets/images/product_b/" + $(this).attr("data-red-img"));
                 $(".zoom_visualizer").elevateZoom({ scrollZoom: true, gallery: 'gallery_01', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif' });
 
-                   
-            });
-        })();
+                $(".thumbnail-item-red").on("mouseover", function () {
 
-    </script>
-    <script src="~/Assets/js/slick-slider.js"></script>
-    <script>
-        $('.slider-for').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            speed: 500,
-            arrows: true,
-            fade: true,
-            asNavFor: '.slider-nav'
-        });
-        $('.slider-nav').slick({
-            slidesToShow: 3,
-            slidesToScroll: 4,
-            speed: 10,
-            asNavFor: '.slider-for',
-            dots: true,
-            centerMode: true,
-            focusOnSelect: true,
-            slide: 'div'
-        });
-    </script>
+                    //Remove active initial class.
+                    $(".thumbnail-item-red").removeClass("thumb-active");
+                    $(this).addClass("thumb-active");
+
+
+                    $("#red-big-img-visualizer").attr("src", window.location.origin + "/assets/images/product_b/" + $(this).attr("data-red-img"));
+                    $(".zoom_visualizer").elevateZoom({ scrollZoom: true, gallery: 'gallery_01', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif' });
+
+
+                });
+            })();
+
+        </script>
+        <script src="~/Assets/js/slick-slider.js"></script>
+        <script>
+            $('.slider-for').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                speed: 500,
+                arrows: true,
+                fade: true,
+                asNavFor: '.slider-nav'
+            });
+            $('.slider-nav').slick({
+                slidesToShow: 3,
+                slidesToScroll: 4,
+                speed: 10,
+                asNavFor: '.slider-for',
+                dots: true,
+                centerMode: true,
+                focusOnSelect: true,
+                slide: 'div'
+            });
+        </script>
+    }
+
+
 }
-    
