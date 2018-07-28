@@ -9,7 +9,7 @@
     @foreach (var category in Model)
     {
     <div class="info">
-        <a href="@Url.Action("category", "search", new {page = 1, id = category.IdCategoria, category = category.NombreCategoria.ToSeoUrl() })">@category.NombreCategoria</a>
+        <a href="@Url.Action("gallery", "home", new {page = 1, id = category.IdCategoria, category = category.NombreCategoria.ToSeoUrl() })">@category.NombreCategoria</a>
     </div>
     }
 

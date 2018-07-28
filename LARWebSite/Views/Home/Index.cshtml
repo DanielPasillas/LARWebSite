@@ -44,6 +44,22 @@
 
         });
 
+        $(document).ready(function () {
+            $("#brands-carousel").owlCarousel({
+                autoPlay: 5000, //set autoPlay to 5 seconds.
+                items: 5,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 3]
+            });
+
+            $("#products-carousel").owlCarousel({
+                autoPlay: 2000, //set autoPlay to 3 seconds.
+                items: 4,
+                itemsDesktop: [500, 1],
+                itemsDesktopSmall: [979, 3],
+            });
+
+        });
 
         //function - slide link
         (function () {

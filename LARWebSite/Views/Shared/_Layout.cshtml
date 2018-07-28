@@ -72,7 +72,7 @@
 
                             <!-- Offers Section -->
                             <li>
-                                <a href="@Url.Action("gallery", "home")">Galería</a>
+                                <a href="@Url.Action("gallery", "home", new { page = 1, id = 1, category = "default"})">Galería</a>
                             </li>
                         </ul>
                     </nav>
@@ -162,29 +162,6 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <!-- javascript -->
-    <!-- featured-products carousel -->
-    <script>
-        $(document).ready(function () {
-            $("#products-carousel").owlCarousel({
-                autoPlay: 2000, //set autoPlay to 3 seconds.
-                items: 4,
-                itemsDesktop: [500, 1],
-                itemsDesktopSmall: [979, 3],
-            });
-        });
-    </script>
-    <!-- / featured-products carousel -->
-    <!-- brands carousel -->
-    <script>
-        $(document).ready(function () {
-            $("#brands-carousel").owlCarousel({
-                autoPlay: 5000, //set autoPlay to 5 seconds.
-                items: 5,
-                itemsDesktop: [1199, 3],
-                itemsDesktopSmall: [979, 3]
-            });
-
-        });
-    </script>
+   
 </body>
 </html>

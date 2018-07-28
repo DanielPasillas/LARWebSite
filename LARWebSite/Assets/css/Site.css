@@ -552,3 +552,13 @@ body {
     max-height: 300px !important;
 }
 
+
+/* Ellipsis class */
+.ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+

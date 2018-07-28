@@ -24,8 +24,8 @@ namespace LARWebSite
             //Custom Route for list accessing to the categories path.
             routes.MapRoute(
                 name: "ProductsByCategories",
-                url: "search/{action}/{page}/{id}/{category}",
-                defaults: new { controller = "Search", action = "Category", page = UrlParameter.Optional ,id = UrlParameter.Optional, category = UrlParameter.Optional }
+                url: "home/{action}/{page}/{id}/{category}",
+                defaults: new { controller = "Home", action = "Galeria", page = UrlParameter.Optional ,id = UrlParameter.Optional, category = UrlParameter.Optional }
             );
 
             //Custom Route to show the products by brand id.

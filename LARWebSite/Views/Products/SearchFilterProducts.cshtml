@@ -13,7 +13,6 @@
 
 @if (!Model.Any())
 {
-
       <div class="container">
           <div class="red-info-container" style="min-width:100%;padding:20px;box-shadow:1px 0px 3px rgba(0,0,0,0.2);">
               <h3>No se encontraron resultados para: <i>@ViewBag.TitleKeyWords</i></h3>
@@ -36,51 +35,46 @@ else
 {
     <!-- Ends filter section -->
       <div class="container">
-
           <!-- Info Result Section -->
           <div class="red-info-container" style="min-width:100%;padding:20px;box-shadow:1px 0px 3px rgba(0,0,0,0.2);">
               <h3>Resultados para: <i>@ViewBag.TitleKeyWords</i></h3>         
           </div><hr />
-          <div id="grid" class="row shuffle red-category-filter-product" style="position: relative; overflow: hidden; height: 1623.1px; transition: height 250ms ease-out;">
+                <div id="grid" class="row shuffle red-category-filter-product" style="position: relative; overflow: hidden; height: 1623.1px; transition: height 250ms ease-out;">
 
-              @foreach (var _product in Model)
-              {
-                  <!-- product -->
-                  <div class="col-xs-6 col-md-4 product shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; transition: transform 250ms ease-out, opacity 250ms ease-out;">
-                      <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl()})" class="product-link"></a>
-                      <!-- / product-link -->
-                      <img src="~/Assets/images/product_link/@_product.ImagenDetalle" alt="@_product.NombreProducto">
-                      <!-- / product-image -->
-                      <!-- product-hover-tools -->
-                      <div class="product-hover-tools">
-                          <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl()})" class="view-btn">
-                              <i class="lnr lnr-eye"></i>
-                          </a>
-                          <!--a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl()})" class="add-to-cart">
-                        <i class="lnr lnr-cart"></i>
-                    </a-->
-                      </div><!-- / product-hover-tools -->
-                      <!-- product-details -->
-                      <div class="product-details">
-                          <h3 class="product-title">@_product.NombreProducto</h3>
-                          <h6 class="product-price">
-                              @if (_product.Descuento != 0)
-                              {
-                                  <del>$ @_product.Precio</del>
-                                  <span class="sale-price">$ @_product.PrecioDescuento</span>
-                              }
-                              else
-                              {
-                                  <span class="sale-price">$ @_product.Precio</span>
-                              }
-                          </h6>
-                      </div><!-- / product-details -->
-                  </div><!-- / product -->
-              }
-              <!-- grid-resizer -->
-              <div class="col-xs-6 col-md-4 shuffle_sizer shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; opacity: 1; transform: translate3d(266px, 1302px, 0px) scale3d(1, 1, 1); transition: transform 250ms ease-out, opacity 250ms ease-out;"></div>
-              <!-- / grid-resizer -->
-          </div><!-- / row -->
+                    @foreach (var _product in Model)
+                    {
+                        <!-- product -->
+                        <div class="col-xs-6 col-md-4 product shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; transition: transform 250ms ease-out, opacity 250ms ease-out;">
+                            <div class="card mt-6" style="border-radius:2px;cursor:pointer;border:1px solid rgba(0,0,0,0.1);">
+                                <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl() })">
+                                    <img class="card-img-top img-fluid" src="~/Assets/images/product_link/@_product.ImagenDetalle" alt="">
+                                </a>
+                                <hr />
+                                <div class="card-body" style="padding:10px;">
+                                    <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl() })">
+                                        <h5 class="card-title ellipsis" title="@_product.NombreProducto">
+                                            @_product.NombreProducto
+                                        </h5>
+                                    </a>
+                                    <h4>
+                                        @if (_product.Descuento != 0)
+                                        {
+                                            <span>$</span><del> @_product.Precio</del>
+                                            <span class="sale-price">$ @_product.PrecioDescuento</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="sale-price">$ @_product.Precio</span>
+                                        }
+                                    </h4>
+                                </div>
+                            </div><br />
+                        </div><!-- / product -->
+                    }
+                    <!-- grid-resizer -->
+                    <div class="col-xs-6 col-md-4 shuffle_sizer shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; opacity: 1; transform: translate3d(266px, 1302px, 0px) scale3d(1, 1, 1); transition: transform 250ms ease-out, opacity 250ms ease-out;"></div>
+                    <!-- / grid-resizer -->
+                </div><!-- / row -->
           <hr />
 
           <!-- Pagination Components -->

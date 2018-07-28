@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
+using PagedList;
 
 namespace LARWebSite.Controllers
 {
@@ -16,6 +17,9 @@ namespace LARWebSite.Controllers
     {
         //Db Context for connection.
         private readonly dbContextLAR _dbContext;
+
+        //Page size for pagination.
+        private const int _pageSize = 9;
 
         //Obj for Utilerias.
         private Utilerias.Utilerias _utilerias;
@@ -45,7 +49,7 @@ namespace LARWebSite.Controllers
             //------------------//
 
             //Get Categories Collage.
-            string _queryRandomCategories = "SELECT idCategory, parentCategory, categoryName, Image FROM categories ORDER BY rand() LIMIT 3";
+            string _queryRandomCategories = "SELECT idCategory, parentCategory, categoryName, Image FROM categories LIMIT 3";
             var _categories = _dbContext.categories.SqlQuery(_queryRandomCategories).ToList<categories>();
 
             List<CategoriasModel> _viewModelCategories = new List<CategoriasModel>();
@@ -149,8 +153,38 @@ namespace LARWebSite.Controllers
          *   Offers Page.
          */
         [ActionName("gallery")]
-        public async Task<ActionResult> Galeria()
+        public async Task<ActionResult> Galeria(int? page, int id, string category)
         {
+            //Handling the 0 value in the page number.
+            if (page < 1)
+                throw new HttpException(404, "Page size is 0");
+
+            var _category = await _dbContext.categories.FirstOrDefaultAsync(m => m.idCategory == id);
+
+            //Check if the category is null.
+            if (_category == null)
+                throw new HttpException(404, "Category does not exist");
+
+            string _expectedCategoryName = _category.categoryName.ToSeoUrl();
+
+            string _currentCategoryName = (category ?? "").ToLower();
+
+            if (_expectedCategoryName != _currentCategoryName)
+            {
+                //If the category name is not the same, we will redirect to the proper location by passing the name in a SEO format.
+                return RedirectToActionPermanent("gallery", "home", new { page = 1, id = _category.idCategory, category = _expectedCategoryName.ToSeoUrl() });
+            }
+
+            //Get products by Category Id.
+            var _products = await _dbContext.GetProductsByCategoryId(id);
+
+            List<ItemProductModel> _viewModelProduct = new List<ItemProductModel>();
+
+            foreach (var _product in _products)
+            {
+                _viewModelProduct.Add(new ItemProductModel(_product));
+            }
+
             //Get the list of categories.
             //Everytime users clic on a category record, we will retrieve the products related with that category.
             var _categories = await _dbContext.categories.ToArrayAsync();
@@ -158,12 +192,22 @@ namespace LARWebSite.Controllers
             //Initialize the category view model.
             List<CategoriasModel> _viewModelCategories = new List<CategoriasModel>();
 
-            foreach(var _category in _categories)
+            foreach (var itemCategory in _categories)
             {
-                _viewModelCategories.Add(new CategoriasModel(_category));
+                _viewModelCategories.Add(new CategoriasModel(itemCategory));
             }
 
-            return View("Galeria", _viewModelCategories);
+            GalleryViewModel _viewModel = new GalleryViewModel()
+            {
+                CategoryList = _viewModelCategories,
+                ArticleList = _viewModelProduct.ToList().ToPagedList(page ?? 1, _pageSize)
+            };
+
+            ViewBag.CategoryId = _category.idCategory;
+            ViewBag.CategoryName = _category.categoryName;
+            ViewBag.IsActive = _category.idCategory;
+
+            return View("Galeria", _viewModel);
         }
         //----------------------------------------------
 

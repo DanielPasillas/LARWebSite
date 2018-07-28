@@ -1,13 +1,21 @@
-﻿@model IEnumerable<LARWebSite.Models.MenuClasses.CategoriasModel>
+﻿@using PagedList
+@using PagedList.Mvc
+@using LARWebSite.Utilerias
+@model LARWebSite.ViewModels.GalleryViewModel
+
 
 @{
+
+    int activeCategory = ViewBag.IsActive;
+
+    string _categoryName = ViewBag.CategoryName;
 
     ViewBag.Title = "Galería de artículos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 
-@if (!Model.Any())
+@if (!Model.CategoryList.Any())
 {
     <div class="alert alert-success">
         No se encontraron registros de categoría.
@@ -16,22 +24,80 @@
 else
 {
     <section id="shop">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="list-group">
-                    @foreach (var _categoryGroup in Model)
-                    {
-                        <a href="#" data-red-id-category="@_categoryGroup.IdCategoria" class="list-group-item">@_categoryGroup.NombreCategoria</a>
-
-                    }
+        <!-- Page Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="list-group">
+                        @foreach (var _categoryGroup in Model.CategoryList)
+                        {
+                            if (_categoryGroup.IdCategoria == activeCategory)
+                            {
+                                <a href="@Url.Action("gallery","home", new { page = 1, id = _categoryGroup.IdCategoria, category = _categoryGroup.NombreCategoria })" class="list-group-item active">@_categoryGroup.NombreCategoria</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("gallery","home", new { page = 1, id = _categoryGroup.IdCategoria, category = _categoryGroup.NombreCategoria })" class="list-group-item">@_categoryGroup.NombreCategoria</a>
+                            }
+                        }
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-9" style="border:1px solid rgba(0,0,0,0.09);min-height:300px;">
-                <!-- preloader -->
-                
-                    <div class="spinner spinner-round"></div>
-               
+                <!-- /.col-lg-3 -->
+
+                <div class="col-lg-9">
+                    
+                        @if (Model.ArticleList.Count == 0)
+                        {
+                            <div class="alert alert-success">
+                                
+                                No se encontraron productos para <i>@_categoryName</i>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="row">
+                                @foreach (var _product in Model.ArticleList)
+                                {
+                                <div class="col-md-4">
+                                    <div class="card mt-6" style="border-radius:2px;cursor:pointer;border:1px solid rgba(0,0,0,0.1);">
+                                        <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl() })">
+                                            <img class="card-img-top img-fluid" src="~/Assets/images/product_link/@_product.ImagenDetalle" alt="">
+                                        </a>
+                                        <hr />
+                                        <div class="card-body" style="padding:10px;">
+                                            <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl() })">
+                                                <h5 class="card-title ellipsis" title="@_product.NombreProducto">
+                                                    @_product.NombreProducto
+                                                </h5>
+                                            </a>
+                                            <h4>
+                                                @if (_product.Descuento != 0)
+                                                {
+                                                    <span>$</span><del> @_product.Precio</del>
+                                                    <span class="sale-price">$ @_product.PrecioDescuento</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="sale-price">$ @_product.Precio</span>
+                                                }
+                                            </h4>
+                                        </div>
+                                    </div><br />
+                                </div>
+                                }
+                            </div>
+                        }
+                    <div class="row">
+                        <div class="col-md-12" style="text-align:center;">
+                            @Html.PagedListPager(Model.ArticleList, page => Url.Action("gallery", new { page, id = ViewBag.CategoryId, category = _categoryName.ToSeoUrl() }))
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col-lg-9 -->
+
             </div>
         </div>
+        <!-- /.container -->
     </section>
 }

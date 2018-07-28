@@ -8,36 +8,34 @@
         <h2>Nuevos Productos</h2>
     </div><!--/ page-header -->
     <div id="products-carousel" class="owl-carousel">
-        @foreach (var _newProduct in Model.NuevosProductos)
+        @foreach (var _product in Model.NuevosProductos)
         {
             <!-- item -->
             <div class="item product">
-                <!-- / sale-label -->
-                <a href="@Url.Action("detail","products", new { id = _newProduct.IdProducto, code = _newProduct.Codigo, name = _newProduct.NombreProducto.ToSeoUrl() })" class="product-link"></a>
-                <!-- / product-link -->
-                <img src="~/Assets/images/product_link/@_newProduct.ImagenDetalle" alt="">
-                <!-- / product-image -->
-                <!-- product-hover-tools -->
-                <div class="product-hover-tools">
-                    <a href="@Url.Action("detail","products", new { id = _newProduct.IdProducto, code = _newProduct.Codigo, name = _newProduct.NombreProducto.ToSeoUrl() })" class="view-btn">
-                        <i class="lnr lnr-eye"></i>
+                <div class="card mt-6" style="border-radius:2px;cursor:pointer;border:1px solid rgba(0,0,0,0.1);">
+                    <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl() })">
+                        <img class="card-img-top img-fluid" src="~/Assets/images/product_link/@_product.ImagenDetalle" alt="">
                     </a>
-                </div><!-- / product-hover-tools -->
-                <!-- product-details -->
-                <div class="product-details">
-                    <h3 class="product-title">@_newProduct.NombreProducto</h3>
-                    <h6 class="product-price">
-                        @if (_newProduct.Descuento != 0)
-                        {
-                            <span>$</span><del> @_newProduct.Precio</del>
-                            <span class="sale-price">$ @_newProduct.PrecioDescuento</span>
-                        }
-                        else
-                        {
-                            <span class="sale-price">$ @_newProduct.Precio</span>
-                        }
-                    </h6>
-                </div><!-- / product-details -->
+                    <hr />
+                    <div class="card-body" style="padding:10px;">
+                        <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl() })">
+                            <h5 class="card-title ellipsis" title="@_product.NombreProducto">
+                                @_product.NombreProducto
+                            </h5>
+                        </a>
+                        <h4>
+                            @if (_product.Descuento != 0)
+                            {
+                                <span>$</span><del> @_product.Precio</del>
+                                <span class="sale-price">$ @_product.PrecioDescuento</span>
+                            }
+                            else
+                            {
+                                <span class="sale-price">$ @_product.Precio</span>
+                            }
+                        </h4>
+                    </div>
+                </div>
             </div>
             <!-- / item -->
         }
