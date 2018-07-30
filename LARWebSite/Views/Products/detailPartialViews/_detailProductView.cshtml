@@ -1,4 +1,5 @@
 ﻿@model LARWebSite.ViewModels.ProductDetailViewModel
+@using LARWebSite.Utilerias
 
 @{
     int iActiveItem = 0;
@@ -63,72 +64,93 @@
             <!-- project sidebar area -->
             <div class="col-xs-6 product-sidebar" style="border:1px solid rgba(0,0,0,0.089);">
                 <div class="product-details">
-
                     <h3>@Model.Producto.Marca - @Model.Producto.NombreProducto</h3>
                     <p>@Model.Producto.Descripcion</p>
                     <hr />
+                    <div class="row">
+                        <div class="col-md-12">
+                            @if (Model.Producto.Descuento != 0)
+                            {
+                                <h4 style="text-decoration:line-through;">
+                                    $  @Model.Producto.PrecioVenta
+                                </h4>
+                                <h1>
+                                    @{
+                                        decimal _realPriceWithDiscount = decimal.Parse(Model.Producto.PrecioVenta.ToString()) - decimal.Parse(Model.Producto.Descuento.ToString());
+                                    }
+                                    $  @_realPriceWithDiscount
+                                </h1>
+                            }
+                            else
+                            {
+                                <h1>
+                                    $ @Model.Producto.PrecioVenta
+                                </h1>
+                            }
 
-                    <!-- Product Details -->
-                    <div class="product-info">
+                        </div>
+                    </div>
 
-                        @if (Model.Producto.Descuento != 0)
-                        {
-                            <div class="info">
-                                <p><span>Descuento: $  @Model.Producto.Descuento</span></p>
+                    @if (Model.Producto.PrecioMayoreo != 0)
+                    {
+                        <div class="row">
+                            <div class="col-md-12">
+                                Precio mayoreo:
+                                <h4>
+                                    $ @Model.Producto.PrecioMayoreo
+                                </h4>
                             </div>
-                        }
-                        <div class="info">
-                            <p>
-                                <span>
-                                    Precio:
-                                    @if (Model.Producto.Descuento != 0)
-                                    {
-                                        <span style="text-decoration:line-through;">@Model.Producto.PrecioVenta &nbsp;&nbsp;</span>
-                                        @_salePrice
-                                    }
-                                    else
-                                    {
-                                        <span>@Model.Producto.PrecioVenta</span>
-                                    }
-                                </span>
-                            </p>
                         </div>
-                        <div class="info">
-                            <p>
-                                <span>
-                                    Mayoreo:
-                                    @if (Model.Producto.Descuento != 0)
-                                    {
-                                        <span style="text-decoration:line-through;">@Model.Producto.PrecioMayoreo &nbsp;&nbsp;</span>
-                                        @_wholesalePrice
-                                    }
-                                    else
-                                    {
-                                        <span>@Model.Producto.PrecioMayoreo</span>
-                                    }
-                                </span>
-                            </p>
-                        </div>
+                    }
+                    <hr />
 
-                        <!-- Category -->
-                        <div class="info">
-                            <p><span>Categoría: <a href="@Url.Action("getproductsbycategory", "products", new { id = Model.Producto.IdCategoria, category = Model.Producto.Categoria })"> @Model.Producto.Categoria</a></span></p>
+                    <!-- Category and Tipe -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            Categoría <br />
+                            <span class="label label-primary-filled">
+                                <a style="color:white;" href="@Url.Action("gallery", "home", new {page = 1, id = Model.Producto.IdCategoria, category = Model.Producto.Categoria.ToSeoUrl() })">@Model.Producto.Categoria</a>
+                            </span>
                         </div>
-
-                        <!-- SubCategory -->
-                        <div class="info">
-                            <p><span>Tipo: <a href="#link"> @Model.Producto.SubCategoria</a></span></p>
+                        <div class="col-md-6">
+                            Tipo <br />
+                            <span class="label label-primary-filled">
+                                <a style="color:white;" href="@Url.Action("filtersubcategory","search", new { page = 1, id = Model.Producto.IdSubCategoria, nameSubCategory = Model.Producto.SubCategoria.ToSeoUrl()  })">@Model.Producto.SubCategoria</a></>
+                            </span>
                         </div>
-
-                        <!-- Brand -->
-                        <div class="info">
-                            <p><span>Marca: <a href="@Url.Action("brand","products", new { id = Model.Producto.IdMarca, brand = Model.Producto.Marca})"> @Model.Producto.Marca</a></span></p>
+                    </div>
+                    <br />
+                    <!-- Brand and Code -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            Marca <br />
+                            <span class="label label-primary-filled">
+                                <a style="color:white;" href="@Url.Action("brand","search", new { page = 1, id = Model.Producto.IdMarca, name = Model.Producto.Marca.ToSeoUrl()})">@Model.Producto.Marca</a>
+                            </span>
                         </div>
-
-                        <div class="info">
-                            <p><span>Código artículo: <a href="#code">@Model.Producto.CodigoProducto</a>  </span></p>
+                        <div class="col-md-6">
+                            Código <br />
+                            <span class="label label-primary-filled">
+                                @Model.Producto.CodigoProducto
+                            </span>
                         </div>
-                    </div><!-- / project-info -->
+                    </div>
+                    <br />
+                    @if (Model.Producto.Etiquetas.Any())
+                    {
+                        <hr />
+                        <!-- Labels -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <small>Etiquetas</small><br />
+                                @foreach (var label in Model.Producto.Etiquetas)
+                                {
+                                    <span class="label label-primary-filled"><a style="color:white;" href="@Url.Action("label","search", new { page = 1, id = label.idLabel, label = label.labels.labelName})">@label.labels.labelName</a></span>
+                                }
+                            </div>
+                        </div>
+                    }
+                    <!-- Product Details -->
                 </div><!-- product-details -->
             </div><!-- / col-sm-4 col-md-3 -->
             
