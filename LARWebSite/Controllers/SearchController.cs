@@ -93,7 +93,7 @@ namespace LARWebSite.Controllers
             if(_expectedBrandName != actualBrandName)
             {
                 //If the brand name is not the same, we will redirect to the proper location by passing the name in a SEO format.
-                return RedirectToActionPermanent("brand", "search", new { id = _brand.idBrand, name = _expectedBrandName });
+                return RedirectToActionPermanent("brand", "search", new { page = 1, id = _brand.idBrand, name = _expectedBrandName });
             }
 
             //Otherwise, set the name of the brand in a ViewBag variable.
@@ -140,8 +140,8 @@ namespace LARWebSite.Controllers
 
             if (_expectedSubCategoryname != actualCategoryName)
             {
-                //If the brand name is not the same, we will redirect to the proper location by passing the name in a SEO format.
-                return RedirectToActionPermanent("filtersubcategory", "search", new { id = _subCategory.idSubCategory, nameSubCategory = _expectedSubCategoryname });
+                //If the category name is not the same, we will redirect to the proper location by passing the name in a SEO format.
+                return RedirectToActionPermanent("filtersubcategory", "search", new { page = 1,  id = _subCategory.idSubCategory, nameSubCategory = _expectedSubCategoryname });
             }
 
             //Get the list of products by using the SubCategory Id as a parameter.
@@ -166,5 +166,58 @@ namespace LARWebSite.Controllers
             return View("GetProductsBySubCategory", _viewModelProducts.ToList().ToPagedList(page ?? 1, _pageSize));
         }
         //----------------------------
+
+
+        /*
+         *   Search by Label
+         */
+        [ActionName("labels")]
+        public async Task<ActionResult> BusquedaEtiqueta(int? page, int id, string name)
+        {
+            //Handling the 0 value in the page number.
+            if (page < 1)
+                throw new HttpException(404, "Page is less than 0");
+
+            //Check for the label records
+            var _labelRecords = await _dbContext.labels.FirstOrDefaultAsync(m => m.idLabel == id);
+
+            //If the label records does not exist, we will return an http exception.
+            if(_labelRecords == null)
+                throw new HttpException(404, "No records found");
+
+            string _expectedLabelName = _labelRecords.labelName.ToLower();
+
+            string currectLabelName = (name ?? "").ToLower();
+
+            if (_expectedLabelName != currectLabelName)
+            {
+                //If the label name is not the same, we will redirect to the proper location by passing the name in a SEO format.
+                return RedirectToActionPermanent("labels", "search", new { page = 1, id = _labelRecords.idLabel, name = _expectedLabelName });
+            }
+
+            //-------------------------------------------------//
+            //Search products by using the label id. It will make a search through the label and product table.
+            var _productsLabel = await _dbContext.GetProductsByLabel(id);
+
+            //And again, if there are not values found, we will throw an exception.
+            if (_productsLabel == null)
+                throw new HttpException(404, "No records found");
+
+            //Initialize the View Model.
+            List<ItemProductModel> _viewModelProducts = new List<ItemProductModel>();
+
+            //-----------------------------------
+            ViewBag.LabelId = id;
+            ViewBag.TitleLabel = _labelRecords.labelName;
+
+            foreach(var _product in _productsLabel)
+            {
+                _viewModelProducts.Add(new ItemProductModel(_product));
+            }
+
+            return View("BusquedaEtiqueta", _viewModelProducts.ToList().ToPagedList(page ?? 1, _pageSize));
+        }   
+        //----------------------------
+
     }
 }

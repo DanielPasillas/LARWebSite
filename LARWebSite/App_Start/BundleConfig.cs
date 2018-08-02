@@ -12,6 +12,10 @@ namespace LARWebSite
                         "~/Assets/js/jquery.min.js",
                         "~/Assets/js/jquery.shuffle.min.js"));
 
+            //Bundle ProductDetail
+            bundles.Add(new ScriptBundle("~/bundles/jsproductdetail").Include(
+                        "~/Assets/js/red/product-detail/ProductDetail.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 

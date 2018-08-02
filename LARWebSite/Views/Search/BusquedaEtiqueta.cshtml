@@ -1,0 +1,48 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<LARWebSite.Models.ItemProductModel>
+@using LARWebSite.Utilerias
+
+@{
+    string _labelTitle = ViewBag.TitleLabel;
+
+    ViewBag.Title = "Búsqueda etiqueta: " + ViewBag.TitleLabel;
+
+}
+<br />
+<section id="shop">
+    <div class="container">
+        <div class="red-info-container" style="min-width:100%;padding:20px;box-shadow:1px 0px 3px rgba(0,0,0,0.2);">
+            <h3>Resultados para: <i>@_labelTitle</i></h3>
+            <br />
+        </div>
+        <hr />
+        @if (!Model.Any())
+        {
+            <div class="container">
+                <div class="alert alert-success">
+                    No se encontraron productos para <i>@ViewBag.TitleLabel</i>
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <!-- Ends filter section -->
+            <div class="container">
+                <div>
+                    <!-- Include Partial View -->
+                    @Html.Partial("_itemProductRenderPage")
+                </div>
+                <!-- Pagination Components -->
+                <div class="row">
+                    <div class="col-md-12" style="text-align:center;">
+                        @Html.PagedListPager(Model, page => Url.Action("labels", new { page, id = ViewBag.LabelId, name = _labelTitle.ToSeoUrl() }))
+                    </div>
+                </div>
+            </div><!-- / container -->
+        }
+    </div>
+</section>
+<br /><br />
+

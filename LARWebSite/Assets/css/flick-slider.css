@@ -45,6 +45,7 @@ https://flickity.metafizzy.co
     position: absolute;
     background: hsla(0,0%,100%,.20);
     border: none;
+    
     color: #333
 }
 
@@ -82,11 +83,11 @@ https://flickity.metafizzy.co
 }
 
     .flickity-prev-next-button.previous {
-        left: 10px
+        left: 0
     }
 
     .flickity-prev-next-button.next {
-        right: 10px
+        right: 0
     }
 
 .flickity-rtl .flickity-prev-next-button.previous {

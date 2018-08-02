@@ -167,7 +167,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HtmlHelpersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -292,6 +291,7 @@
     <Content Include="Assets\js\picturefill.min.js" />
     <Content Include="Assets\js\preloader.js" />
     <Content Include="Assets\js\red\index\main.index.js" />
+    <Content Include="Assets\js\red\product-detail\ProductDetail.js" />
     <Content Include="Assets\js\scrolling-nav.js" />
     <Content Include="Assets\js\slick-slider.js" />
     <Content Include="Content\bootstrap.css" />
@@ -375,15 +375,11 @@
     <Content Include="Views\Products\detailPartialViews\_detailRelatedProducts.cshtml" />
     <Content Include="Views\Home\LoadMenu.cshtml" />
     <Content Include="Views\Home\Brands.cshtml" />
-    <Content Include="Views\Products\Brand.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
-    <Content Include="Views\Products\GetProductsByCategory.cshtml" />
     <Content Include="Views\Home\indexPartialViews\_indexGalleryProducts.cshtml" />
     <Content Include="Views\Home\GetCategories.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\aboutPartialViews\_aboutMisionAndVision.cshtml" />
     <Content Include="Views\Search\Category.cshtml" />
-    <Content Include="Views\HtmlHelpers\GetHtmlResponseByCategoryId.cshtml" />
     <Content Include="Views\Search\_itemProductRenderPage.cshtml" />
     <Content Include="Views\Search\BrandProductSearch.cshtml" />
     <Content Include="Views\Home\contactPartialViews\_contactInformationSection.cshtml" />
@@ -391,6 +387,8 @@
     <Content Include="Views\Home\_SentContactSuccessful.cshtml" />
     <Content Include="Views\Products\SearchFilterProducts.cshtml" />
     <Content Include="Views\Products\detailPartialViews\_detailProductViewResponsive.cshtml" />
+    <Content Include="Views\Search\BusquedaEtiqueta.cshtml" />
+    <Content Include="Views\Products\detailPartialViews\_ajaxRelatedProductsItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

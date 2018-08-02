@@ -3,14 +3,13 @@
 @using LARWebSite.Utilerias
 @model LARWebSite.ViewModels.GalleryViewModel
 
-
 @{
 
+    //Save the category name that is into the viewbag.
     string _categoryName = ViewBag.CategoryName;
 
+    //Variable decimal to check whether if the category is active.
     int activeCategory = ViewBag.IsActive;
-
-
 
     ViewBag.Title = "Galería de artículos";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -47,7 +46,6 @@ else
                 <!-- /.col-lg-3 -->
 
                 <div class="col-lg-9">
-                    
                         @if (Model.ArticleList.Count == 0)
                         {
                             <div class="alert alert-success">
@@ -97,7 +95,6 @@ else
                     <!-- /.card -->
                 </div>
                 <!-- /.col-lg-9 -->
-
             </div>
         </div>
         <!-- /.container -->

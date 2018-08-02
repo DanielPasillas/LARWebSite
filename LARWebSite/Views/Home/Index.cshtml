@@ -1,4 +1,5 @@
-﻿@model  LARWebSite.ViewModels.IndexViewModel
+﻿<!-- Main Index -->
+@model  LARWebSite.ViewModels.IndexViewModel
 @using LARWebSite.Utilerias
 
 @{
@@ -32,9 +33,8 @@
 {
     @Scripts.Render("~/bundles/index")
     <script src="~/Assets/js/picturefill.min.js" async></script>
-
     <script>
-
+        //Set carousel settings
         $('.main-gallery').flickity({
             //
             cellAlign: 'center',
@@ -43,7 +43,7 @@
             lazyLoad: 1
 
         });
-
+        //When document is ready, we will set the carousel options for the components shown below.
         $(document).ready(function () {
             $("#brands-carousel").owlCarousel({
                 autoPlay: 5000, //set autoPlay to 5 seconds.
@@ -51,21 +51,18 @@
                 itemsDesktop: [1199, 3],
                 itemsDesktopSmall: [979, 3]
             });
-
             $("#products-carousel").owlCarousel({
                 autoPlay: 2000, //set autoPlay to 3 seconds.
                 items: 4,
                 itemsDesktop: [500, 1],
                 itemsDesktopSmall: [979, 3],
             });
-
         });
 
         //function - slide link
+        //By using this funtion, we can access to the resource included in the image.
         (function () {
-
             'use strict';
-
             $(".red-slide-get-link").on("click", function () {
                 try {
                     var _self = $(this);
@@ -76,6 +73,5 @@
                 }
             });
         })();
-
     </script>
 }

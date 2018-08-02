@@ -549,8 +549,10 @@ body {
 }
 
 .main-gallery {
-    max-height: 300px !important;
+    max-height: 400px !important;
 }
+
+
 
 
 /* Ellipsis class */

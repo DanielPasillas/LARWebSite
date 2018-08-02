@@ -4,6 +4,9 @@
 @using LARWebSite.Utilerias
 
 @{
+
+    string _brandName = ViewBag.BrandTitle;
+
     ViewBag.Title = ViewBag.BrandTitle;
 
 }
@@ -27,22 +30,19 @@
     {
         <!-- Ends filter section -->
         <div class="container">
-           
+            <!-- Include Render page for Item iteration -->
             <div>
                 <!-- Include Partial View -->
                 @Html.Partial("_itemProductRenderPage")
             </div>
-
             <!-- Pagination Components -->
             <div class="row">
                 <div class="col-md-12" style="text-align:center;">
-                    @Html.PagedListPager(Model, page => Url.Action("brand", new { page, id = ViewBag.BrandId, name = ViewBag.BrandTitle }))
+                    @Html.PagedListPager(Model, page => Url.Action("brand", new { page, id = ViewBag.BrandId, name = _brandName .ToSeoUrl()}))
                 </div>
             </div>
         </div><!-- / container -->
     }
-
-
 </section>
 <br /><br />
 

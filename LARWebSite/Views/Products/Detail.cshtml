@@ -5,7 +5,6 @@
     ViewBag.Title = Model.Producto.NombreProducto;
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-
     //Check whether the userAgent is MovileDevice or not.
     bool isMovileDevice = ViewBag.IsMovile;
 
@@ -95,4 +94,7 @@ else
             });
         </script>
     }
+
+    @Scripts.Render("~/bundles/jsproductdetail")
+
 }

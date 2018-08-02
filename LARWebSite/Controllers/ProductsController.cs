@@ -59,29 +59,48 @@ namespace LARWebSite.Controllers
 
             ProductModel _viewModelProduct = new ProductModel(_product);
 
-            //Get the related products.
-            List<ItemProductModel> _viewModelProductList = new List<ItemProductModel>();
-
             //Get the list of products.
-            var _productList =  _dbContext.GetRelatedProducts(_viewModelProduct.IdMarca, _viewModelProduct.IdCategoria, _viewModelProduct.IdSubCategoria);
+            //var _productList =  _dbContext.GetRelatedProducts(_viewModelProduct.IdMarca, _viewModelProduct.IdCategoria, _viewModelProduct.IdSubCategoria);
 
-            foreach (var _listProducts in _productList)
-            {
-                _viewModelProductList.Add(new ItemProductModel(_listProducts));
-            }
+            //foreach (var _listProducts in _productList)
+            //{
+              //  _viewModelProductList.Add(new ItemProductModel(_listProducts));
+            //}
 
             //View model for the Product Detail Module.
             ProductDetailViewModel _viewModelDetail = new ProductDetailViewModel()
             {
-                Producto = _viewModelProduct,
-                SliderProducts = _viewModelProductList
+                Producto = _viewModelProduct
             };
 
             return View("Detail", _viewModelDetail);
         }
         //----------------------------------------------
 
+        /*
+         *   This method get the related products by products
+         *   NOTICE: This method is executed by ajax request.
+         */
+        [ActionName("relateditems")]
+        [HttpGet]
+        public ActionResult GetRelatedProductsByProduct(int brand, int category, int subcategory)
+        {
+            var _productList = _dbContext.GetRelatedProducts(brand, category, subcategory);
 
+            List<ItemProductModel> _viewModelAjax = new List<ItemProductModel>();
+
+            foreach (var _listProducts in _productList)
+            {
+                _viewModelAjax.Add(new ItemProductModel(_listProducts));
+            }
+
+            return PartialView("detailPartialViews/_ajaxRelatedProductsItems", _viewModelAjax);
+        }
+        //----------------------------
+
+        /*
+         *  Method for searching
+         */
         [ActionName("search")]
         [HttpGet]
         public ActionResult SearchFilterProducts(int? page, string keywords)

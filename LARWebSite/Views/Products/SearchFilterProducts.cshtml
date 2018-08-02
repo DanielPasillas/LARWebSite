@@ -1,7 +1,6 @@
 ﻿@using PagedList
 @using PagedList.Mvc
 @model IPagedList<LARWebSite.Models.ItemProductModel>
-
 @using LARWebSite.Utilerias
 
 @{
@@ -10,7 +9,6 @@
 }
 
 <br /><br />
-
 @if (!Model.Any())
 {
       <div class="container">
@@ -75,8 +73,7 @@ else
                     <div class="col-xs-6 col-md-4 shuffle_sizer shuffle-item filtered" style="position: absolute; top: 0px; left: 0px; visibility: visible; opacity: 1; transform: translate3d(266px, 1302px, 0px) scale3d(1, 1, 1); transition: transform 250ms ease-out, opacity 250ms ease-out;"></div>
                     <!-- / grid-resizer -->
                 </div><!-- / row -->
-          <hr />
-
+                <hr />
           <!-- Pagination Components -->
           <div class="row">
               <div class="col-md-12" style="text-align:center;">

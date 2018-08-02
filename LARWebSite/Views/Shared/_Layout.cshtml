@@ -72,7 +72,7 @@
 
                             <!-- Offers Section -->
                             <li>
-                                <a href="@Url.Action("gallery", "home", new { page = 1, id = 1, category = "default"})">Galería</a>
+                                <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "gallery" ? "active" : "")" href="@Url.Action("gallery", "home", new { page = 1, id = 1, category = "default"})">Galería</a>
                             </li>
                         </ul>
                     </nav>
@@ -127,10 +127,13 @@
                         </div>
                         <div-- class="contact-widget">
                             <div class="info">
-                                <p><span>449 918 6217</span></p><br />
+                                <a href="javascript:void;" class="ellipsis">Victoria 705, Centro, 20000 Aguascalientes, México</a>
                             </div>
                             <div class="info">
-                                <p><span>office@yoursite.com</span></p>
+                                <a href="javascript:void;">449 918 6217</a>
+                            </div>
+                            <div class="info">
+                                <a href="javascript:void;">info@lared.com</a>
                             </div>
                             <!--div class="info">
                                 <p class="social pull-left">

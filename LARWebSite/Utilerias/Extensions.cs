@@ -11,6 +11,9 @@ namespace LARWebSite.Utilerias
     public static class Extensions
     {
        
+        /*
+         *   Get products by Code and Id.
+         */
         public static async Task<products> ProductByCodeAndId(this dbContextLAR context, int idProduct, string code)
         {
             //We will search the product by using the code field.
@@ -26,7 +29,9 @@ namespace LARWebSite.Utilerias
         //-------------------------------------------------------------------------
 
         
-        //Get the products by looking for the Id brand.
+        /*
+         *   Get Products by Brand Id
+         */
         public static IEnumerable<products> ProductsByIdBrand(this dbContextLAR context, int idBrand)
         {
             //Get the products filtered by the brand id.
@@ -42,6 +47,9 @@ namespace LARWebSite.Utilerias
         }
         //-------------------------------------------------------------------------
 
+        /*
+         *    Get products by SubCategory Id
+         */
         public static async Task<IEnumerable<products>> GetProductsBySubCategoryId(this dbContextLAR context, int idSubCategory)
         {
             return await context.products
@@ -55,7 +63,9 @@ namespace LARWebSite.Utilerias
         }
         //-------------------------------------------------------------------------
 
-
+        /*
+         *  Get products by category Id
+         */
         public static async Task<IEnumerable<products>> GetProductsByCategoryId(this dbContextLAR context, int idCategory)
         {
             return await context.products
@@ -66,6 +76,20 @@ namespace LARWebSite.Utilerias
                         .Include("sizes_product")
                         .Include("product_label")
                         .Where(m => m.idCategory == idCategory).ToListAsync();
+        }
+        //-------------------------------------------------------------------------
+
+        /*
+         *  Get products by label
+         */
+        public static async Task<IEnumerable<products>> GetProductsByLabel(this dbContextLAR context, int idLabel)
+        {
+
+            return await (from e in context.product_label
+                          join p in context.products on e.idProduct equals p.idProduct
+                          join lbl in context.labels on e.idLabel equals lbl.idLabel
+                          where e.idLabel == idLabel
+                          select p).ToListAsync();
         }
         //-------------------------------------------------------------------------
 

@@ -1,16 +1,15 @@
 ﻿@model IEnumerable<LARWebSite.Models.MenuClasses.CategoriasModel>
 @using LARWebSite.Utilerias
 
+<!-- Category name components -->
 <div class="widget-title">
     <h4>Categorías</h4>
 </div>
 <div class="link-widget">
-
     @foreach (var category in Model)
     {
     <div class="info">
         <a href="@Url.Action("gallery", "home", new {page = 1, id = category.IdCategoria, category = category.NombreCategoria.ToSeoUrl() })">@category.NombreCategoria</a>
     </div>
     }
-
 </div>

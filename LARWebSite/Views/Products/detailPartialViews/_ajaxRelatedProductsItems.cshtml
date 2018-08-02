@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LARWebSite.Models.ItemProductModel>
+@using LARWebSite.Utilerias
+
+<div class="row">
+    @foreach (var _product in Model)
+    {
+
+        <div class="col-xs-6 col-md-3 product">
+            <div class="card mt-6" style="border-radius:2px;cursor:pointer;border:1px solid rgba(0,0,0,0.1);">
+                <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl() })">
+                    <img class="card-img-top img-fluid" src="~/Assets/images/product_link/@_product.ImagenDetalle" alt="">
+                </a>
+                <hr />
+                <div class="card-body" style="padding:10px;">
+                    <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl() })">
+                        <h5 class="card-title ellipsis" title="@_product.NombreProducto">
+                            @_product.NombreProducto
+                        </h5>
+                    </a>
+                    <h4>
+                        @if (_product.Descuento != 0)
+                        {
+                            <span>$</span><del> @_product.Precio</del>
+                            <span class="sale-price">$ @_product.PrecioDescuento</span>
+                        }
+                        else
+                        {
+                            <span class="sale-price">$ @_product.Precio</span>
+                        }
+                    </h4>
+                </div>
+            </div>
+        </div>
+    }
+</div>
