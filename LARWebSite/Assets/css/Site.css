@@ -544,16 +544,23 @@ body {
     background: #EEE;
 }
 
+@media screen and (min-width:1700px) {
+
+    .main-gallery {
+        width:1280px;
+        margin:0 auto;
+        max-height: 400px !important;
+    }
+}
+
 .gallery-cell {
     width: 100%;height:auto;
 }
 
 .main-gallery {
+    box-shadow:1px 0px 3px rgba(0,0,0,0.6);
     max-height: 400px !important;
 }
-
-
-
 
 /* Ellipsis class */
 .ellipsis {
@@ -564,7 +571,7 @@ body {
     overflow: hidden;
 }
 
-//Styles form thumbnail product details
+/*Styles form thumbnail product details*/
 .thumbnail-item-red {
     cursor: pointer;
     border-bottom: 1px solid rgba(0,0,0,0.089);

@@ -17,7 +17,7 @@
             {
                 <!-- Category Item -->
                 <div class="col-sm-4 category">
-                    <a href="@Url.Action("category","search", new {page = 1, id = _category.IdCategoria, category = _category.NombreCategoria.ToSeoUrl() })">
+                    <a href="@Url.Action("gallery", "home", new {page = 1, id = _category.IdCategoria, category = _category.NombreCategoria.ToSeoUrl() })">
                         <div class="category-item">
                             <img src="~/Assets/images/categories/@_category.ImagenCategoria" alt="@_category.NombreCategoria">
                             <div class="overlay">

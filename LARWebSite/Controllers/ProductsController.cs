@@ -59,14 +59,6 @@ namespace LARWebSite.Controllers
 
             ProductModel _viewModelProduct = new ProductModel(_product);
 
-            //Get the list of products.
-            //var _productList =  _dbContext.GetRelatedProducts(_viewModelProduct.IdMarca, _viewModelProduct.IdCategoria, _viewModelProduct.IdSubCategoria);
-
-            //foreach (var _listProducts in _productList)
-            //{
-              //  _viewModelProductList.Add(new ItemProductModel(_listProducts));
-            //}
-
             //View model for the Product Detail Module.
             ProductDetailViewModel _viewModelDetail = new ProductDetailViewModel()
             {
@@ -82,7 +74,7 @@ namespace LARWebSite.Controllers
          *   NOTICE: This method is executed by ajax request.
          */
         [ActionName("relateditems")]
-        [HttpGet]
+        [HttpPost]
         public ActionResult GetRelatedProductsByProduct(int brand, int category, int subcategory)
         {
             var _productList = _dbContext.GetRelatedProducts(brand, category, subcategory);

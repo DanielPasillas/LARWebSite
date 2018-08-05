@@ -23,7 +23,7 @@
                   <li><a href="/">Inicio</a></li>
                   <li><a href="/home/about">Sobre nosotros</a></li>
                   <li><a href="/home/contacto">Contacto</a></li>
-                  <li><a href="/home/gallery">Galería</a></li>
+                  <li><a href="@Url.Action("gallery", "home", new { page = 1, id = 1, category = "default"})">Galería</a></li>
               </ul>
           </div>
           <br /><br />
@@ -38,7 +38,6 @@ else
               <h3>Resultados para: <i>@ViewBag.TitleKeyWords</i></h3>         
           </div><hr />
                 <div id="grid" class="row shuffle red-category-filter-product" style="position: relative; overflow: hidden; height: 1623.1px; transition: height 250ms ease-out;">
-
                     @foreach (var _product in Model)
                     {
                         <!-- product -->

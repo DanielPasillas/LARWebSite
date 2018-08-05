@@ -42,7 +42,7 @@ function loadRelatedProductsAjax(idBrand, idCategory, idSubCategory) {
     try {
         $.ajax({
             url: window.location.origin + '/products/relateditems',
-            type: 'get',
+            type: 'post',
             cache: false,
             data: { brand : idBrand, category : idCategory, subcategory : idSubCategory },
             dataType: 'html',
@@ -57,4 +57,5 @@ function loadRelatedProductsAjax(idBrand, idCategory, idSubCategory) {
         console.log(e);
     }
 }
+//--------------------------------------------------
 
