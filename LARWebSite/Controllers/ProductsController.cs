@@ -75,7 +75,7 @@ namespace LARWebSite.Controllers
          */
         [ActionName("relateditems")]
         [HttpPost]
-        public ActionResult GetRelatedProductsByProduct(int brand, int category, int subcategory)
+        public ActionResult GetRelatedProductsByProduct(int brand, int category, int subcategory,bool responsive)
         {
             var _productList = _dbContext.GetRelatedProducts(brand, category, subcategory);
 
@@ -86,7 +86,7 @@ namespace LARWebSite.Controllers
                 _viewModelAjax.Add(new ItemProductModel(_listProducts));
             }
 
-            return PartialView("detailPartialViews/_ajaxRelatedProductsItems", _viewModelAjax);
+            return responsive ? PartialView("detailPartialViews/_ajaxRelatedProductsItemsResponsive", _viewModelAjax)  : PartialView("detailPartialViews/_ajaxRelatedProductsItems", _viewModelAjax);
         }
         //----------------------------
 

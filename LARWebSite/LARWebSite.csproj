@@ -389,6 +389,7 @@
     <Content Include="Views\Products\detailPartialViews\_detailProductViewResponsive.cshtml" />
     <Content Include="Views\Search\BusquedaEtiqueta.cshtml" />
     <Content Include="Views\Products\detailPartialViews\_ajaxRelatedProductsItems.cshtml" />
+    <Content Include="Views\Products\detailPartialViews\_ajaxRelatedProductsItemsResponsive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

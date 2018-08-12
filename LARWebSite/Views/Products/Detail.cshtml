@@ -17,14 +17,14 @@
 @if (isMovileDevice)
 {
     <!-- responsive View -->
-    <div class="red-viewmode-responsive">
+    <div class="red-viewmode-responsive red-container-pane" data-validate-responsive="@isMovileDevice">
         @Html.Partial("detailPartialViews/_detailProductViewResponsive")
     </div>
 }
 else
 {
     <!-- Desktop View. -->
-    <div class="red-viewmode-desktop">
+    <div class="red-viewmode-desktop red-container-pane" data-validate-responsive="@isMovileDevice">
         <!-- Product Detail  -->
         @Html.Partial("detailPartialViews/_detailProductView")
     </div>

@@ -26,8 +26,11 @@ $(window).scroll(function () {
                 var _idCategory = _self.attr("data-category");
                 var _idSubCategory = _self.attr("data-subcategory");
 
+                //Check whether the view is responsive or not.
+                var _isResponsiveRelatedProducts = $(".red-container-pane").attr("data-validate-responsive");
+
                 //Call the AJAX function.
-                loadRelatedProductsAjax(_idBrand, _idCategory, _idSubCategory);
+                loadRelatedProductsAjax(_idBrand, _idCategory, _idSubCategory, _isResponsiveRelatedProducts);
 
                 //Reset data-ajax-async-loaded property to "false"
                 _self.attr("data-ajax-async-loaded", true);
@@ -38,13 +41,13 @@ $(window).scroll(function () {
 });
 //--------------------------------------------------
 
-function loadRelatedProductsAjax(idBrand, idCategory, idSubCategory) {
+function loadRelatedProductsAjax(idBrand, idCategory, idSubCategory, isResponsive) {
     try {
         $.ajax({
             url: window.location.origin + '/products/relateditems',
             type: 'post',
             cache: false,
-            data: { brand : idBrand, category : idCategory, subcategory : idSubCategory },
+            data: { brand: idBrand, category: idCategory, subcategory: idSubCategory, responsive: isResponsive },
             dataType: 'html',
             success: function (response) {
                 $("#red-content-related-products").html(response);
