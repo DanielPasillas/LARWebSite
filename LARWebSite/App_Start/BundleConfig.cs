@@ -54,7 +54,6 @@ namespace LARWebSite
                       "~/Assets/css/style.megamenu.css",
                       "~/Assets/css/site.css"));
 
-
             //Enable web optimizations. 
             BundleTable.EnableOptimizations = true;
         }

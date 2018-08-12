@@ -135,7 +135,7 @@
   height: 39px;
   z-index: 2;
   outline: none;
-  color: #ccc;
+  color: black;
   background-color: rgba(0, 0, 0, 0.2);
   -webkit-transition: all 0.7s ease 0s;
   -moz-transition: all 0.7s ease 0s;
@@ -1082,18 +1082,19 @@
   }
   .topmenusearch input:focus {
     width: 100%;
-    background-color: #f5f5f5;
-    color: #000;
+    background-color: rgba(0,0,0,0.4) !important;
+    color: black;
   }
   .topmenusearch input:hover {
     width: 100%;
     background-color: #f5f5f5;
-    color: #000;
+    color: black;
   }
   .topmenusearch input {
     border-radius: 0px !important;
     height: 44px;
-    background-color: #f1f1f1;
+    background-color: rgba(0,0,0,0.4);
+    color:black;
   }
   .smllogo {
     width: 100%;

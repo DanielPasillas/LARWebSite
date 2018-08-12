@@ -21,13 +21,13 @@ namespace LARWebSite
             );
             */
 
-
             //Custom Route for serching by using labels
             routes.MapRoute(
                 name: "RouteForGettingRelatedProductsAjax",
                 url: "search/{action}/{brand}/{category}/{subcategory}",
                 defaults: new { controller = "Search", action = "GetRelatedProductsByProduct", brand = UrlParameter.Optional, category = UrlParameter.Optional, subcategory = UrlParameter.Optional }
             );
+
             //Custom Route for serching by using labels
             routes.MapRoute(
                 name: "SearchByLabelId",
