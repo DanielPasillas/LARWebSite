@@ -96,19 +96,18 @@
                 </span>
             </td>
         </tr>
-        @if (Model.Producto.Etiquetas.Any())
-        {
-            <tr>
-                <td>Etiquetas</td>
-                <td>
-                    @foreach (var label in Model.Producto.Etiquetas)
-                    {
-                        <span class="label label-primary-filled"><a style="color:white;" href="@Url.Action("labels","search", new { page = 1, id = label.idLabel, name = label.labels.labelName})">@label.labels.labelName</a></span>
-                    }
-                </td>
-            </tr>
-        }
     </table>
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model.Producto.Etiquetas.Any())
+            {
+                foreach (var label in Model.Producto.Etiquetas)
+                {
+                    <span class="label label-default-filled"><a style="color:white;" href="@Url.Action("labels","search", new { page = 1, id = label.idLabel, name = label.labels.labelName})">@label.labels.labelName</a></span>
+                }
+            }
+        </div>
+    </div>
 </div>
 
 
