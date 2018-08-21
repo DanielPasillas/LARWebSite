@@ -3,9 +3,12 @@
 
 @{
     int iActiveItem = 0;
+    int countViewedImageThumb = 0;
+
+    List<string> _imgLoadGalleryView = new List<string>();
 
     //Sale price
-    decimal _salePrice = Model.Producto.Descuento != 0 ? (Model.Producto.PrecioVenta - Model.Producto.Descuento) : Model.Producto.PrecioVenta;
+            decimal _salePrice = Model.Producto.Descuento != 0 ? (Model.Producto.PrecioVenta - Model.Producto.Descuento) : Model.Producto.PrecioVenta;
     //Wholesale price.
     decimal _wholesalePrice = Model.Producto.Descuento != 0 ? (Model.Producto.PrecioMayoreo - Model.Producto.Descuento) : Model.Producto.PrecioMayoreo;
 
@@ -24,27 +27,48 @@
     }
 }
 
+
+
 <section id="shop">
     <div class="container">
         <div class="row">
             <div class="col-xs-1 nopadding" style="border:1px solid rgba(0,0,0,0.089);">
                 @foreach (var _thumbnail in Model.Producto.Imagenes)
                 {
-                    if (iActiveItem == 0)
+                    if (iActiveItem < 4)
                     {
-                        <div class="thumbnail-item-red thumb-active" id="thumb-@iActiveItem" data-red-img="@_thumbnail.Image_b">
-                            <img src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
-                        </div>
+                        if (iActiveItem == 0)
+                        {
+                            <div class="thumbnail-item-red thumb-active" id="thumb-@iActiveItem" data-red-img="@_thumbnail.Image_b">
+                                <img src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="thumbnail-item-red" id="thumb-@iActiveItem" data-red-img="@_thumbnail.Image_b">
+                                <img src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
+                            </div>
+                        }
+                        countViewedImageThumb++;
                     }
-                    else
+                    else if (iActiveItem == 5)
                     {
-                        <div class="thumbnail-item-red"  id="thumb-@iActiveItem" data-red-img="@_thumbnail.Image_b">
-                            <img src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
+                        //Count the rest of the images.
+                        int countMoreImages = Model.Producto.Imagenes.Count() - 4;
+
+                        <div class="thumbnail-container-detail red-load-dynamic">
+                            <div class="red-thumnbnail-plus">
+                                + @countMoreImages
+                            </div>
+                            <img style="opacity:0.4;" src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
                         </div>
                     }
 
+                    _imgLoadGalleryView.Add(_thumbnail.Image_b);
+
                     iActiveItem++;
                 }
+                <input type="hidden" class="red-load-lightviewgallery" data-red-images="@Json.Encode(_imgLoadGalleryView)" />
             </div>
             <!-- product content area -->
             <div class="col-xs-5  content-area" style="margin-top:4px;border:1px solid rgba(0,0,0,0.089);margin-top:-0.2px;">

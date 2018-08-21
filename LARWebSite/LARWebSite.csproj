@@ -243,6 +243,7 @@
     <Content Include="Assets\css\colors.css" />
     <Content Include="Assets\css\flick-slider.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
+    <Content Include="Assets\css\lightgallery.css" />
     <Content Include="Assets\css\linear-icons.css" />
     <Content Include="Assets\css\megamenu.css" />
     <Content Include="Assets\css\owl.carousel.css" />
@@ -286,11 +287,13 @@
     <Content Include="Assets\js\jquery.elevate.zoom.js" />
     <Content Include="Assets\js\jquery.min.js" />
     <Content Include="Assets\js\jquery.shuffle.min.js" />
+    <Content Include="Assets\js\red\product-detail\lightgallery-all.min.js" />
     <Content Include="Assets\js\megamenu.js" />
     <Content Include="Assets\js\owl.carousel.min.js" />
     <Content Include="Assets\js\picturefill.min.js" />
     <Content Include="Assets\js\preloader.js" />
     <Content Include="Assets\js\red\index\main.index.js" />
+    <Content Include="Assets\js\red\product-detail\jquery.mousewheel.min.js" />
     <Content Include="Assets\js\red\product-detail\ProductDetail.js" />
     <Content Include="Assets\js\scrolling-nav.js" />
     <Content Include="Assets\js\slick-slider.js" />

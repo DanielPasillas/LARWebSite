@@ -590,3 +590,23 @@ body {
 {
     text-decoration:line-through;
 }
+
+
+/* Thumbnail detail for images */
+.thumbnail-container-detail {
+    cursor: pointer;
+    background: rgba(0,0,0,0.6);
+}
+
+.red-thumnbnail-plus {
+    background: transparent;
+    z-index: 999;
+    margin-top: 50px;
+    text-shadow: 1px 0px 3px rgba(0,0,0,0.9);
+    font-size: 20px;
+    color: white;
+    width: 100px;
+    text-align: center;
+    height: auto;
+    position: absolute;
+}
