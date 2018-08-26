@@ -8,36 +8,6 @@
  */
 
 
-//Fast Call Functions
-(function () {
-
-    //Launch dynamic gallery for products images.
-    $(".red-load-dynamic").on('click', function () {
-        
-        var _imgArray = $(".red-load-lightviewgallery").attr("data-red-images");
-
-        var _stringImages = '';
-
-        $.each(JSON.parse(_imgArray), function (i, index) {
-            if ((i + 1) === JSON.parse(_imgArray).length) {
-                _stringImages += "{'src' : '" + window.location.origin + "/assets/images/product_b/" + index + "', 'thumb': '" + window.location.origin + "/assets/images/product_b/" + index + "'}";
-            } else {
-                _stringImages += "{'src' : '" + window.location.origin + "/assets/images/product_b/" + index + "', 'thumb': '" + window.location.origin + "/assets/images/product_b/" + index + "'},";
-            }
-        });
-
-        console.log(_stringImages);
-
-       
-        $(this).lightGallery({
-            dynamic: true,
-            dynamicEl: "[" + _stringImages + "]"
-        })
-        
-    });
-
-})();
-
 
 //Function to load the related product section.
 //This function will be executed when the #related-products div is shown.

@@ -7,8 +7,9 @@
 
     List<string> _imgLoadGalleryView = new List<string>();
 
+
     //Sale price
-            decimal _salePrice = Model.Producto.Descuento != 0 ? (Model.Producto.PrecioVenta - Model.Producto.Descuento) : Model.Producto.PrecioVenta;
+    decimal _salePrice = Model.Producto.Descuento != 0 ? (Model.Producto.PrecioVenta - Model.Producto.Descuento) : Model.Producto.PrecioVenta;
     //Wholesale price.
     decimal _wholesalePrice = Model.Producto.Descuento != 0 ? (Model.Producto.PrecioMayoreo - Model.Producto.Descuento) : Model.Producto.PrecioMayoreo;
 
@@ -23,11 +24,13 @@
         {
             _defaultImg = _thumbnail.Image_b;
         }
+
+        //Add Image Item to the detail array list.
+        _imgLoadGalleryView.Add(_thumbnail.Image_b);
+
         _checkFirstImage++;
     }
 }
-
-
 
 <section id="shop">
     <div class="container">
@@ -64,10 +67,10 @@
                         </div>
                     }
 
-                    _imgLoadGalleryView.Add(_thumbnail.Image_b);
-
                     iActiveItem++;
                 }
+
+                <!-- Input hidden for saving the images array -->
                 <input type="hidden" class="red-load-lightviewgallery" data-red-images="@Json.Encode(_imgLoadGalleryView)" />
             </div>
             <!-- product content area -->
@@ -219,3 +222,5 @@
     </div><!-- / container -->
 </section>
 <!-- / shop single-product -->
+
+

@@ -70,6 +70,43 @@ else
                 });
             })();
 
+            @if (Model.Producto.Imagenes.Count() > 4)
+            {
+                @: //Fast Call Functions
+                @: //This function will be only executed if images length is greater than 4.
+                   @:(function () {
+
+                    @://Launch dynamic gallery for products images.
+                    @: $(".red-load-dynamic").on('click', function () {
+
+                        int _imgCount = Model.Producto.Imagenes.Count();
+
+
+                        @:  $(this).lightGallery({
+                        @:    dynamic: true,
+                        @:    dynamicEl: [
+                                      
+                                    int index = 0;
+                                    foreach(var img in Model.Producto.Imagenes)
+                                    {
+                                        if ((index + 1) == _imgCount)
+                                        {
+                                            @: { 'src': window.location.origin + '/assets/images/product_b/@img.Image_b', 'thumb': window.location.origin + '/assets/images/product_b/@img.Image_b' }
+                                        }
+                                        else
+                                        {
+                                            @: { 'src': window.location.origin + '/assets/images/product_b/@img.Image_b', 'thumb': window.location.origin + '/assets/images/product_b/@img.Image_b' },
+                                        }
+                                    }
+                            @:]
+                        @:  })
+                        @:
+
+                    @: });
+                @: })();
+
+            }
+
         </script>
         <script src="~/Assets/js/slick-slider.js"></script>
         <script>
