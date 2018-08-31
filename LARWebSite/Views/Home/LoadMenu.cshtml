@@ -10,23 +10,27 @@
         <a href="#">&nbsp;&nbsp;@menu.MainType<span class="arrow"></span></a>
         @if (menu._TypeCategorias.Any())
         {
-            <div class="megamenu clearfix halfmenu" style="box-shadow:1px 0px 4px rgba(0,0,0,0.4);">
-                @foreach (var _typeCategory in menu._TypeCategorias)
-                {
-                    foreach (var _categories in _typeCategory.Categories)
-                    {
-                        if (_categories.SubCategories.Any())
+            <div class="megamenu clearfix" style="box-shadow:1px 0px 4px rgba(0,0,0,0.4);">
+                <div class="container-fluid">
+                    <div class="row">
+                        @foreach (var _typeCategory in menu._TypeCategorias)
                         {
-                            <ul class="megacollink">
-                                <li class="title">@_categories.Category</li>
-                                @foreach (var _subCategory in _categories.SubCategories)
+                            foreach (var _categories in _typeCategory.Categories)
+                            {
+                                if (_categories.SubCategories.Any())
                                 {
-                                    <li><a href="@Url.Action("filtersubcategory","search", new { page = 1, id = _subCategory.IdSubCategory, nameSubCategory = _subCategory.SubCategory.ToSeoUrl()  })">@_subCategory.SubCategory</a></li>
+                                    <ul class="megacollink">
+                                        <li class="title">@_categories.Category</li>
+                                        @foreach (var _subCategory in _categories.SubCategories)
+                                        {
+                                            <li><a href="@Url.Action("filtersubcategory","search", new { page = 1, id = _subCategory.IdSubCategory, nameSubCategory = _subCategory.SubCategory.ToSeoUrl()  })">@_subCategory.SubCategory</a></li>
+                                        }
+                                    </ul>
                                 }
-                            </ul>
+                            }
                         }
-                    }
-                }
+                    </div>
+                </div>
             </div>
         }
     </li>
