@@ -116,23 +116,25 @@ namespace LARWebSite.Utilerias
             //5. Labels => plasticos, curricanes, agua dulce, etc...
             //6. At the end
 
+            string _cleanQuery = query.Replace("\"", "_").Replace("'", "_").Replace("''","_");
+
             string _searchQuery = "(SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products" +
-                " INNER JOIN(SELECT brands.idBrand FROM brands WHERE MATCH(brands.Brand) AGAINST('"+ query + "*' IN BOOLEAN MODE)) AS b ON b.idBrand = products.idBrand)" +
+                " INNER JOIN(SELECT brands.idBrand FROM brands WHERE MATCH(brands.Brand) AGAINST('"+ _cleanQuery + "*' IN BOOLEAN MODE)) AS b ON b.idBrand = products.idBrand)" +
                 " UNION" +
                 " (SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products" +
-                " INNER JOIN(SELECT categories.idCategory FROM categories WHERE MATCH(categories.categoryName) AGAINST('"+ query + "*' IN BOOLEAN MODE)) AS c ON c.idCategory = products.idCategory)" +
+                " INNER JOIN(SELECT categories.idCategory FROM categories WHERE MATCH(categories.categoryName) AGAINST('"+ _cleanQuery + "*' IN BOOLEAN MODE)) AS c ON c.idCategory = products.idCategory)" +
                 " UNION" +
                 " (SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products" +
-                " INNER JOIN(SELECT subcategories.idSubCategory FROM subcategories WHERE MATCH(subcategories.subCategoryName) AGAINST('"+ query + "*' IN BOOLEAN MODE)) AS s ON s.idSubCategory = products.idSubCategory)" +
+                " INNER JOIN(SELECT subcategories.idSubCategory FROM subcategories WHERE MATCH(subcategories.subCategoryName) AGAINST('"+ _cleanQuery + "*' IN BOOLEAN MODE)) AS s ON s.idSubCategory = products.idSubCategory)" +
                 " UNION" +
                 " (SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products" +
-                " WHERE MATCH(products.nameProduct, products.description, products.extendDescription) AGAINST('" + query + "*' IN BOOLEAN MODE))" +
+                " WHERE MATCH(products.nameProduct, products.description, products.extendDescription) AGAINST('" + _cleanQuery + "*' IN BOOLEAN MODE))" +
                 " UNION "+
                 " (SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products" +
                 " WHERE MATCH(products.keyProduct) AGAINST('" + query + "' IN BOOLEAN MODE)) " +
                 " UNION" +
                 " (SELECT products.idProduct, products.nameProduct, products.description, products.extendDescription, products.Image_link, products.idBrand, products.idCategory, products.idSubCategory, products.keyProduct, products.stock, products.discount, products.salePrice, products.wholesalePrice, products.limitWholeSalePrice, products.fecha_alta, products.status FROM products, product_label, labels " +
-                " WHERE products.idProduct = product_label.idProduct AND labels.idLabel = product_label.idLabel AND MATCH(labels.labelName) AGAINST ('" + query + "*' IN BOOLEAN MODE) ) ";
+                " WHERE products.idProduct = product_label.idProduct AND labels.idLabel = product_label.idLabel AND MATCH(labels.labelName) AGAINST ('" + _cleanQuery + "*' IN BOOLEAN MODE) ) ";
 
             return context.products.SqlQuery(_searchQuery.Trim()).ToList<products>();
         }

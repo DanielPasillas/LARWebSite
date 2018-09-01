@@ -53,7 +53,7 @@ namespace LARWebSite.Utilerias
                 _bodyMessage += mailbody;
 
 
-                MailMessage _sendMessage = new MailMessage(emailFrom, "asis.analytic@gmail.com");
+                MailMessage _sendMessage = new MailMessage(emailFrom, "b.pasillas.4@gmail.com");
                 _sendMessage.Subject = "La Red Caza y Pesca - WebSite Contacto";
                 _sendMessage.Body = _bodyMessage;
                 _sendMessage.IsBodyHtml = true;
