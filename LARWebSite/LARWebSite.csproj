@@ -339,6 +339,7 @@
     <Content Include="Models\dbContextLAR.edmx.diagram">
       <DependentUpon>dbContextLAR.edmx</DependentUpon>
     </Content>
+    <Content Include="Assets\fonts\lg.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
