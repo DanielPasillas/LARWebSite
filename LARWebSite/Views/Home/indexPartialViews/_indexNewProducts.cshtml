@@ -5,7 +5,7 @@
 <!-- featured-products -->
 <section id="featured-products">
     <div class="page-header text-center wsub">
-        <h2>Nuevos productos</h2>
+        <h2>Lo más nuevo</h2>
     </div><!--/ page-header -->
     <div id="products-carousel" class="owl-carousel">
         @foreach (var _product in Model.NuevosProductos)
@@ -14,7 +14,7 @@
             <div class="item product">
                 <div class="card mt-6" style="border-radius:2px;cursor:pointer;border:1px solid rgba(0,0,0,0.1);">
                     <a href="@Url.Action("detail", "products", new { id = _product.IdProducto, code = _product.Codigo, name = _product.NombreProducto.ToSeoUrl() })">
-                        <img class="card-img-top img-fluid" src="~/Assets/images/product_link/@_product.ImagenDetalle" alt="">
+                        <img class="card-img-top img-fluid" src="http://static.laredcazaypesca.com.mx/images/p_b/@_product.ImagenDetalle" alt="">
                     </a>
                     <hr />
                     <div class="card-body" style="padding:10px;">

@@ -64,7 +64,7 @@ else
                     $(".thumbnail-item-red").removeClass("thumb-active");
                     $(this).addClass("thumb-active");
 
-                    $("#red-big-img-visualizer").attr("src", window.location.origin + "/assets/images/product_b/" + $(this).attr("data-red-img"));
+                    $("#red-big-img-visualizer").attr("src", "http://static.laredcazaypesca.com.mx/images/p_b/" + $(this).attr("data-red-img"));
                     $(".zoom_visualizer").elevateZoom({ scrollZoom: true, gallery: 'gallery_01', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif' });
 
                 });
@@ -91,11 +91,11 @@ else
                                     {
                                         if ((index + 1) == _imgCount)
                                         {
-                                            @: { 'src': window.location.origin + '/assets/images/product_b/@img.Image_b', 'thumb': window.location.origin + '/assets/images/product_b/@img.Image_b' }
+                                            @: { 'src': 'http://static.laredcazaypesca.com.mx/images/p_b/@img.Image_b', 'thumb': 'http://static.laredcazaypesca.com.mx/images/p_s/@img.Image_b' }
                                         }
                                         else
                                         {
-                                            @: { 'src': window.location.origin + '/assets/images/product_b/@img.Image_b', 'thumb': window.location.origin + '/assets/images/product_b/@img.Image_b' },
+                                            @: { 'src': + 'http://static.laredcazaypesca.com.mx/images/p_b/@img.Image_b', 'thumb': 'http://static.laredcazaypesca.com.mx/images/p_s/@img.Image_b' },
                                         }
                                     }
                             @:]

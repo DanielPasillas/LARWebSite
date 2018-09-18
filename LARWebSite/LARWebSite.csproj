@@ -260,26 +260,6 @@
     <Content Include="Assets\fonts\glyphicons-halflings-regular.html" />
     <Content Include="Assets\fonts\glyphicons-halflings-regulard41d.html" />
     <Content Include="Assets\fonts\Linearicons-Free54e9.svg" />
-    <Content Include="Assets\images\brands\berkley.png" />
-    <Content Include="Assets\images\brands\boomber.png" />
-    <Content Include="Assets\images\brands\booyah.png" />
-    <Content Include="Assets\images\brands\cotton-ordell.png" />
-    <Content Include="Assets\images\brands\eagle-claw.png" />
-    <Content Include="Assets\images\brands\heddon.png" />
-    <Content Include="Assets\images\brands\rapala.png" />
-    <Content Include="Assets\images\brands\rebel.png" />
-    <Content Include="Assets\images\brands\strike-pro.png" />
-    <Content Include="Assets\images\brands\zoom.png" />
-    <Content Include="Assets\images\categories\rods.jpg" />
-    <Content Include="Assets\images\cbk.jpg" />
-    <Content Include="Assets\images\contact-landing-page.jpg" />
-    <Content Include="Assets\images\error\red-img-error.jpg" />
-    <Content Include="Assets\images\product_b\LAR-001.jpg" />
-    <Content Include="Assets\images\product_link\LAR-001.jpg" />
-    <Content Include="Assets\images\red-logo.png" />
-    <Content Include="Assets\images\slider\slide_1.jpg" />
-    <Content Include="Assets\images\slider\slide1.jpg" />
-    <Content Include="Assets\images\small-logo-red.png" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\flick-slider.js" />
@@ -340,6 +320,7 @@
       <DependentUpon>dbContextLAR.edmx</DependentUpon>
     </Content>
     <Content Include="Assets\fonts\lg.woff" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -397,7 +378,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\images\product_s\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -43,13 +43,13 @@
                         if (iActiveItem == 0)
                         {
                             <div class="thumbnail-item-red thumb-active" id="thumb-@iActiveItem" data-red-img="@_thumbnail.Image_b">
-                                <img src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
+                                <img src="http://static.laredcazaypesca.com.mx/images/p_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
                             </div>
                         }
                         else
                         {
                             <div class="thumbnail-item-red" id="thumb-@iActiveItem" data-red-img="@_thumbnail.Image_b">
-                                <img src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
+                                <img src="http://static.laredcazaypesca.com.mx/images/p_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
                             </div>
                         }
                         countViewedImageThumb++;
@@ -63,7 +63,7 @@
                             <div class="red-thumnbnail-plus">
                                 + @countMoreImages
                             </div>
-                            <img style="opacity:0.4;" src="~/Assets/images/product_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
+                            <img style="opacity:0.4;" src="http://static.laredcazaypesca.com.mx/images/p_b/@_thumbnail.Image_b" alt="@_thumbnail.Image_b">
                         </div>
                     }
 
@@ -79,7 +79,7 @@
                     <div id="product-slider" class="carousel slide" data-ride="carousel">
                         <div class="slider slider-for">
                             <div>
-                                <img class="zoom_visualizer" id="red-big-img-visualizer" src="~/Assets/images/product_b/@_defaultImg" />
+                                <img class="zoom_visualizer" id="red-big-img-visualizer" src="http://static.laredcazaypesca.com.mx/images/p_b/@_defaultImg" />
                             </div>
                         </div>
                     </div><!-- / product-slider -->
@@ -99,7 +99,7 @@
                             @if (Model.Producto.Descuento != 0)
                             {
                                 <h4 style="text-decoration:line-through;">
-                                    $  @Model.Producto.PrecioVenta
+                                    $  @Model.Producto.PrecioVenta MXN
                                 </h4>
                                 <h1>
                                     @{
@@ -111,7 +111,7 @@
                             else
                             {
                                 <h1>
-                                    $ @Model.Producto.PrecioVenta
+                                    $ @Model.Producto.PrecioVenta MXN
                                 </h1>
                             }
                         </div>

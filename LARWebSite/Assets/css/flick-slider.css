@@ -1,6 +1,7 @@
 ﻿/*! Flickity v2.1.2
 https://flickity.metafizzy.co
 ---------------------------------------------- */
+
 .flickity-enabled {
     position: relative
 }
@@ -43,15 +44,14 @@ https://flickity.metafizzy.co
 
 .flickity-button {
     position: absolute;
-    background: hsla(0,0%,100%,.20);
+    background: hsla(0,0%,100%,.2);
     border: none;
-    
     color: #333
 }
 
     .flickity-button:hover {
         background: #fff;
-        box-shadow:1px 1px 4px rgba(0,0,0,0.6);
+        box-shadow: 1px 1px 4px rgba(0,0,0,.6);
         cursor: pointer
     }
 
@@ -78,7 +78,6 @@ https://flickity.metafizzy.co
     top: 50%;
     width: 44px;
     height: 60px;
-    
     transform: translateY(-50%)
 }
 
