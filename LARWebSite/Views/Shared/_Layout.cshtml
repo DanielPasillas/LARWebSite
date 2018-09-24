@@ -15,7 +15,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
-    <link href='~/fonts/FontAwesome.otf' rel='stylesheet' type='text/css'>
+    <!--link href='~/fonts/FontAwesome.otf' rel='stylesheet' type='text/css'-->
     <!-- Import linear-icons directly because of the lost of fonts.._. -->
     <link href='~/Assets/css/linear-icons.css' rel='stylesheet' type='text/css'>
 
@@ -43,11 +43,11 @@
         <!-- Starts the menu setion  -->
         <div class="wsmenucontainer clearfix">
             <div id="overlapblackbg"></div>
-            <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a href="/" class="smallogo"><img src="http://static.laredcazaypesca.com.mx/images/small-logo-red.png" style="width:100px;" alt="" /></a> <a class="callusicon" href="tel:123456789"><span class="fa fa-phone"></span></a> </div>
+            <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a href="javascript:void(0)" class="smallogo"><img src="http://static.laredcazaypesca.com.mx/images/small-logo-red.png" style="width:100px;" alt="" /></a> <a class="callusicon" href="tel:4499186217"><span class="fa fa-phone"></span></a> </div>
             <div class="headtoppart clearfix">
                 <div class="headerwp">
                     <div class="headertopleft">
-                        <div class="address clearfix"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Victoria 705, Centro, 20000 Aguascalientes, México. </span> <a href="#"><i class="fa fa-phone" aria-hidden="true"></i> 449 918 6217</a></div>
+                        <div class="address clearfix"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Victoria 705, Centro, 20000 Aguascalientes, México. </span> <a href="tel:449 918 6217"><i class="fa fa-phone" aria-hidden="true"></i> 449 918 6217</a></div>
                     </div>
                 </div>
             </div>
@@ -177,7 +177,24 @@
     </footer>
     <!-- / footer -->
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/red-library")
+    <script>
+        /* Input validation */
+        (function () {
+
+            $("#red-form-search").submit(function (e) {
+
+                if ($(".red-search-input").val()) {
+                    return true;
+                }
+                else {
+
+                    e.preventDefault();
+                    $(".red-search-input").focus();
+                }
+            });
+        })();
+//-----------------------------------------
+    </script>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <!-- javascript -->
