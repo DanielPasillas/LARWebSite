@@ -53,17 +53,18 @@ namespace LARWebSite.Utilerias
                 _bodyMessage += mailbody;
 
 
-                MailMessage _sendMessage = new MailMessage(emailFrom, "info@laredcazaypesca.com.mx");
+                MailMessage _sendMessage = new MailMessage(emailFrom, "b.pasillas.4@gmail.com");
                 _sendMessage.Subject = "La Red Caza y Pesca - WebSite Contacto";
                 _sendMessage.Body = _bodyMessage;
                 _sendMessage.IsBodyHtml = true;
 
                 SmtpClient smtp = new SmtpClient();
-                smtp.Host = "relay-hosting.secureserver.net";
-                smtp.Port = 25;
-                smtp.EnableSsl = false;
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
 
-                NetworkCredential _nc = new NetworkCredential("info@laredcazaypesca.com.mx", "Larwebsite.0518");
+
+                NetworkCredential _nc = new NetworkCredential("asis.analytic@gmail.com", "asis.analytics.333");
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = _nc;
                 smtp.Send(_sendMessage);
@@ -71,8 +72,10 @@ namespace LARWebSite.Utilerias
             }
             catch (System.Net.Mail.SmtpException)
             {
+
                 throw;
             }
+
 
             return true;
         }
