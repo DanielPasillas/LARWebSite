@@ -16,7 +16,7 @@
                 <!-- contact form -->
                 <div id="contact-form-1">
                 <!-- Begins the contact form section -->
-                @using (Html.BeginForm("contact", "home", FormMethod.Post, new { data_validator = "validator", @id = "contactForm",@onsubmit="return true"})) 
+                @using (Html.BeginForm("contact", "home", FormMethod.Post, new { data_validator = "validator", @id = "contactForm",@onsubmit="return true" })) 
                 {
                     @Html.AntiForgeryToken()
 
