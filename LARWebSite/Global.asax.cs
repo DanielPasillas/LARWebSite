@@ -16,7 +16,7 @@ namespace LARWebSite
     {
         protected void Application_Start()
         {
-            _SetupRefreshJob();
+            //_SetupRefreshJob();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

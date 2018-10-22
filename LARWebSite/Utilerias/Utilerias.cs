@@ -49,22 +49,22 @@ namespace LARWebSite.Utilerias
             {
 
                 string _bodyMessage = "Enviado por: <strong>" + nombre + "</strong><br>";
-                _bodyMessage += "Email de contacto: <strong>"+ emailFrom +"</strong><br><br>";
+                _bodyMessage += " Email de contacto: <strong>"+ emailFrom +"</strong><br><br>";
                 _bodyMessage += mailbody;
 
 
-                MailMessage _sendMessage = new MailMessage(emailFrom, "b.pasillas.4@gmail.com");
-                _sendMessage.Subject = "La Red Caza y Pesca - WebSite Contacto";
+                MailMessage _sendMessage = new MailMessage(emailFrom, "");
+                _sendMessage.Subject = "";
                 _sendMessage.Body = _bodyMessage;
                 _sendMessage.IsBodyHtml = true;
 
                 SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
+                smtp.Host = "";
+                smtp.Port = ;
+                smtp.EnableSsl = false;
 
 
-                NetworkCredential _nc = new NetworkCredential("asis.analytic@gmail.com", "asis.analytics.333");
+                NetworkCredential _nc = new NetworkCredential();
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = _nc;
                 smtp.Send(_sendMessage);
