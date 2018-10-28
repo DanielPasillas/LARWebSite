@@ -44,7 +44,6 @@ namespace LARWebSite.Utilerias
     {
         public bool SendEmailAsync(string emailFrom, string nombre, string mailbody)
         {
-
             try
             {
 
@@ -52,17 +51,15 @@ namespace LARWebSite.Utilerias
                 _bodyMessage += " Email de contacto: <strong>"+ emailFrom +"</strong><br><br>";
                 _bodyMessage += mailbody;
 
-
                 MailMessage _sendMessage = new MailMessage(emailFrom, "");
-                _sendMessage.Subject = "";
+                _sendMessage.Subject = ;
                 _sendMessage.Body = _bodyMessage;
                 _sendMessage.IsBodyHtml = true;
 
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "";
-                smtp.Port =  ;
+                smtp.Port = ;
                 smtp.EnableSsl = false;
-
 
                 NetworkCredential _nc = new NetworkCredential();
                 smtp.UseDefaultCredentials = true;
@@ -75,7 +72,6 @@ namespace LARWebSite.Utilerias
 
                 throw;
             }
-
 
             return true;
         }

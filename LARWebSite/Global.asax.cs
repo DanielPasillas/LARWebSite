@@ -48,7 +48,7 @@ namespace LARWebSite
                     WebClient refresh = new WebClient();
                     try
                     {
-                        refresh.UploadString("http://www.laredcazaypesca.com.mx", string.Empty);
+                       refresh.UploadString("http://www.laredcazaypesca.com.mx", string.Empty);
                     }
                     catch (Exception ex)
                     {

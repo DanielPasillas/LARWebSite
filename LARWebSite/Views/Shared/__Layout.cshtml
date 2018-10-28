@@ -1,35 +1,29 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-    <meta name="description" content="Responsive Shop Theme">
+    <meta name="description" content="Artículos de Pesca, Caza y Campismo">
     <meta name="keywords" content="tienda, pesca, red, aguascalientes, caza" />
-    <meta name="author" content="Assis">
-
+    <meta name="author" content="Xiara Solutions">
     <!-- favicon -->
     <link rel="icon" href="~/favicon.png">
-
     <!-- page title -->
-    <title>@ViewBag.Title | Tienda de Pesca y Caza</title>
-
+    <title>@ViewBag.Title | Tienda de Caza y Pesca</title>
     <!-- bootstrap css -->
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700" rel="stylesheet">
-    <link href='~/fonts/FontAwesome.otf' rel='stylesheet' type='text/css'>
-    <!-- Import linear-icons directly because of the lost of fonts.._. -->
-    <link href='~/Assets/css/linear-icons.css' rel='stylesheet' type='text/css'>
-    <style>
-        /*Remove margin and padding from top body*/
-        body {
-            padding-top: 0px;
-            margin-top: 0px;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <!--link href='~/fonts/FontAwesome.otf' rel='stylesheet' type='text/css'-->
+    <!-- Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126117880-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-126117880-1');
+    </script>
 </head>
 <body>
     <!-- preloader -->
@@ -39,65 +33,75 @@
     <!-- / preloader -->
     <!-- header -->
     <header>
-
-        <!-- This menu will be hidden till we start developing the ecommerce environment -->
-        <!--div class="top-menu top-menu">
-            <div class="container">
-                <p>
-                    <span class="left"> <a href="#phone-number"><i class="lnr lnr-phone-handset"></i> <span> Llamanos! 01 449 918 6217</span></a></span> </span>
-
-                </p>
-            </div>
-        </div-->
-
-        <div id="overlapblackbg"></div>
-        <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"><img style="width:233px;height:68px;" src="~/Assets/images/red-logo.png" width="120" alt="" /></a> <a class="callusicon" href="tel:123456789"><span class="fa fa-phone"></span></a> </div>
-
-        <!--Main Menu HTML Code-->
-        <nav class="wsmenu clearfix">
-            <div class="logo clearfix"><a href="/" title="La Red Caza y Pesca"><img src="~/Assets/images/red-logo.png" alt="" /></a></div>
-            <ul class="mobile-sub wsmenu-list">
-                <li>
-                    <a href="@Url.Action("index","home")"><i class="fa fa-align-justify"></i>&nbsp;&nbsp;Inicio </a>
-
-                </li>
-                <li>
-                    <a href="@Url.Action("about","home")"><i class="fa fa-align-justify"></i>&nbsp;&nbsp;Sobre nosotros </a>
-                </li>
-                @Html.Action("menu", "home")
-                <li class="emptdiv"><a href="#"></a></li>
-                <li>
-                    <a href="@Url.Action("offers","home")"><i class="fa fa-align-justify"></i>&nbsp;&nbsp;Ofertas </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("contacto","home")"><i class="fa fa-align-justify"></i>&nbsp;&nbsp;Contacto </a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;Contact<span class="arrow"></span></a>
-                    <div class="megamenu halfdiv">
-                        <h3 class="title">Contact Us</h3>
-                        <form name="contact_name" class="menu_form">
-                            <input type="text" placeholder="Name">
-                            <input type="text" placeholder="Email">
-                            <textarea placeholder="Your message..."></textarea>
-                            <input type="button" value="Reset">
-                            <input type="submit" value="Send">
-                        </form>
-                        <div class="cl"></div>
+        <!----------------------------->
+        <!-- Starts the menu setion  -->
+        <div class="wsmenucontainer clearfix">
+            <div id="overlapblackbg"></div>
+            <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a href="javascript:void(0)" class="smallogo"><img src="http://static.laredcazaypesca.com.mx/images/small-logo-red.png" style="width:100px;" alt="" /></a> <a class="callusicon" href="tel:4499186217"><span class="fa fa-phone"></span></a> </div>
+            <div class="headtoppart clearfix">
+                <div class="headerwp">
+                    <div class="headertopleft">
+                        <div class="address clearfix"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Victoria 705, Centro, 20000 Aguascalientes, México. </span> <a href="tel:449 918 6217"><i class="fa fa-phone" aria-hidden="true"></i> 449 918 6217</a></div>
                     </div>
-                </li>
-            </ul>
-        </nav>
-        <!--Menu HTML Code-->
+                </div>
+            </div>
+            <div class="headerfull">
+                <!--Main Menu HTML Code-->
+                <div class="wsmain">
+                    <div class="smllogo"><a href="/"><img style="width:120px;margin-top:-17px;" src="http://static.laredcazaypesca.com.mx/images/red-logo.png" alt="" /></a></div>
+                    <nav class="wsmenu clearfix">
+                        <ul class="mobile-sub wsmenu-list">
+                            <li class="rightmenu">
+                                @using (Html.BeginForm("search", "products", FormMethod.Get, new { @class = "topmenusearch", @id = "red-form-search" }))
+                                {
+                                    <input type="hidden" name="page" value="1" />
+                                    <input placeholder="Buscar productos..." name="keywords" value="@Request.Params["keywords"]" autocomplete="off" class="red-search-input js-typeahead">
+                                    <button class="btnstyle"><i class="searchicon fa fa-search" aria-hidden="true"></i></button>
+                                }
+                            </li>
+                            <li>
+                                <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" href="@Url.Action("index", "home")">Inicio</a>
+                            </li>
 
+                            <!-- Who we are section -->
+                            <li>
+                                <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "about" ? "active" : "")" href="@Url.Action("about", "home")">Quiénes somos</a>
+                            </li>
+
+                            <!-- Load Dynamic Menu - Gallery  -->
+                            @Html.Action("menu", "home")
+
+                            <!-- Contact Section -->
+                            <li>
+                                <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "contacto" ? "active" : "")" href="@Url.Action("contacto", "home")">Contacto</a>
+                            </li>
+
+                            <!-- Offers Section -->
+                            <li>
+                                <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "gallery" ? "active" : "")" href="@Url.Action("gallery", "home", new { page = 1, id = 1, category = "default"})">Galería</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="wrapper">
+                    <div class="moreoption clearfix" style="height:0;margin-top:0;z-index:1;background:red;">
+                        <div class="colorlink01 clearfix">
+                        </div>
+                    </div>
+                </div>
+                <!--Menu HTML Code-->
+            </div>
+        </div>
+        <!-- Ends the menu section -->
+        <!----------------------------->
     </header>
-    <br /><br /><br /><br />
-
     <!-- / header -->
     <!-- content -->
     <!-- categories -->
     <!-- rendered body section -->
-    @RenderBody()
+    <div>
+        @RenderBody()
+    </div>
     <!-- ends the rendered body section  -->
     <!-- footer -->
     <footer class="dark-footer">
@@ -107,9 +111,9 @@
                     <div class="col-sm-6 col-md-4 widget">
                         <div class="about-widget">
                             <div class="widget-title-image">
-                                <img id="lar-img-footer" src="~/Assets/images/red-logo.png" alt="">
+                                <img id="lar-img-footer" src="http://static.laredcazaypesca.com.mx/images/red-logo.png" alt="">
                             </div>
-                            <p>!Aventúrate a la acción con <b>La Red Caza y Pesca.</b></p>
+                            <p>¡Aventúrate a la acción con <b>La Red Caza y Pesca!</b></p>
                         </div><!-- / about-widget -->
                     </div><!-- / widget -->
                     <!-- / first widget -->
@@ -127,15 +131,15 @@
                         <div class="widget-title">
                             <h4>Contáctanos</h4>
                         </div>
-                        <div-- class="contact-widget">
+                        <div class="contact-widget">
                             <div class="info">
-                                <p><i class="lnr lnr-map-marker"></i><span>Victoria 705, Centro, 20000 Aguascalientes, Ags.</span></p>
+                                <a href="javascript:void;" class="ellipsis">Victoria 705, Centro, 20000 Aguascalientes, México</a>
                             </div>
                             <div class="info">
-                                <a href="tel:+0123456789"><i class="lnr lnr-phone-handset"></i><span> 01 449 918 6217</span></a>
+                                <a href="javascript:void;">449 918 6217</a>
                             </div>
                             <div class="info">
-                                <a href="mailto:hello@yoursite.com"><i class="lnr lnr-envelope"></i><span>office@yoursite.com</span></a>
+                                <a href="javascript:void;">info@laredcazaypesca.com.mx</a>
                             </div>
                             <!--div class="info">
                                 <p class="social pull-left">
@@ -147,51 +151,47 @@
                                     <a href="#"><i class="fa fa-dribbble"></i></a>
                                 </p>
                             </div-->
-                    </div><!-- / contact-widget -->
-                </div><!-- / widget -->
-                <!-- / fourth widget -->
-            </div><!-- / row -->
-        </div><!-- / container -->
-        <div class="footer-info">
-            <div class="container">
-                <div class="pull-left">
-                    <p>&copy; @DateTime.Now.Year - <strong>La Red Caza y Pesca</strong></p>
-                </div>
-                <br />
+                        </div><!-- / contact-widget -->
+                    </div><!-- / widget -->
+                    <!-- / fourth widget -->
+                </div><!-- / row -->
             </div><!-- / container -->
-        </div><!-- / footer-info -->
+            <div class="footer-info">
+                <div class="container">
+                    <div class="pull-left">
+                        <p>&copy; @DateTime.Now.Year - <strong>La Red Caza y Pesca.</strong> </p>
+                        <!--small>
+                            Powered by <a target="_blank" href="http://www.xiara.com.mx">Xiara</a>
+                        </small-->
+                    </div>
+                    <br />
+                </div><!-- / container -->
+            </div><!-- / footer-info -->
+        </div>
     </footer>
     <!-- / footer -->
-
     @Scripts.Render("~/bundles/jquery")
+    <script>
+        /* Input validation */
+        (function () {
+
+            $("#red-form-search").submit(function (e) {
+
+                if ($(".red-search-input").val()) {
+                    return true;
+                }
+                else {
+
+                    e.preventDefault();
+                    $(".red-search-input").focus();
+                }
+            });
+        })();
+//-----------------------------------------
+    </script>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <!-- javascript -->
-    <!-- featured-products carousel -->
-    <script>
-        $(document).ready(function () {
-            $("#products-carousel").owlCarousel({
-                autoPlay: 3000, //set autoPlay to 3 seconds.
-                items: 4,
-                itemsDesktop: [1199, 3],
-                itemsDesktopSmall: [979, 3],
-            });
-        });
-    </script>
-    <!-- / featured-products carousel -->
-    <!-- brands carousel -->
-    <script>
-        $(document).ready(function () {
-            $("#brands-carousel").owlCarousel({
-                autoPlay: 5000, //set autoPlay to 5 seconds.
-                items: 5,
-                itemsDesktop: [1199, 3],
-                itemsDesktopSmall: [979, 3]
-            });
-
-        });
-    </script>
 
 </body>
-
 </html>

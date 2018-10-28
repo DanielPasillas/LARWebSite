@@ -201,6 +201,7 @@
     <Compile Include="Models\labels.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MasterCategories.cs" />
     <Compile Include="Models\MenuClasses\MarcasModel.cs" />
     <Compile Include="Models\master_menu_type.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>

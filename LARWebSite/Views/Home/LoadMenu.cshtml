@@ -6,34 +6,53 @@
 
 @foreach (var menu in Model.MasterMenu)
 {
-    <li>
-        <a href="#">&nbsp;&nbsp;@menu.MainType<span class="arrow"></span></a>
-        @if (menu._TypeCategorias.Any())
+<li aria-haspopup="true">
+    <a href="#">@menu.MainType<span class="wsarrow"></span></a>
+    @if (menu._TypeCategorias.Any())
+    {
+        foreach (var _typeCategory in menu._TypeCategorias)
         {
-            <div class="megamenu clearfix" style="box-shadow:1px 0px 4px rgba(0,0,0,0.4);">
-                <div class="container-fluid">
-                    <div class="row">
-                        @foreach (var _typeCategory in menu._TypeCategorias)
+            <ul class="sub-menu">
+            @foreach (var _categories in _typeCategory.Categories)
+            {
+                
+                <li aria-haspopup="true">
+                    <a href="#"><i class="fa fa-angle-right"></i>@_categories.Category</a>
+                    @if(_categories.SubCategories.Any())
+                    {
+                    <ul class="sub-menu">
+                        @foreach (var _subCategory in _categories.SubCategories)
                         {
-                            foreach (var _categories in _typeCategory.Categories)
-                            {
-                                if (_categories.SubCategories.Any())
-                                {
-                                    <ul class="megacollink">
-                                        <li class="title">@_categories.Category</li>
-                                        @foreach (var _subCategory in _categories.SubCategories)
-                                        {
-                                            <li><a href="@Url.Action("filtersubcategory","search", new { page = 1, id = _subCategory.IdSubCategory, nameSubCategory = _subCategory.SubCategory.ToSeoUrl()  })">@_subCategory.SubCategory</a></li>
-                                        }
-                                    </ul>
-                                }
-                            }
+                            <li aria-haspopup="true"><a href="@Url.Action("filtersubcategory","search", new { page = 1, id = _subCategory.IdSubCategory, nameSubCategory = _subCategory.SubCategory.ToSeoUrl()  })"><i class="fa fa-angle-right"></i>@_subCategory.SubCategory</a></li>
                         }
-                    </div>
-                </div>
-            </div>
+                    </ul>
+                    }
+                </li>
+                
+            }
+            </ul>
         }
-    </li>
+    }
+</li>
 }
 
 
+
+    <!--li aria-haspopup="true">
+        <a href="#">Dropdowns <span class="wsarrow"></span></a>
+        <ul class="sub-menu">
+            <li aria-haspopup="true"><a href="#"><i class="fa fa-angle-right"></i>Website Design </a></li>
+            <li aria-haspopup="true"><a href="#"><i class="fa fa-angle-right"></i>Ecommerce Solutions</a></li>
+            <li aria-haspopup="true"><a href="#"><i class="fa fa-angle-right"></i>Application Development</a></li>
+            <li aria-haspopup="true"><a href="#"><i class="fa fa-angle-right"></i>Website Development</a></li>
+            <li aria-haspopup="true">
+                <a href="#"><i class="fa fa-angle-right"></i>Open Source Development</a>
+                <ul class="sub-menu">
+                    <li aria-haspopup="true"><a href="#"><i class="fa fa-angle-right"></i>Submenu item 1</a></li>
+                    <li aria-haspopup="true"><a href="#"><i class="fa fa-angle-right"></i>Submenu item 2</a></li>
+                    <li aria-haspopup="true"><a href="#"><i class="fa fa-angle-right"></i>Submenu item 3</a></li>
+                    <li aria-haspopup="true"><a href="#"><i class="fa fa-angle-right"></i>Submenu item 4</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li-->
