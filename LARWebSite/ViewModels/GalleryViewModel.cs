@@ -11,7 +11,7 @@ namespace LARWebSite.ViewModels
 {
     public class GalleryViewModel
     {
-        public IEnumerable<CategoriasModel> CategoryList { get; set; }
+        public IEnumerable<TypeCategoryModel> TypeCategory { get; set; }
 
         public IPagedList<ItemProductModel> ArticleList { get; set; }
     }

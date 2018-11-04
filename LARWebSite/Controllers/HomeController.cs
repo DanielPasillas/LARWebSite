@@ -185,21 +185,34 @@ namespace LARWebSite.Controllers
                 _viewModelProduct.Add(new ItemProductModel(_product));
             }
 
-            //Get the list of categories.
-            //Everytime users clic on a category record, we will retrieve the products related with that category.
-            var _categories = await _dbContext.categories.ToArrayAsync();
+            //Get the list of categories and Master Categories.
+            //Everytime users click on a category record, we will retrieve the products related with that category.
+            var _masterTypeCategories = await _dbContext.types_categories.ToArrayAsync();
 
             //Initialize the category view model.
-            List<CategoriasModel> _viewModelCategories = new List<CategoriasModel>();
+            List<TypeCategoryModel> _viewModelTypeCategory = new List<TypeCategoryModel>();
 
-            foreach (var itemCategory in _categories)
+            foreach (var itemTypeCategory in _masterTypeCategories)
             {
-                _viewModelCategories.Add(new CategoriasModel(itemCategory));
+                List<CategoriasModel> _categoryViewModel = new List<CategoriasModel>();
+                //Fetch the list of categories based on the masterTypeCategory record.
+                var _categoriesByMasterType = await _dbContext.categories.Where(m => m.parentCategory == itemTypeCategory.idMasterCategory).ToArrayAsync();
+
+                foreach (var itemCategory in _categoriesByMasterType)
+                {
+                    _categoryViewModel.Add(new CategoriasModel(itemCategory));
+                }
+
+                _viewModelTypeCategory.Add(new TypeCategoryModel(){
+                    idTypeCategory = itemTypeCategory.idMasterCategory,
+                    typeCategoryName = itemTypeCategory.parentCategory,
+                    CategoryList = _categoryViewModel
+                });
             }
 
             GalleryViewModel _viewModel = new GalleryViewModel()
             {
-                CategoryList = _viewModelCategories,
+                TypeCategory = _viewModelTypeCategory,
                 ArticleList = _viewModelProduct.ToList().ToPagedList(page ?? 1, _pageSize)
             };
 

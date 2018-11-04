@@ -8,7 +8,7 @@
     //Save the category name that is into the viewbag.
     string _categoryName = ViewBag.CategoryName;
 
-    //Variable decimal to check whether if the category is active.
+    //Variable int to check if the category is active.
     int activeCategory = ViewBag.IsActive;
 
     ViewBag.Title = "Galería de artículos";
@@ -16,7 +16,7 @@
 
 }
 
-@if (!Model.CategoryList.Any())
+@if (!Model.TypeCategory.Any())
 {
     <div class="alert alert-success">
         No se encontraron registros de categoría.
@@ -29,19 +29,24 @@ else
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="list-group">
-                        @foreach (var _categoryGroup in Model.CategoryList)
+                        @foreach (var _typeCategory in Model.TypeCategory)
                         {
-                            if (_categoryGroup.IdCategoria == activeCategory)
-                            {
-                                <a href="@Url.Action("gallery","home", new { page = 1, id = _categoryGroup.IdCategoria, category = _categoryGroup.NombreCategoria.ToSeoUrl() })" class="list-group-item active">@_categoryGroup.NombreCategoria</a>
-                            }
-                            else
-                            {
-                                <a href="@Url.Action("gallery","home", new { page = 1, id = _categoryGroup.IdCategoria, category = _categoryGroup.NombreCategoria.ToSeoUrl() })" class="list-group-item">@_categoryGroup.NombreCategoria</a>
-                            }
+                            <h3>@_typeCategory.typeCategoryName</h3>
+                            <div class="list-group">
+                                @foreach (var itemCategory in _typeCategory.CategoryList)
+                                {
+                                    if (itemCategory.IdCategoria == activeCategory)
+                                    {
+                                        <a href="@Url.Action("gallery", "home", new { page = 1, id = itemCategory.IdCategoria, category = itemCategory.NombreCategoria.ToSeoUrl() })" class="list-group-item active">@itemCategory.NombreCategoria</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("gallery", "home", new { page = 1, id = itemCategory.IdCategoria, category = itemCategory.NombreCategoria.ToSeoUrl() })" class="list-group-item">@itemCategory.NombreCategoria</a>
+
+                                    }
+                                }
+                            </div>
                         }
-                    </div>
                 </div>
                 <!-- /.col-lg-3 -->
 

@@ -225,6 +225,7 @@
     <Compile Include="Models\subcategories.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TypeCategoryModel.cs" />
     <Compile Include="Models\types_categories.cs">
       <DependentUpon>dbContextLAR.tt</DependentUpon>
     </Compile>
@@ -281,7 +282,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="favicon.ico" />
     <Content Include="favicon.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

@@ -52,7 +52,7 @@ namespace LARWebSite.Utilerias
                 _bodyMessage += mailbody;
 
                 MailMessage _sendMessage = new MailMessage(emailFrom, "");
-                _sendMessage.Subject = ;
+                _sendMessage.Subject = "";
                 _sendMessage.Body = _bodyMessage;
                 _sendMessage.IsBodyHtml = true;
 
@@ -61,7 +61,7 @@ namespace LARWebSite.Utilerias
                 smtp.Port = ;
                 smtp.EnableSsl = false;
 
-                NetworkCredential _nc = new NetworkCredential();
+                NetworkCredential _nc = new NetworkCredential("", "");
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = _nc;
                 smtp.Send(_sendMessage);
